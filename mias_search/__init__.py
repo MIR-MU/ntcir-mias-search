@@ -1,7 +1,6 @@
 """
-The NTCIR Math MIaS Reranking package reranks MIaS results using density, and
-probability estimates extracted from datasets in the NTCIR-11 Math-2, and
-NTCIR-12 MathIR XHTML5 format.
+The MIaS Search package implements the Math Information Retrieval system that
+won the NTCIR-11 Math-2 main task (Růžička et al., 2014).
 """
 
 

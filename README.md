@@ -15,7 +15,7 @@ paper][paper:ruzickaetal14-math]):
 
 3. MiaS Search reranks the subquery results according using relevance
    probability estimates from the [NTCIR Math Density
-   Estimator][www:ntcir-math-density] tool, and produces a final result list
+   Estimator][www:ntcir-math-density] package, and produces a final result list
    by interleaving the subquery result lists. The final result list is stored
    in the TSV (Tab Separated Value) format, which is meant to be passed to the
    [MIREval][www:MIREval] tool.

@@ -34,6 +34,9 @@ setup(
     keywords="ntcir mias math_information_retrieval",
     install_requires=[
         "tqdm ~= 4.23.3",
+        "lxml ~= 4.2.1",
+        "numpy ~= 1.14.3",
+        "requests ~= 2.18.4",
     ],
     license="MIT",
     long_description_content_type="text/markdown",

@@ -229,7 +229,7 @@ class ScoreAggregationStrategy(NamedEntity):
         """
         assert isinstance(estimated_result, EstimatedResult)
         assert isinstance(query, Query)
-        assert query.aggregation == Identity()
+        assert query.aggregation == MIaSScore()
         assert estimated_result in query.results
 
         min_score = min(estimated_result.result.score for estimated_result in query.results)
@@ -269,7 +269,7 @@ class ScoreAggregationStrategy(NamedEntity):
         """
 
 
-class Identity(ScoreAggregationStrategy):
+class MIaSScore(ScoreAggregationStrategy):
     """
     This class represents a strategy for aggregating a score, and a probability estimate into the
     an aggregate score. The aggregate score corresponds to the score, the probability estimate is
@@ -612,7 +612,7 @@ class Query(object):
     ----------
     aggregation : ScoreAggregationStrategy
         The score aggregation strategy that was used to rerank the results. By default, this
-        corresponds to Identity(), i.e. no score aggregation strategy was used. Change this
+        corresponds to MIaSScore(), i.e. no score aggregation strategy was used. Change this
         attribute after you have aggregated the scores in the query results using some different
         strategy.
     topic : Topic
@@ -649,7 +649,7 @@ class Query(object):
         for result in results:
             assert isinstance(result, (EstimatedResult, Result))
 
-        self.aggregation = Identity()
+        self.aggregation = MIaSScore()
         self.topic = topic
         self.math_format = math_format
         self.payload = payload
@@ -1010,7 +1010,7 @@ def get_estimates(queries, positions, estimates):
 
 def _rerank_results_helper(args):
     math_format, topic, queries, estimated_queries, output_directory = args
-    results = [(Identity(), math_format, topic, queries)]
+    results = [(MIaSScore(), math_format, topic, queries)]
     for aggregation in Result.aggregation_strategies:
         reranked_queries = deepcopy(queries)
         for estimated_query, reranked_query in zip(estimated_queries, reranked_queries):

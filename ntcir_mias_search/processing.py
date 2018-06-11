@@ -665,7 +665,8 @@ class Query(object):
     @contextmanager
     def use_aggregation(self, aggregation):
         """
-        Changes the score aggregation strategy for the duration of the context.
+        Changes the score aggregation strategy, and sorts query results according to the aggregated
+        scores for the duration of the context.
 
         Parameters
         ----------
@@ -673,10 +674,16 @@ class Query(object):
             The score aggregation strategy that will be used to compute the aggregate score of the
             query results for the duration of the context.
         """
+        assert isinstance(aggregation, ScoreAggregationStrategy)
+
         original_aggregation = self.aggregation
+        original_results = self.results
         self.aggregation = aggregation
+        if aggregation != MIaSScore():
+            self.results = sorted(self.results)
         yield
         self.aggregation = original_aggregation
+        self.results = original_results
 
     query_expansions = set((LeaveRightmostOut(), ))
 
@@ -725,8 +732,7 @@ class Query(object):
     def save(self, output_directory):
         """
         Stores the text content of the query, the XML document with the response, and the results as
-        files. As a side effect, the query results are sorted in-place according to the current
-        score aggregation strategy.
+        files.
 
         Parameters
         ----------
@@ -741,7 +747,6 @@ class Query(object):
         with (output_directory / Path(PATH_RESPONSE % (
                 self.topic.name, self.math_format.identifier, self.query_number))).open("wt") as f:
             f.write(self.response_text)
-        self.results = sorted(self.results)
         with (output_directory / Path(PATH_RESULT % (
                 self.topic.name, self.math_format.identifier, self.query_number,
                 self.aggregation.identifier))).open("wt") as f:
@@ -942,6 +947,10 @@ class Result(object):
         self.query, self.identifier, self.score, self.p_relevant = state
         self._aggregate_scores = dict()
 
+    def __repr__(self):
+        return "%s(%s, %f, %f)" % (
+            self.__class__.__name__, self.identifier, self.score, self.p_relevant)
+
 
 class FakeResult(Result):
     """
@@ -1058,11 +1067,12 @@ def _rerank_and_merge_results_helper(args):
     math_format, topic, queries, output_directory, num_results = args
     results = []
     for aggregation in Result.aggregation_strategies:
-        if output_directory:
-            for query in queries:
-                with query.use_aggregation(aggregation):
+        result_deques = []
+        for query in queries:
+            with query.use_aggregation(aggregation):
+                if output_directory:
                     query.save(output_directory)
-        result_deques = [deque(query.results) for query in queries]
+                result_deques.append(deque(query.results))
         result_list = []
         result_list_identifiers = set()
         for query, result_dequeue in cycle(zip(queries, result_deques)):

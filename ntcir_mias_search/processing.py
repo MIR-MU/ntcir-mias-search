@@ -80,7 +80,19 @@ class NamedEntity(object):
         return isinstance(other, NamedEntity) and self.identifier < other.identifier
 
 
-class MathFormat(NamedEntity):
+class Singleton(type):
+    """
+    This metaclass designates a class as a singleton. No more than one instance
+    of the class will be instantiated.
+    """
+    _instances = {}
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+
+class MathFormat(NamedEntity, metaclass=Singleton):
     """
     This class represents a format in which mathematical formulae are represented.
     """
@@ -158,7 +170,7 @@ class PCMath(MathFormat):
         return "%s %s" % (formula.pmath_text, formula.cmath_text)
 
 
-class QueryExpansionStrategy(NamedEntity):
+class QueryExpansionStrategy(NamedEntity, metaclass=Singleton):
     """
     This class represents a query expansion strategy for extracting queries out of an NTCIR-10 Math,
     NTCIR-11 Math-2, and NTCIR-12 MathIR topic.
@@ -269,7 +281,7 @@ class ScoreAggregationStrategy(NamedEntity):
         """
 
 
-class MIaSScore(ScoreAggregationStrategy):
+class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
     """
     This class represents a strategy for aggregating a score, and a probability estimate into the
     an aggregate score. The aggregate score corresponds to the score, the probability estimate is
@@ -285,7 +297,7 @@ class MIaSScore(ScoreAggregationStrategy):
         return result.score
 
 
-class LogGeometricMean(ScoreAggregationStrategy):
+class LogGeometricMean(ScoreAggregationStrategy, metaclass=Singleton):
     """
     This class represents a strategy for aggregating a score, and a probability estimate into the
     common logarithm of their geometric mean.

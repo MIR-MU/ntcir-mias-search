@@ -11,9 +11,9 @@ import pickle
 from sys import stdout
 from urllib.parse import urlparse
 
-import numpy
+import numpy  # Required to unpickle positions.pkl.gz
 
-from .processing import query_webmias, Topic, WebMIaSIndex
+from .processing import get_results, merge_results, rerank_results, Topic, WebMIaSIndex
 
 
 LOG_PATH = Path("__main__.log")
@@ -75,13 +75,18 @@ def main():
             %(default)d.
         """)
     parser.add_argument(
-        "--output-directory", type=Path, required=True, help="""
-            The path to the directory, where the output files will be stored.
+        "--num-workers-querying", type=int, default=1, help="""
+            The number of processes that will send queries to WebMIaS. Defaults to %(default)d. Note
+            that querying, reranking, and merging takes place simmultaneously.
         """)
     parser.add_argument(
-        "--num-workers", type=int, default=1, help="""
-            The number of processes that will be used for querying WebMIaS. Defaults to
-            %(default)d.
+        "--num-workers-reranking", type=int, default=5, help="""
+            The number of processes that will rerank results. Defaults to %(default)d. Note that
+            querying, reranking, and merging takes place simmultaneously.
+        """)
+    parser.add_argument(
+        "--output-directory", type=Path, required=True, help="""
+            The path to the directory, where the output files will be stored.
         """)
     args = parser.parse_args()
 
@@ -96,18 +101,21 @@ def main():
         "Directory %s, where the output files are to be stored, does not exist" % \
         args.output_directory
     assert args.webmias_index_number >= 0
-    assert args.num_workers > 0
+    assert args.num_workers_querying > 0
+    assert args.num_workers_reranking > 0
 
     LOGGER.info("Reading topics from %s", args.topics.name)
     with args.topics.open("rt") as f:
         topics = list(Topic.from_file(f))
-    LOGGER.info("%d topics contain %d formulae, and %d keywords", len(topics),
+    assert len(topics) >= 2
+    LOGGER.info("%d topics (%s, %s, ...) contain %d formulae, and %d keywords",
+        len(topics), topics[0], topics[1],
         sum(len(topic.formulae) for topic in topics),
         sum(len(topic.keywords) for topic in topics))
 
+    LOGGER.info(
+        "Establishing connection with a WebMIaS Java Servlet at %s", args.webmias_url.geturl())
     webmias = WebMIaSIndex(args.webmias_url, args.webmias_index_number)
-    LOGGER.info("Querying %s", webmias)
-    results = query_webmias(topics, webmias, args.output_directory, args.num_workers)
 
     LOGGER.info("Unpickling %s", args.positions.name)
     with gzip.open(args.positions.open("rb"), "rb") as f:
@@ -117,12 +125,13 @@ def main():
     with gzip.open(args.estimates.open("rb"), "rb") as f:
         estimates = pickle.load(f)[-1]
 
-#   LOGGER.info("Reranking results")
-#   reranked_results = rerank_results(results, positions, estimates)
-
+    LOGGER.info("Querying %s, reranking, and merging", webmias)
+    results = get_results(topics, webmias, args.output_directory, args.num_workers_querying)
+    reranked_results = rerank_results(
+        results, positions, estimates, args.output_directory, args.num_workers_reranking)
     identifiers = positions.keys()
-#   LOGGER.info("Producing the final result lists")
-#   merge_results(results, identifiers)
+    final_results = merge_results(reranked_results, identifiers, args.output_directory)
+    for _ in final_results: pass
 
 
 if __name__ == "__main__":

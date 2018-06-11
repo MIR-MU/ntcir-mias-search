@@ -1,5 +1,5 @@
 """
-This is the command-line interface for the MIaS Search package.
+This is the command-line interface for the NTCIR MIaS Search package.
 """
 
 from argparse import ArgumentParser

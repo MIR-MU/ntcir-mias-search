@@ -1,5 +1,5 @@
 """
-These are the processing functions and data types for the MIaS Search package.
+These are the processing functions and data types for the NTCIR MIaS Search package.
 """
 
 from abc import abstractmethod

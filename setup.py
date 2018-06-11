@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 AUTHOR = "Vit Novotny"
 HERE = path.abspath(path.dirname(__file__))
-SOURCE_URL = "https://github.com/MIR-MU/mias-search"
+SOURCE_URL = "https://github.com/MIR-MU/ntcir-mias-search"
 
 # Get the long description from the README file
 with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
@@ -28,7 +28,7 @@ setup(
     """,
     entry_points={
         'console_scripts': [
-            'mias-search=mias_search.__main__:main',
+            'ntcir-mias-search=nctir-mias_search.__main__:main',
         ],
     },
     keywords="ntcir mias math_information_retrieval",
@@ -42,7 +42,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     maintainer=AUTHOR,
-    name="mias_search",
+    name="ntcir_mias_search",
     packages=find_packages(),
     python_requires="~= 3.4",
     project_urls={

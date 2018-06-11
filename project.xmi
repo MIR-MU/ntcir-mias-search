@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:UML="http://schema.omg.org/spec/UML/1.3" xmi.version="1.2" verified="false" timestamp="2018-06-11T23:03:29">
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
+   <XMI.exporterVersion>1.6.10</XMI.exporterVersion>
+   <XMI.exporterEncoding>UnicodeUTF8</XMI.exporterEncoding>
+  </XMI.documentation>
+  <XMI.metamodel xmi.name="UML" xmi.version="1.3" href="UML.xml"/>
+ </XMI.header>
+ <XMI.content>
+  <UML:Model isRoot="false" name="UML model" isLeaf="false" xmi.id="m1" isAbstract="false" isSpecification="false">
+   <UML:Namespace.ownedElement>
+    <UML:Stereotype isRoot="false" isLeaf="false" name="folder" xmi.id="folder" isAbstract="false" namespace="m1" isSpecification="false" visibility="public"/>
+    <UML:Stereotype isRoot="false" isLeaf="false" name="datatype" xmi.id="datatype" isAbstract="false" namespace="m1" isSpecification="false" visibility="public"/>
+    <UML:Stereotype isRoot="false" isLeaf="false" name="singleton" xmi.id="37JEobTwuFkU" isAbstract="false" namespace="m1" isSpecification="false" visibility="public"/>
+    <UML:Model isRoot="false" isLeaf="false" name="Logical View" xmi.id="Logical View" isAbstract="false" namespace="m1" isSpecification="false" visibility="public">
+     <UML:Namespace.ownedElement>
+      <UML:Package stereotype="folder" isRoot="false" isLeaf="false" name="Datatypes" xmi.id="Datatypes" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Namespace.ownedElement>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="char" xmi.id="zUFPHjh7KDYM" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="int" xmi.id="s0WBrvGHldLI" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="float" xmi.id="wfnMFn19Nsrx" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="double" xmi.id="6hdYN41IHr4Y" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="bool" xmi.id="tHbs3HAyTxOy" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="string" xmi.id="BZ26rvH8Ee1x" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="unsigned char" xmi.id="Dm5XtyBQrSXu" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="signed char" xmi.id="IlATqPieTXgl" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="unsigned int" xmi.id="hoSNBQSYdINR" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="signed int" xmi.id="5NcymcbisFDg" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="short int" xmi.id="ClT94UXkioKh" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="unsigned short int" xmi.id="aTbx6yv526Dv" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="signed short int" xmi.id="FEQ2fNEsDGPS" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="long int" xmi.id="0jZrFre26Hcf" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="signed long int" xmi.id="XKe7RiDQI1ca" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="unsigned long int" xmi.id="1Ncwf8DMmco3" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="long double" xmi.id="4FnWn8aMML5C" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+        <UML:DataType stereotype="datatype" isRoot="false" isLeaf="false" name="wchar_t" xmi.id="6EthTXfhrrG9" isAbstract="false" namespace="Datatypes" isSpecification="false" visibility="public"/>
+       </UML:Namespace.ownedElement>
+      </UML:Package>
+      <UML:Class isRoot="false" isLeaf="false" name="NamedEntity" xmi.id="546tooNL0Q7Y" isAbstract="true" comment="This class represents an entity with a unique identifier, and a human-readable text description." namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="MathFormat" xmi.id="o6627heT5qM4" isAbstract="true" comment="This class represents a format in which mathematical formulae are represented." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="tgQ49jVr87C8"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="encode" xmi.id="lwTN4mnaLggE" isAbstract="true" comment="Returns a text representation of a mathematical formula.&#xa;" isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="BZ26rvH8Ee1x" xmi.id="D7C7kHjysOcD"/>
+          <UML:Parameter name="formula" value="" type="CgpYjvZbDuy7" xmi.id="ztcb2lcpsfAF" comment="A mathematical formula that will be represented in this format." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="o6627heT5qM4" name="" xmi.id="tgQ49jVr87C8" namespace="Logical View" parent="546tooNL0Q7Y" isSpecification="false" visibility="public"/>
+      <UML:Class stereotype="37JEobTwuFkU" isRoot="false" isLeaf="false" name="TeX" xmi.id="UgdNpEKELGcw" isAbstract="false" comment="This class represents the popular math authoring language of TeX." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="eOGHXUHuWrPQ"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="scEoqcuHPHm9" comment="A unique identifier." isSpecification="false" initialValue="&quot;TeX&quot;" visibility="public"/>
+        <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="12VRlzoxIUrB" comment="A human-readable text description.&#xa;" isSpecification="false" initialValue="&quot;The TeX language by professor Knuth&quot;" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="encode" xmi.id="Rco0p5UQT6a6" isAbstract="false" comment="Returns a text representation of a mathematical formula." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="BZ26rvH8Ee1x" xmi.id="O1fsWbpYRcMB"/>
+          <UML:Parameter name="formula" value="" type="CgpYjvZbDuy7" xmi.id="gicaVBZD6XTR" comment="A mathematical formula that will be represented in this format." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="UgdNpEKELGcw" name="" xmi.id="eOGHXUHuWrPQ" namespace="Logical View" parent="o6627heT5qM4" isSpecification="false" visibility="public"/>
+      <UML:Class stereotype="37JEobTwuFkU" isRoot="false" isLeaf="false" name="PMath" xmi.id="SB6OQvCndoBr" isAbstract="false" comment="This class represents the PResentation MathML XML language." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="lQsVqd4n0DpY"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="UmZPqBbrYr99" comment="A unique identifier." isSpecification="false" initialValue="&quot;PMath&quot;" visibility="public"/>
+        <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="HvB6kgqvcHSs" comment="A human-readable text description.&#xa;" isSpecification="false" initialValue="&quot;Presentation MathML XML language&quot;" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="encode" xmi.id="U2o6Ov0o8hAv" isAbstract="false" comment="Returns a text representation of a mathematical formula." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="formula" value="" type="CgpYjvZbDuy7" xmi.id="hGcZVrLWqxlp" comment="A mathematical formula that will be represented in this format." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="SB6OQvCndoBr" name="" xmi.id="lQsVqd4n0DpY" namespace="Logical View" parent="o6627heT5qM4" isSpecification="false" visibility="public"/>
+      <UML:Class stereotype="37JEobTwuFkU" isRoot="false" isLeaf="false" name="CMath" xmi.id="OF72e636eAW7" isAbstract="false" comment="This class represents the Content MathML XML language." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="A9PTsTX4Dc6T"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="DvweOL09i6DL" comment="A unique identifier." isSpecification="false" initialValue="&quot;CMath&quot;" visibility="public"/>
+        <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="lJJb8YMyjZfy" comment="A human-readable text description.&#xa;" isSpecification="false" initialValue="&quot;Content MathML XML language&quot;" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="encode" xmi.id="YboM32mrUARY" isAbstract="false" comment="Returns a text representation of a mathematical formula." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="formula" value="" type="CgpYjvZbDuy7" xmi.id="aY2grzt1S4xK" comment="A mathematical formula that will be represented in this format." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="OF72e636eAW7" name="" xmi.id="A9PTsTX4Dc6T" namespace="Logical View" parent="o6627heT5qM4" isSpecification="false" visibility="public"/>
+      <UML:Class stereotype="37JEobTwuFkU" isRoot="false" isLeaf="false" name="PCMath" xmi.id="fi38S1qDbrHT" isAbstract="false" comment="This class represents the combined Presentation, and Content MathML XML language." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="QtViSgoGxwEx"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="Ag9jouq67hGx" comment="A unique identifier." isSpecification="false" initialValue="&quot;PCMath&quot;" visibility="public"/>
+        <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="IdIcTKu9zCv3" comment="A human-readable text description.&#xa;" isSpecification="false" initialValue="&quot;Combined Presentation and Content MathML XML language&quot;" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="encode" xmi.id="uvmTb2N3VgZT" isAbstract="false" comment="Returns a text representation of a mathematical formula." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="formula" value="" type="CgpYjvZbDuy7" xmi.id="pv6no9KShj3o" comment="A mathematical formula that will be represented in this format." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="fi38S1qDbrHT" name="" xmi.id="QtViSgoGxwEx" namespace="Logical View" parent="o6627heT5qM4" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="QueryExpansionStrategy" xmi.id="L5wnqwnbipsk" isAbstract="true" comment="This class represents a query expansion strategy for extracting queries out of an NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="tfNGJ885F38C"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="produce_queries" xmi.id="pZorSJEasT3M" isAbstract="true" comment="Produces triples of formulae, keywords, and stripe widths from a NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="topic" value="" type="zClGBVn5VA7E" xmi.id="NcBpEk3DN6Ob" comment="A topic that will serve as the source of the triples." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="L5wnqwnbipsk" name="" xmi.id="tfNGJ885F38C" namespace="Logical View" parent="546tooNL0Q7Y" isSpecification="false" visibility="public"/>
+      <UML:Class stereotype="37JEobTwuFkU" isRoot="false" isLeaf="false" name="LeaveRightmostOut" xmi.id="S4yiqbVFd6NK" isAbstract="false" comment="This class represents the Leave Rightmost Out (LRO) query expansion strategy (Růžička et al., 2014)." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="JqzbNyX8XJ3i"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="YChc8kbx31BL" comment="A unique identifier." isSpecification="false" initialValue="&quot;LRO&quot;" visibility="public"/>
+        <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="3V2ItjmfAAjk" comment="A human-readable text description." isSpecification="false" initialValue="&quot;Leave Rightmost Out strategy (Růžička et al. 2014)&quot;" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="produce_queries" xmi.id="biHzaSAgxWXE" isAbstract="false" comment="This class represents a query expansion strategy for extracting queries out of an NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="topic" value="" type="zClGBVn5VA7E" xmi.id="qaiOJkZicwIQ" comment="A topic that will serve as the source of the triples." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="S4yiqbVFd6NK" name="" xmi.id="JqzbNyX8XJ3i" namespace="Logical View" parent="L5wnqwnbipsk" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="ScoreAggregationStrategy" xmi.id="4b2dQ0x2dmpU" isAbstract="true" comment="This class represents a strategy for aggregating a real score, and a probability of relevance into a single aggregate score." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="Ooo7qPtQbEb0"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="aggregate_score" xmi.id="pofA1N3vufGD" isAbstract="true" comment="Aggregates a score assigned to a paragraph in a result by MIaS, and an estimated probability that the paragraph is relevant by the NTCIR Math Density Estimator package." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="6hdYN41IHr4Y" xmi.id="lQhewuXx2wZ9"/>
+          <UML:Parameter name="result" value="" type="mk6kKxYO7r9f" xmi.id="rFUxhFc9doTs" comment="A result." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="4b2dQ0x2dmpU" name="" xmi.id="Ooo7qPtQbEb0" namespace="Logical View" parent="546tooNL0Q7Y" isSpecification="false" visibility="public"/>
+      <UML:Class stereotype="37JEobTwuFkU" isRoot="false" isLeaf="false" name="MIaSScore" xmi.id="KGURbznxPmsi" isAbstract="false" comment="This class represents a strategy for aggregating a score, and a probability estimate into an aggregate score. The aggregate score corresponds to the MIaS score, the probability estimate is discarded." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="ClfqPf1S2yu6"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="C7v5TXx8fQug" comment="A unique identifier." isSpecification="false" initialValue="&quot;orig&quot;" visibility="public"/>
+        <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="m4W27ul6kGPo" comment="A human-readable text description." isSpecification="false" initialValue="&quot;The original MIaS score with the probability estimate discarded&quot;" visibility="private"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="aggregate_score" xmi.id="GfTnYeRFiHI9" isAbstract="false" comment="Aggregates a score assigned to a paragraph in a result by MIaS, and an estimated probability that the paragraph is relevant by the NTCIR Math Density Estimator package." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="6hdYN41IHr4Y" xmi.id="S11SDPs5mMu8"/>
+          <UML:Parameter name="result" value="" type="mk6kKxYO7r9f" xmi.id="F6TXfHOcski1" comment="A result." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="KGURbznxPmsi" name="" xmi.id="ClfqPf1S2yu6" namespace="Logical View" parent="4b2dQ0x2dmpU" isSpecification="false" visibility="public"/>
+      <UML:Class stereotype="37JEobTwuFkU" isRoot="false" isLeaf="false" name="LogGeometricMean" xmi.id="milrlksfeuXz" isAbstract="false" comment="This class represents a strategy for aggregating a score, and a probability estimate into the common logarithm of their geometric mean." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="DMUy1IScxYYU"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="S8e5SevMbKeM" comment="A unique identifier" isSpecification="false" initialValue="&quot;geom&quot;" visibility="public"/>
+        <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="IU6Yy30Lb6YI" comment="A human-readable text description." isSpecification="false" initialValue="&quot;Log10 of the geometric mean&quot;" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="aggregate_score" xmi.id="zChwJd43GYAF" isAbstract="false" comment="Aggregates a score assigned to a paragraph in a result by MIaS, and an estimated probability that the paragraph is relevant by the NTCIR Math Density Estimator package." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="6hdYN41IHr4Y" xmi.id="MGhqgM13CPN2"/>
+          <UML:Parameter name="result" value="" type="mk6kKxYO7r9f" xmi.id="w2BOmkD2U71J" comment="A result." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="milrlksfeuXz" name="" xmi.id="DMUy1IScxYYU" namespace="Logical View" parent="4b2dQ0x2dmpU" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="LogHarmonicMean" xmi.id="BBVygmAAJDYA" isAbstract="false" comment="This class represents a strategy for aggregating a score, and a probability estimate into the common logarithm of their weighted harmonic mean." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="CcFPJrVSVqH9"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="XiOhU0VGgVos" comment="A unique identifier" isSpecification="false" visibility="public"/>
+        <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="6xCr6OQtGF9X" comment="A human-readable text description." isSpecification="false" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="LogHarmonicMean" xmi.id="WbkrksVcVFX4" isAbstract="false" isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="alpha" value="" type="6hdYN41IHr4Y" xmi.id="OeqrEzEUi0vw" comment="The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a score is 1 - alpha." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="aggregate_score" xmi.id="fyqXM24rK1z5" isAbstract="false" comment="Aggregates a score assigned to a paragraph in a result by MIaS, and an estimated probability that the paragraph is relevant by the NTCIR Math Density Estimator package." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="result" value="" type="mk6kKxYO7r9f" xmi.id="kMMqL0c1d36z" comment="A result." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="BBVygmAAJDYA" name="" xmi.id="CcFPJrVSVqH9" namespace="Logical View" parent="4b2dQ0x2dmpU" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="Formula" xmi.id="Jmaoc1ymHyD3" isAbstract="false" comment="This class represents a formula in a NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Classifier.feature>
+        <UML:Attribute name="tex_text" type="BZ26rvH8Ee1x" xmi.id="RymWaQSGZeOc" comment="The text of the TeX representation of the formula.&#xa;" isSpecification="false" visibility="public"/>
+        <UML:Attribute name="pmath_text" type="BZ26rvH8Ee1x" xmi.id="y4w7fMeJdUCv" comment="The text of the {http://www.w3.org/1998/Math/MathML}math element containing a Presentation MathML representation of the formula." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="cmath_text" type="BZ26rvH8Ee1x" xmi.id="Cx3pdZoqkM7R" comment="The text of the {http://www.w3.org/1998/Math/MathML}math element containing a Content MathML representation of the formula." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="math_formats" type="zct3uzPPimVf" xmi.id="0HW43x1Z1XBb" isSpecification="false" ownerScope="classifier" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="Formula" xmi.id="5dNbSeTTZ7yf" isAbstract="false" isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="tex" value="" type="BZ26rvH8Ee1x" xmi.id="SkKgxfGuH3y3" comment="The TeX representation of the formula." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="pmath" value="" type="8hYVGvPepo9r" xmi.id="U5C50MjuqlWU" comment="A {http://www.w3.org/1998/Math/MathML}math element containing a Presentation MathML representation of the formula." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="cmath" value="" type="8hYVGvPepo9r" xmi.id="zkUy4YoL3UB5" comment="A {http://www.w3.org/1998/Math/MathML}math element containing a Content MathML representation of the formula." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="from_element" xmi.id="sM6Mjw0qPb7w" isAbstract="false" comment="Extracts a formula from a {http://ntcir-math.nii.ac.jp/}formula XML element." isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="Jmaoc1ymHyD3" xmi.id="NI6IXbAlMuQi"/>
+          <UML:Parameter name="formula_tree" value="" type="8hYVGvPepo9r" xmi.id="VhWUBi4FrcT8" comment="A {http://ntcir-math.nii.ac.jp/}formula XML element." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class isRoot="false" isLeaf="false" name="_Element" xmi.id="8hYVGvPepo9r" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Association name="" xmi.id="Vwq9JAOQSLxS" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1" name="" type="Jmaoc1ymHyD3" xmi.id="funCma9bAvl8" isSpecification="false" aggregation="none" visibility="public" isNavigable="false" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="m" name="math_formulae" type="o6627heT5qM4" xmi.id="xafL16IgavQ4" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Dependency name="" xmi.id="toAWkX2ziw3D" namespace="Logical View" supplier="Jmaoc1ymHyD3" isSpecification="false" visibility="public" client="S4yiqbVFd6NK"/>
+      <UML:Dependency name="" xmi.id="gnr5dRE2IR6j" namespace="Logical View" supplier="Jmaoc1ymHyD3" isSpecification="false" visibility="public" client="L5wnqwnbipsk"/>
+      <UML:Dependency name="" xmi.id="8ZNspn9Y9c9I" namespace="Logical View" supplier="Jmaoc1ymHyD3" isSpecification="false" visibility="public" client="o6627heT5qM4"/>
+      <UML:Class isRoot="false" isLeaf="false" name="Topic" xmi.id="1gMUZGxpPnQh" isAbstract="false" comment="This class represents an NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Classifier.feature>
+        <UML:Attribute name="name" type="Icfa9xxQSrS4" xmi.id="9UqzvOkdgPk9" comment="The identifier of the topic as specified in the {http://ntcir-math.nii.ac.jp/}num element." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="formulae" type="0kYPY6UanTEn" xmi.id="BvqYtqQTBDa7" comment="One or more formulae from the topic as specified in the {http://www.w3.org/1998/Math/MathML}math elements." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="keywords" type="2TOVhh3e4HqO" xmi.id="lM4XevmEDv86" comment="One or more keywords from the topic as specified in the {http://ntcir-math.nii.ac.jp/}keyword elements." isSpecification="false" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="Topic" xmi.id="aWgIco91oX2y" isAbstract="false" isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="name" value="" type="BZ26rvH8Ee1x" xmi.id="rM6RKLqPgr4v" comment="The identifier of the topic as specified in the {http://ntcir-math.nii.ac.jp/}num element." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="formulae" value="" type="zxCmvjoRDVEQ" xmi.id="BVaWvCiFArfm" comment="One or more formulae from the topic as specified in the {http://www.w3.org/1998/Math/MathML}math elements." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="keywords" value="" type="2TOVhh3e4HqO" xmi.id="31Y03njP5mgV" comment="One or more keywords from the topic as specified in the {http://ntcir-math.nii.ac.jp/}keyword elements." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="from_element" xmi.id="Ua6m3pw2NCx3" isAbstract="false" comment="Extracts a topic from a {http://ntcir-math.nii.ac.jp/}topic XML element." isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="1gMUZGxpPnQh" xmi.id="LJr7PkaJyidr"/>
+          <UML:Parameter name="topic_tree" value="" type="8hYVGvPepo9r" xmi.id="FDVUAItNOVIV" comment="A {http://ntcir-math.nii.ac.jp/}topic XML element." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="from_file" xmi.id="cVc5Ilj6lx8D" isAbstract="false" comment="Reads topics in the NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR format from an XML file." isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="input_file" value="" type="NTfznvloa2wU" xmi.id="y7j714cyI1pc" comment="An input XML file containing topics." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="query" xmi.id="q2vigNubxBDs" isAbstract="false" comment="Produces queries from the topic, queries a WebMIaS index, and returns the queries along with the XML responses, and query results." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="math_format" value="" type="o6627heT5qM4" xmi.id="b9x7sJa4zgPy" comment="The format in which the mathematical formulae will be represented in a query." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="webmias" value="" type="ctucWbGlOd6M" xmi.id="fvtRnfUZTT1l" comment="The index of a deployed WebMIaS Java Servlet that will be queried to retrieve the query results." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class isRoot="false" isLeaf="false" name="str" xmi.id="Icfa9xxQSrS4" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="iterable of string" xmi.id="2TOVhh3e4HqO" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="set of Formula" xmi.id="0kYPY6UanTEn" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Association name="" xmi.id="MPF3dCR1Wj88" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1" name="" type="Jmaoc1ymHyD3" xmi.id="mQXj5LN9cBC6" isSpecification="false" aggregation="aggregate" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="1..m" name="math_formats" type="o6627heT5qM4" xmi.id="DipG9PENc5MQ" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Class isRoot="false" isLeaf="false" name="iterable of Formula" xmi.id="zxCmvjoRDVEQ" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="file" xmi.id="NTfznvloa2wU" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Association name="" xmi.id="v9y2N96diuEO" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1" name="" type="1gMUZGxpPnQh" xmi.id="HHabRKjx1yF3" isSpecification="false" aggregation="composite" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="1..m" name="formulae" type="Jmaoc1ymHyD3" xmi.id="rdU3gR8V8fWf" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Dependency name="" xmi.id="Pvv8lyUn6xut" namespace="Logical View" supplier="Jmaoc1ymHyD3" isSpecification="false" visibility="public" client="1gMUZGxpPnQh"/>
+      <UML:Dependency name="" xmi.id="cvI6GwBOPDia" namespace="Logical View" supplier="o6627heT5qM4" isSpecification="false" visibility="public" client="1gMUZGxpPnQh"/>
+      <UML:Class isRoot="false" isLeaf="false" name="Query" xmi.id="6EW05LbGMOY8" isAbstract="false" comment="This class represents a query extracted from a NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic along with the query results." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Classifier.feature>
+        <UML:Attribute name="aggregation" type="4b2dQ0x2dmpU" xmi.id="1GN2uw4XNw2g" comment="The score aggregation strategy that will be used to compute the aggregate score of the query results. By default, this corresponds to MIaSScore, i.e. no score aggregation will be performed. Temporarily change this attribute by using the use_aggregation context manager method." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="topic" type="1gMUZGxpPnQh" xmi.id="rJmrTgGFMexP" comment="The topic that served as the source of the query." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="payload" type="BZ26rvH8Ee1x" xmi.id="F2MOR56TS1TY" comment="The text content of the query." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="math_format" type="o6627heT5qM4" xmi.id="7zZQmWbmrdEU" comment="The format in which the mathematical formulae are represented in the query." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="query_number" type="s0WBrvGHldLI" xmi.id="On5nFCFRzQzN" comment="The number of the query among all queries extracted from the topic." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="stripe_width" type="s0WBrvGHldLI" xmi.id="AdJ6mBJqetyB" comment="The stripe width, i.e. number of results this query will contribute to the final result list each time the query gets its turn." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="response_text" type="BZ26rvH8Ee1x" xmi.id="T0oEooCt4Nlm" comment="The text of the XML response." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="results" type="O2a2LSzH427W" xmi.id="IG3pjk6B3uCb" comment="The query results. After the Query object has been constructed, this iterable will be empty. Use the finalize method to obtain the results." isSpecification="false" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="Query" xmi.id="BsKszwVuRQH1" isAbstract="false" isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="topic" value="" type="1gMUZGxpPnQh" xmi.id="kiATbiOwvkcr" comment="The topic that will serve as the source of the query." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="MathFormat" value="" type="6bMAiKxftcnP" xmi.id="xLb5HevB4fwQ" comment="The format in which the mathematical formulae are represented in the query." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="webmias" value="" type="ctucWbGlOd6M" xmi.id="rA8kXOurtH9I" comment="The index of a deployed WebMIaS Java Servlet. The index will be immediately queried to retrieve the query results." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="payload" value="" type="BZ26rvH8Ee1x" xmi.id="fashNiIMMlU7" comment="The text content of the query." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="query_number" value="" type="s0WBrvGHldLI" xmi.id="n3kHjme5G2WC" comment="The number of the query among all queries extracted from the topic." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="stripe_width" value="" type="s0WBrvGHldLI" xmi.id="fVfdyMYNNB22" comment="The number of results this query will contribute to the final result list each time the query gets its turn." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="finalize" xmi.id="BDMH9PVhqO3J" isAbstract="false" comment="Uses information recorded by the Query object constructor to construct the query results." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="positions" value="" type="htJUt0xqAs3g" xmi.id="tjkN0PXDYqB0" comment="A map from paragraph identifiers to estimated positions of paragraphs in their parent documents. The positions are in the range [0; 1]." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="estimates" value="" type="PHugkksgUauS" xmi.id="qcMDF6xSoSyb" comment="Estimates of P(relevant | position) in the form of a histogram." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="use_aggregation" xmi.id="qNi53cMl7KBi" isAbstract="false" comment="Changes the score aggregation strategy, and sorts query results according to the aggregated scores for the duration of the context." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="aggregation" value="" type="4b2dQ0x2dmpU" xmi.id="A7MfnqLyH9u1" comment="The score aggregation strategy that will be used to compute the aggregate score of the query results for the duration of the context." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="from_topic" xmi.id="Ho7qTT4jDHAP" isAbstract="false" comment="Produces queries from a NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic." isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="topic" value="" type="1gMUZGxpPnQh" xmi.id="zytvlfxKaT0h" comment="A topic that will serve as the source of the queries." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="math_format" value="" type="o6627heT5qM4" xmi.id="6NGBmph8oub8" comment="The format in which the mathematical formulae will be represented in a query." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="webmias" value="" type="ctucWbGlOd6M" xmi.id="RO5iMKX0Uqol" comment="The index of a deployed WebMIaS Java Servlet. The index will be immediately queried to retrieve the query results." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="query_expansion" value="" type="L5wnqwnbipsk" xmi.id="bfNJb4Z9TMTX" comment="A query expansion strategy that produces triples of formulae, keywords, and stripe widths." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="save" xmi.id="J3CbHquqSzVJ" isAbstract="false" comment="Stores the text content of the query, the XML document with the response, and the results as files." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="output_directory" value="" type="ze5MCX48bLX4" xmi.id="LhxeQUGE4kaL" comment="The path to the directory, where the output files will be stored." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Association name="" xmi.id="EqQlh730Jba7" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd name="" type="6EW05LbGMOY8" xmi.id="rcj3hF1UKLNA" isSpecification="false" aggregation="none" visibility="public" isNavigable="false" changeability="changeable"/>
+        <UML:AssociationEnd name="" type="4b2dQ0x2dmpU" xmi.id="Wx5o8ymKTA68" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association name="" xmi.id="pWoYaddHmzep" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1" name="" type="6EW05LbGMOY8" xmi.id="ct5PIkR16NIV" isSpecification="false" aggregation="none" visibility="public" isNavigable="false" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="1" name="aggregation" type="4b2dQ0x2dmpU" xmi.id="v4DfWjujKM3q" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Dependency name="" xmi.id="Zj60uetC16SM" namespace="Logical View" supplier="6EW05LbGMOY8" isSpecification="false" visibility="public" client="1gMUZGxpPnQh"/>
+      <UML:Association name="" xmi.id="iOTP18OrAGME" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd name="" type="6EW05LbGMOY8" xmi.id="5Us2NaO1RgFR" isSpecification="false" aggregation="aggregate" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd name="" type="1gMUZGxpPnQh" xmi.id="9UtaB83hiuHH" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association name="" xmi.id="67PpVyDwiTXo" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd name="" type="6EW05LbGMOY8" xmi.id="x8ZZggvWTlik" isSpecification="false" aggregation="aggregate" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd name="" type="1gMUZGxpPnQh" xmi.id="0FoVZLE3he7P" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association name="" xmi.id="0vCsNBb09S7P" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd name="" type="1gMUZGxpPnQh" xmi.id="VLa0sGHsVk4K" isSpecification="false" aggregation="aggregate" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd name="" type="6EW05LbGMOY8" xmi.id="YAWaWehZbUat" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association name="" xmi.id="gE1PTTX8jCOW" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1" name="topic" type="1gMUZGxpPnQh" xmi.id="WCvvruDSOzml" isSpecification="false" aggregation="composite" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="1..m" name="" type="6EW05LbGMOY8" xmi.id="Z1vzAdWAUpaA" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association name="" xmi.id="HXt6zQeYMd1Q" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd name="" type="6EW05LbGMOY8" xmi.id="a10kiQ6fmkvH" isSpecification="false" aggregation="none" visibility="public" isNavigable="false" changeability="changeable"/>
+        <UML:AssociationEnd name="" type="o6627heT5qM4" xmi.id="GPlLOgyh6LjQ" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association name="" xmi.id="smzuZrTK04J0" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1..m" name="" type="6EW05LbGMOY8" xmi.id="iVYcjQSmOIZ8" isSpecification="false" aggregation="none" visibility="public" isNavigable="false" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="1" name="math_format" type="o6627heT5qM4" xmi.id="T85um9izbMTl" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Class isRoot="false" isLeaf="false" name="iterable of Result" xmi.id="O2a2LSzH427W" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Dependency name="" xmi.id="fvxHnlqL4NZZ" namespace="Logical View" supplier="1gMUZGxpPnQh" isSpecification="false" visibility="public" client="6EW05LbGMOY8"/>
+      <UML:Class isRoot="false" isLeaf="false" name="math_format" xmi.id="6bMAiKxftcnP" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Dependency name="" xmi.id="hENsGOTskIg6" namespace="Logical View" supplier="o6627heT5qM4" isSpecification="false" visibility="public" client="6EW05LbGMOY8"/>
+      <UML:Class isRoot="false" isLeaf="false" name="dict of (string, float)" xmi.id="cZ8dsszVJgQS" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="sequence of float" xmi.id="bUWixFoVWNoa" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Dependency name="" xmi.id="hgBuO89TkzbO" namespace="Logical View" supplier="4b2dQ0x2dmpU" isSpecification="false" visibility="public" client="6EW05LbGMOY8"/>
+      <UML:Dependency name="" xmi.id="1o7YQVbxgZgV" namespace="Logical View" supplier="S4yiqbVFd6NK" isSpecification="false" visibility="public" client="6EW05LbGMOY8"/>
+      <UML:Dependency name="" xmi.id="2Ojuli9eXkRs" namespace="Logical View" supplier="L5wnqwnbipsk" isSpecification="false" visibility="public" client="6EW05LbGMOY8"/>
+      <UML:Class isRoot="false" isLeaf="false" name="Path" xmi.id="ze5MCX48bLX4" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="WebMIaSIndex" xmi.id="ydWWY77Z7IjU" isAbstract="false" comment="This class represents an index of a deployed WebMIaS Java Servlet." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Classifier.feature>
+        <UML:Attribute name="url" type="fzV68th7UN3X" xmi.id="9zkjpl8vQL0g" comment="The URL at which a WebMIaS Java Servlet has been deployed." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="index_number" type="s0WBrvGHldLI" xmi.id="TaTi8tGfHS7q" comment="The numeric identifier of the WebMIaS index that corresponds to the dataset." isSpecification="false" initialValue="0" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="WebMIaSIndex" xmi.id="P0me119SFne7" isAbstract="false" isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="url" value="" type="fzV68th7UN3X" xmi.id="zoIZu11eukn4" comment="The URL at which a WebMIaS Java Servlet has been deployed." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="index_number" value="0" type="s0WBrvGHldLI" xmi.id="NffZNHArChbf" comment="The numeric identifier of the WebMIaS index that corresponds to the dataset." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="query" xmi.id="8ghnumXJ9J5u" isAbstract="false" comment="Queries the WebMIaS index and returns the response XML document." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="8hYVGvPepo9r" xmi.id="sADEkUSobhhh"/>
+          <UML:Parameter name="payload" value="" type="BZ26rvH8Ee1x" xmi.id="QR4SkRzSLFO0" comment="The text content of the query." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Class isRoot="false" isLeaf="false" name="ParseResult" xmi.id="fzV68th7UN3X" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Dependency name="" xmi.id="vQPMuUrqSPMV" namespace="Logical View" supplier="ydWWY77Z7IjU" isSpecification="false" visibility="public" client="6EW05LbGMOY8"/>
+      <UML:Dependency name="" xmi.id="hxaezGPbzD1V" namespace="Logical View" supplier="ydWWY77Z7IjU" isSpecification="false" visibility="public" client="1gMUZGxpPnQh"/>
+      <UML:Class isRoot="false" isLeaf="false" name="Result" xmi.id="cojesY1fJAk8" isAbstract="false" comment="This class represents the result of a query." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Classifier.feature>
+        <UML:Attribute name="query" type="6EW05LbGMOY8" xmi.id="IIYSppUZFR2l" comment="The query that produced the result." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="1RuCMgoJw84q" comment="The identifier of the paragraph in the result." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="score" type="6hdYN41IHr4Y" xmi.id="tqO5C6ArUCnk" comment="The score of the result." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="p_relevant" type="6hdYN41IHr4Y" xmi.id="GxDZNlTHCPlg" comment="The estimated probability of relevance of the paragraph in the result." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="aggregations" type="pVo1bm8rOh70" xmi.id="SmAGDEJ7bah4" isSpecification="false" ownerScope="classifier" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="Result" xmi.id="OWdVuAIKQfsB" isAbstract="false" isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="query" value="" type="6EW05LbGMOY8" xmi.id="2KTkSSMP1QE6" comment="The query that produced the result." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="identifier" value="" type="BZ26rvH8Ee1x" xmi.id="yAzHxJGwEBxp" comment="The identifier of the paragraph in the result." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="score" value="" type="6hdYN41IHr4Y" xmi.id="1uWVFs8zyK6O" comment="The score of the result." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="p_relevant" value="" type="6hdYN41IHr4Y" xmi.id="M9bXkq65TQxD" comment="The estimated probability of relevance of the paragraph in the result." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="from_element" xmi.id="jkeGs5V6Ggp3" isAbstract="false" comment="Extracts a result from a result XML element in a WebMIaS response." isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="cojesY1fJAk8" xmi.id="bzWTltqEQOMf"/>
+          <UML:Parameter name="query" value="" type="6EW05LbGMOY8" xmi.id="PyYfHRF2rQoq" comment="The query that produced the result." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="result_tree" value="" type="8hYVGvPepo9r" xmi.id="smUu6TSlRAPC" comment="A result XML element." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="positions" value="" type="htJUt0xqAs3g" xmi.id="AJ9ZOGVuUGXR" comment="A map from paragraph identifiers to estimated positions of paragraphs in their parent documents. The positions are in the range [0; 1]." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="rescaled_score" xmi.id="zZMXSi2Jz9a2" isAbstract="false" comment="Linearly rescales the MIaS score of the result to the range [0; 1] by taking into account all results to the query that produced this result." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="6hdYN41IHr4Y" xmi.id="aM9jtK7Bsgfm"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="aggregate_score" xmi.id="BRUn56mAEjMF" isAbstract="false" comment="Aggregates the MIaS score of the result, and the estimated probability of relevance of the paragraph in the result using the aggregation strategy of the query that produced this result." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="6hdYN41IHr4Y" xmi.id="vrCzN9YZg21O"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Association name="" xmi.id="XvjhTtB8AWxG" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1" name="query" type="6EW05LbGMOY8" xmi.id="yoyEi6OET4fo" isSpecification="false" aggregation="composite" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="0..m" name="results" type="cojesY1fJAk8" xmi.id="9DM3r8xQ3O4z" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Association name="" xmi.id="7Fv6zvvtX7Sf" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1" name="query" type="6EW05LbGMOY8" xmi.id="M6axJsQokea6" isSpecification="false" aggregation="composite" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="0..m" name="results" type="cojesY1fJAk8" xmi.id="jUSP8mVk7gjO" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Class isRoot="false" isLeaf="false" name="dict of (string, double)" xmi.id="htJUt0xqAs3g" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="sequence of double" xmi.id="PHugkksgUauS" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Class isRoot="false" isLeaf="false" name="set of ScoreAggregationStrategy" xmi.id="pVo1bm8rOh70" isAbstract="false" namespace="Logical View" isSpecification="false" visibility="public"/>
+      <UML:Association name="" xmi.id="TXlrNSD3KIJo" namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:Association.connection>
+        <UML:AssociationEnd multiplicity="1" name="" type="cojesY1fJAk8" xmi.id="Rz3OdOmzV95c" isSpecification="false" aggregation="aggregate" visibility="public" isNavigable="true" changeability="changeable"/>
+        <UML:AssociationEnd multiplicity="1..m" name="aggregations" type="4b2dQ0x2dmpU" xmi.id="7ToMwoJ6Dghh" isSpecification="false" aggregation="none" visibility="public" isNavigable="true" changeability="changeable"/>
+       </UML:Association.connection>
+      </UML:Association>
+      <UML:Dependency name="" xmi.id="KxmhIJziA0OQ" namespace="Logical View" supplier="cojesY1fJAk8" isSpecification="false" visibility="public" client="4b2dQ0x2dmpU"/>
+      <UML:Class isRoot="false" isLeaf="false" name="ArtificialResult" xmi.id="F4YG5DAn0wnS" isAbstract="false" comment="This class represents an artificially created result." namespace="Logical View" isSpecification="false" visibility="public">
+       <UML:GeneralizableElement.generalization>
+        <UML:Generalization xmi.idref="9HvJjfpAlHde"/>
+       </UML:GeneralizableElement.generalization>
+       <UML:Classifier.feature>
+        <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="z0XBoCkluICc" comment="The identifier of the paragraph in the result." isSpecification="false" visibility="public"/>
+        <UML:Attribute name="_aggregate_score" type="6hdYN41IHr4Y" xmi.id="zR49PDD1320o" comment="The aggregate score of the result." isSpecification="false" visibility="public"/>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="ArtificialResult" xmi.id="Z8JUWaMnocvl" isAbstract="false" isSpecification="false" ownerScope="classifier" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter name="identifier" value="" type="BZ26rvH8Ee1x" xmi.id="W3oov5BjRusz" comment="The identifier of the paragraph in the result." isSpecification="false" visibility="private"/>
+          <UML:Parameter name="aggregate_score" value="" type="6hdYN41IHr4Y" xmi.id="wKRxA2OtXA8w" comment="The aggregate score of the result." isSpecification="false" visibility="private"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation isQuery="false" isRoot="false" isLeaf="false" name="aggregate_score" xmi.id="G9v763UxGWS0" isAbstract="false" comment="Aggregates the MIaS score of the result, and the estimated probability of relevance of the paragraph in the result using the aggregation strategy of the query that produced this result." isSpecification="false" visibility="public">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" type="6hdYN41IHr4Y" xmi.id="3ULq0qeWrtlz"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
+      <UML:Generalization discriminator="" child="F4YG5DAn0wnS" name="" xmi.id="9HvJjfpAlHde" namespace="Logical View" parent="cojesY1fJAk8" isSpecification="false" visibility="public"/>
+     </UML:Namespace.ownedElement>
+     <XMI.extension xmi.extender="umbrello">
+      <diagrams>
+       <diagram usefillcolor="1" showscope="1" isopen="1" showpackage="1" showgrid="0" fillcolor="#ffffff" zoom="70,66432899306845" linecolor="#000000" snapx="25" griddotcolor="#d3d3d3" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="-1" snapgrid="0" showops="1" showopsig="1" showattribassocs="1" snapy="25" textcolor="#000000" backgroundcolor="#ffffff" xmi.id="vbflgzJiL7R9" snapcsgrid="0" canvasheight="1645.62" showpubliconly="0" showstereotype="1" linewidth="0" showattsig="1" canvaswidth="4076.45" type="1" showatts="1" documentation="" name="Diagram třídy">
+        <widgets>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="LVk1z18vJi1T" showattributes="1" height="45" textcolor="#000000" y="-772.463" xmi.id="546tooNL0Q7Y" showstereotype="1" showpubliconly="0" linewidth="0" drawascircle="0" x="-1179.56" showopsigs="601" isinstance="0" width="109" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="3kd8XNiP7kXI" showattributes="1" height="57" textcolor="#000000" y="-683" xmi.id="o6627heT5qM4" showstereotype="1" showpubliconly="0" linewidth="0" drawascircle="0" x="-1410.07" showopsigs="601" isinstance="0" width="261" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="Ib8tgYImjOaT" showattributes="1" height="115" textcolor="#000000" y="-603.267" xmi.id="UgdNpEKELGcw" showstereotype="1" showpubliconly="0" linewidth="0" x="-1844.9" showopsigs="601" isinstance="0" width="449" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="PL1qEiFgyYk2" showattributes="1" height="115" textcolor="#000000" y="-472.685" xmi.id="SB6OQvCndoBr" showstereotype="1" showpubliconly="0" linewidth="0" x="-1801.91" showopsigs="601" isinstance="0" width="440" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="RqhlGpTSs4QC" showattributes="1" height="115" textcolor="#000000" y="-340.84" xmi.id="OF72e636eAW7" showstereotype="1" showpubliconly="0" linewidth="0" x="-1743.67" showopsigs="601" isinstance="0" width="406" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="98lif4RV7E51" showattributes="1" height="115" textcolor="#000000" y="-209.944" xmi.id="fi38S1qDbrHT" showstereotype="1" showpubliconly="0" linewidth="0" x="-1818.22" showopsigs="601" isinstance="0" width="653" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="f9vKhYmomyye" showattributes="1" height="57" textcolor="#000000" y="-866.112" xmi.id="L5wnqwnbipsk" showstereotype="1" showpubliconly="0" linewidth="0" drawascircle="0" x="-1256.39" showopsigs="601" isinstance="0" width="258" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="JecFxTfIkA0I" showattributes="1" height="115" textcolor="#000000" y="-1009.5" xmi.id="S4yiqbVFd6NK" showstereotype="1" showpubliconly="0" linewidth="0" x="-1400.2" showopsigs="601" isinstance="0" width="540" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="h5FXrOs91X0W" showattributes="1" height="57" textcolor="#000000" y="-682.692" xmi.id="4b2dQ0x2dmpU" showstereotype="1" showpubliconly="0" linewidth="0" drawascircle="0" x="-1094.21" showopsigs="601" isinstance="0" width="311" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="ZxWV9y53YfZn" showattributes="1" height="115" textcolor="#000000" y="-471.517" xmi.id="KGURbznxPmsi" showstereotype="1" showpubliconly="0" linewidth="0" x="-1237.65" showopsigs="601" isinstance="0" width="621" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="GPltqYE11XVM" showattributes="1" height="115" textcolor="#000000" y="-605.841" xmi.id="milrlksfeuXz" showstereotype="1" showpubliconly="0" linewidth="0" x="-1234.5" showopsigs="601" isinstance="0" width="387" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="GJBr0XWmKJnl" showattributes="1" height="115" textcolor="#000000" y="-605.367" xmi.id="BBVygmAAJDYA" showstereotype="1" showpubliconly="0" linewidth="0" x="-817.458" showopsigs="601" isinstance="0" width="270" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="UBrzxBIrUtvZ" showattributes="1" height="161" textcolor="#000000" y="-971.591" xmi.id="Jmaoc1ymHyD3" showstereotype="1" showpubliconly="0" linewidth="0" x="-2208.06" showopsigs="601" isinstance="0" width="427" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="26RYoVf4Js24" showattributes="1" height="184" textcolor="#000000" y="-674.288" xmi.id="1gMUZGxpPnQh" showstereotype="1" showpubliconly="0" linewidth="0" x="-2553.92" showopsigs="601" isinstance="0" width="579" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="S85rm0HEtnkK" showattributes="1" height="322" textcolor="#000000" y="-1145.06" xmi.id="6EW05LbGMOY8" showstereotype="1" showpubliconly="0" linewidth="0" x="-698.977" showopsigs="601" isinstance="0" width="926" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="YuM2dspiO9BA" showattributes="1" height="115" textcolor="#000000" y="-1262.74" xmi.id="ydWWY77Z7IjU" showstereotype="1" showpubliconly="0" linewidth="0" x="-1423.94" showopsigs="601" isinstance="0" width="425" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="Rt0ymjdbUcwV" showattributes="1" height="230" textcolor="#000000" y="-740.615" xmi.id="cojesY1fJAk8" showstereotype="1" showpubliconly="0" linewidth="0" x="-453.908" showopsigs="601" isinstance="0" width="682" showattsigs="601"/>
+         <classwidget usefillcolor="1" showscope="1" usesdiagramusefillcolor="0" usesdiagramfillcolor="0" showoperations="1" showpackage="1" fillcolor="#ffffff" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="Jtu4Z5HqsG3D" showattributes="1" height="115" textcolor="#000000" y="-489.525" xmi.id="F4YG5DAn0wnS" showstereotype="1" showpubliconly="0" linewidth="0" x="-454.851" showopsigs="601" isinstance="0" width="437" showattsigs="601"/>
+        </widgets>
+        <messages/>
+        <associations>
+         <assocwidget widgetaid="o6627heT5qM4" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="546tooNL0Q7Y" usesdiagramusefillcolor="1" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="tgQ49jVr87C8" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-683" startx="-1154.91"/>
+           <endpoint endx="-1154.91" endy="-727.463"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="UgdNpEKELGcw" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="o6627heT5qM4" usesdiagramusefillcolor="1" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="eOGHXUHuWrPQ" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-603.267" startx="-1399.88"/>
+           <endpoint endx="-1399.88" endy="-626"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="SB6OQvCndoBr" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="o6627heT5qM4" usesdiagramusefillcolor="1" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="lQsVqd4n0DpY" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-472.685" startx="-1376.78"/>
+           <endpoint endx="-1376.78" endy="-626"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="OF72e636eAW7" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="o6627heT5qM4" usesdiagramusefillcolor="1" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="A9PTsTX4Dc6T" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-340.84" startx="-1348.73"/>
+           <endpoint endx="-1348.73" endy="-626"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="fi38S1qDbrHT" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="o6627heT5qM4" usesdiagramusefillcolor="1" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="QtViSgoGxwEx" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-209.944" startx="-1324.55"/>
+           <endpoint endx="-1324.55" endy="-626"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="L5wnqwnbipsk" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="546tooNL0Q7Y" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="tfNGJ885F38C" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-809.112" startx="-1118.68"/>
+           <endpoint endx="-1118.68" endy="-772.463"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="S4yiqbVFd6NK" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="L5wnqwnbipsk" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="JqzbNyX8XJ3i" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-894.498" startx="-1143.23"/>
+           <endpoint endx="-1143.23" endy="-866.112"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="4b2dQ0x2dmpU" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="546tooNL0Q7Y" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="Ooo7qPtQbEb0" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-682.692" startx="-1084.32"/>
+           <endpoint endx="-1084.32" endy="-727.463"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="KGURbznxPmsi" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="4b2dQ0x2dmpU" usesdiagramusefillcolor="1" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="ClfqPf1S2yu6" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-471.517" startx="-831.468"/>
+           <endpoint endx="-831.468" endy="-625.692"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="milrlksfeuXz" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="4b2dQ0x2dmpU" usesdiagramusefillcolor="1" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="DMUy1IScxYYU" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-605.841" startx="-854.569"/>
+           <endpoint endx="-854.569" endy="-625.692"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="BBVygmAAJDYA" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="4b2dQ0x2dmpU" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="CcFPJrVSVqH9" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-605.367" startx="-809.896"/>
+           <endpoint endx="-809.896" endy="-625.692"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="L5wnqwnbipsk" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="Jmaoc1ymHyD3" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="gnr5dRE2IR6j" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-826.577" startx="-1256.39"/>
+           <endpoint endx="-1781.06" endy="-826.577"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="o6627heT5qM4" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="Jmaoc1ymHyD3" usesdiagramusefillcolor="96" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="8ZNspn9Y9c9I" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-683" startx="-1377.17"/>
+           <endpoint endx="-1781.06" endy="-812.476"/>
+           <point y="-812.476" x="-1377.17"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="Jmaoc1ymHyD3" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="o6627heT5qM4" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="501" indexa="1" indexb="1" totalcountb="2" xmi.id="MPF3dCR1Wj88" textcolor="#000000" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-810.591" startx="-1875.85"/>
+           <endpoint endx="-1410.07" endy="-679.901"/>
+           <point y="-679.901" x="-1875.85"/>
+          </linepath>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="qLKDqPK9AEwp" height="27" textcolor="none" y="-803.33" xmi.id="4wGZiBfH7SbV" role="701" posttext="" showstereotype="1" linewidth="0" x="-1867.1" isinstance="0" width="17"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1..m" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="ECNf3BRf6lj3" height="27" textcolor="none" y="-679.561" xmi.id="Uo1RMoKNLurI" role="702" posttext="" showstereotype="1" linewidth="0" x="-1451.43" isinstance="0" width="38"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="+" text="math_formats" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="9u6EIIV4u6DP" height="27" textcolor="none" y="-710.918" xmi.id="UpdSf44GQiaf" role="710" posttext="" showstereotype="1" linewidth="0" x="-1525.01" isinstance="0" width="113"/>
+         </assocwidget>
+         <assocwidget widgetaid="1gMUZGxpPnQh" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="Jmaoc1ymHyD3" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="510" indexa="1" indexb="1" totalcountb="2" xmi.id="v9y2N96diuEO" textcolor="#000000" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-674.288" startx="-2006.44"/>
+           <endpoint endx="-2006.44" endy="-810.591"/>
+          </linepath>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="y7tLA0YsyjqH" height="27" textcolor="none" y="-715.362" xmi.id="sPIZ7BT94I5l" role="701" posttext="" showstereotype="1" linewidth="0" x="-2000.37" isinstance="0" width="17"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1..m" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="RuqCouGLk7eP" height="27" textcolor="none" y="-802.598" xmi.id="CAwFULRBk2oq" role="702" posttext="" showstereotype="1" linewidth="0" x="-1998.17" isinstance="0" width="38"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="+" text="formulae" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="MtnvIRGBQ5rV" height="27" textcolor="none" y="-803.025" xmi.id="AtA5ZKtJrd8K" role="710" posttext="" showstereotype="1" linewidth="0" x="-2091.49" isinstance="0" width="79"/>
+         </assocwidget>
+         <assocwidget widgetaid="1gMUZGxpPnQh" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="Jmaoc1ymHyD3" usesdiagramusefillcolor="48" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="Pvv8lyUn6xut" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-674.288" startx="-2151.15"/>
+           <endpoint endx="-2151.15" endy="-810.591"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="1gMUZGxpPnQh" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="o6627heT5qM4" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="cvI6GwBOPDia" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-633.578" startx="-1974.92"/>
+           <endpoint endx="-1410.07" endy="-633.578"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="6EW05LbGMOY8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="4b2dQ0x2dmpU" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="512" indexa="1" indexb="1" totalcountb="2" xmi.id="pWoYaddHmzep" textcolor="#000000" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-900.243" startx="-698.977"/>
+           <endpoint endx="-802.169" endy="-682.692"/>
+           <point y="-900.243" x="-802.169"/>
+          </linepath>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="xB9yDiDdf7c3" height="27" textcolor="none" y="-898.767" xmi.id="SCZ8l6bfawvj" role="701" posttext="" showstereotype="1" linewidth="0" x="-720.246" isinstance="0" width="17"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="s5kI0dsEKwXi" height="27" textcolor="none" y="-721.207" xmi.id="WeNmojCO3V5V" role="702" posttext="" showstereotype="1" linewidth="0" x="-822.304" isinstance="0" width="17"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="+" text="aggregation" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="5T8JSLO2xLdc" height="27" textcolor="none" y="-722.198" xmi.id="SLeCzj3T5Ki5" role="710" posttext="" showstereotype="1" linewidth="0" x="-800.256" isinstance="0" width="102"/>
+         </assocwidget>
+         <assocwidget widgetaid="1gMUZGxpPnQh" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="6EW05LbGMOY8" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="Zj60uetC16SM" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-674.288" startx="-2319.35"/>
+           <endpoint endx="-698.977" endy="-1109.2"/>
+           <point y="-1109.2" x="-2319.35"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="1gMUZGxpPnQh" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="6EW05LbGMOY8" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="510" indexa="1" indexb="1" totalcountb="2" xmi.id="gE1PTTX8jCOW" textcolor="#000000" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-674.288" startx="-2253.38"/>
+           <endpoint endx="-698.977" endy="-1093.92"/>
+           <point y="-1093.92" x="-2253.38"/>
+          </linepath>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="glBnrBrTQldB" height="27" textcolor="none" y="-715.878" xmi.id="Zv16zo9oeeLO" role="701" posttext="" showstereotype="1" linewidth="0" x="-2274.67" isinstance="0" width="17"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1..m" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="9dJnKjdnVuVu" height="27" textcolor="none" y="-1088.53" xmi.id="8Dzqhn5KuOa7" role="702" posttext="" showstereotype="1" linewidth="0" x="-739.636" isinstance="0" width="38"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="+" text="topic" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="KCBJfaidBiag" height="27" textcolor="none" y="-716.166" xmi.id="QLTmlNiim2EX" role="709" posttext="" showstereotype="1" linewidth="0" x="-2249.64" isinstance="0" width="51"/>
+         </assocwidget>
+         <assocwidget widgetaid="6EW05LbGMOY8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="o6627heT5qM4" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="512" indexa="1" indexb="1" totalcountb="2" xmi.id="smzuZrTK04J0" textcolor="#000000" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-1032.62" startx="-698.977"/>
+           <endpoint endx="-1315.65" endy="-683"/>
+           <point y="-1032.62" x="-1500.78"/>
+           <point y="-859.718" x="-1501.32"/>
+           <point y="-859.186" x="-1315.65"/>
+          </linepath>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1..m" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="dH7imC6w63Xu" height="27" textcolor="none" y="-1028.64" xmi.id="GzMeWzYugbjn" role="701" posttext="" showstereotype="1" linewidth="0" x="-742.296" isinstance="0" width="38"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="C5fzIN2Nfwkg" height="27" textcolor="none" y="-727.051" xmi.id="kO8W9sQtr7I3" role="702" posttext="" showstereotype="1" linewidth="0" x="-1336.9" isinstance="0" width="17"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="+" text="math_format" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="JykyY9zFreuA" height="27" textcolor="none" y="-727.057" xmi.id="zLcqs8txgq6J" role="710" posttext="" showstereotype="1" linewidth="0" x="-1312.95" isinstance="0" width="105"/>
+         </assocwidget>
+         <assocwidget widgetaid="6EW05LbGMOY8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="1gMUZGxpPnQh" usesdiagramusefillcolor="224" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="fvxHnlqL4NZZ" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-1123.88" startx="-698.977"/>
+           <endpoint endx="-2340.76" endy="-674.288"/>
+           <point y="-1123.88" x="-2340.76"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="6EW05LbGMOY8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="o6627heT5qM4" usesdiagramusefillcolor="1" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="hENsGOTskIg6" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-1044.56" startx="-698.977"/>
+           <endpoint endx="-1361.73" endy="-683"/>
+           <point y="-1044.56" x="-1514.66"/>
+           <point y="-847.14" x="-1515.47"/>
+           <point y="-847.949" x="-1361.73"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="6EW05LbGMOY8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="4b2dQ0x2dmpU" usesdiagramusefillcolor="160" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="hgBuO89TkzbO" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-915.047" startx="-698.977"/>
+           <endpoint endx="-853.613" endy="-682.692"/>
+           <point y="-915.047" x="-818.361"/>
+           <point y="-762.183" x="-818.821"/>
+           <point y="-762.183" x="-853.613"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="6EW05LbGMOY8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="L5wnqwnbipsk" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="2Ojuli9eXkRs" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-928" startx="-698.977"/>
+           <endpoint endx="-998.388" endy="-856.758"/>
+           <point y="-928" x="-831.314"/>
+           <point y="-856.758" x="-831.314"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="6EW05LbGMOY8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="ydWWY77Z7IjU" usesdiagramusefillcolor="32" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="vQPMuUrqSPMV" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-1145.06" startx="-689.112"/>
+           <endpoint endx="-998.943" endy="-1164.21"/>
+           <point y="-1164.21" x="-689.112"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="1gMUZGxpPnQh" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="ydWWY77Z7IjU" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="hxaezGPbzD1V" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-674.288" startx="-2360.53"/>
+           <endpoint endx="-1423.94" endy="-1166.35"/>
+           <point y="-1166.35" x="-2360.53"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="6EW05LbGMOY8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="cojesY1fJAk8" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="510" indexa="1" indexb="1" totalcountb="2" xmi.id="7Fv6zvvtX7Sf" textcolor="#000000" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-823.056" startx="-242.238"/>
+           <endpoint endx="-242.238" endy="-740.615"/>
+          </linepath>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="uQ1qXFrqLflW" height="27" textcolor="none" y="-819.893" xmi.id="FmEQI0eyKL45" role="701" posttext="" showstereotype="1" linewidth="0" x="-266.231" isinstance="0" width="17"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="0..m" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="jTpSaoFk0Hkx" height="27" textcolor="none" y="-769.379" xmi.id="MMn3tJ6gaasw" role="702" posttext="" showstereotype="1" linewidth="0" x="-236.285" isinstance="0" width="38"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="+" text="query" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="Uol6aBbzO8wm" height="27" textcolor="none" y="-820.151" xmi.id="IoIKHFSDUpRC" role="709" posttext="" showstereotype="1" linewidth="0" x="-235.174" isinstance="0" width="57"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="+" text="results" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="bPvXoKaCWNR4" height="27" textcolor="none" y="-770.512" xmi.id="xMUTZaBhwggG" role="710" posttext="" showstereotype="1" linewidth="0" x="-312.027" isinstance="0" width="64"/>
+         </assocwidget>
+         <assocwidget widgetaid="cojesY1fJAk8" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="4b2dQ0x2dmpU" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="501" indexa="1" indexb="1" totalcountb="2" xmi.id="TXlrNSD3KIJo" textcolor="#000000" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-631.87" startx="-453.908"/>
+           <endpoint endx="-783.214" endy="-631.87"/>
+          </linepath>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="xVMtGeR94MBu" height="27" textcolor="none" y="-634.316" xmi.id="bDCSlElONOAX" role="701" posttext="" showstereotype="1" linewidth="0" x="-488.656" isinstance="0" width="17"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="" text="1..m" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="XjYzmYICDMJT" height="27" textcolor="none" y="-661.93" xmi.id="mWFlCmidNmMe" role="702" posttext="" showstereotype="1" linewidth="0" x="-781.19" isinstance="0" width="38"/>
+          <floatingtext usefillcolor="1" usesdiagramusefillcolor="1" pretext="+" text="aggregations" usesdiagramfillcolor="1" fillcolor="none" linecolor="#000000" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="XmzP9gKgQ7V7" height="27" textcolor="none" y="-633.186" xmi.id="zSOlzCffN7WI" role="710" posttext="" showstereotype="1" linewidth="0" x="-781.596" isinstance="0" width="110"/>
+         </assocwidget>
+         <assocwidget widgetaid="4b2dQ0x2dmpU" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="cojesY1fJAk8" usesdiagramusefillcolor="0" linecolor="#000000" totalcounta="2" type="502" indexa="1" indexb="1" totalcountb="2" xmi.id="KxmhIJziA0OQ" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-671.211" startx="-783.214"/>
+           <endpoint endx="-453.908" endy="-650.104"/>
+           <point y="-671.211" x="-720.461"/>
+           <point y="-650.104" x="-720.461"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetaid="F4YG5DAn0wnS" linewidth="0" usesdiagramfillcolor="0" seqnum="" widgetbid="cojesY1fJAk8" usesdiagramusefillcolor="96" linecolor="#000000" totalcounta="2" type="500" indexa="1" indexb="1" totalcountb="2" xmi.id="9HvJjfpAlHde" textcolor="none" fillcolor="#ffff00" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usefillcolor="1">
+          <linepath layout="Polyline">
+           <startpoint starty="-489.525" startx="-416.263"/>
+           <endpoint endx="-416.263" endy="-510.615"/>
+          </linepath>
+         </assocwidget>
+        </associations>
+       </diagram>
+      </diagrams>
+     </XMI.extension>
+    </UML:Model>
+    <UML:Model isRoot="false" isLeaf="false" name="Use Case View" xmi.id="Use Case View" isAbstract="false" namespace="m1" isSpecification="false" visibility="public">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model isRoot="false" isLeaf="false" name="Component View" xmi.id="Component View" isAbstract="false" namespace="m1" isSpecification="false" visibility="public">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model isRoot="false" isLeaf="false" name="Deployment View" xmi.id="Deployment View" isAbstract="false" namespace="m1" isSpecification="false" visibility="public">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model isRoot="false" isLeaf="false" name="Entity Relationship Model" xmi.id="Entity Relationship Model" isAbstract="false" namespace="m1" isSpecification="false" visibility="public">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+   </UML:Namespace.ownedElement>
+  </UML:Model>
+ </XMI.content>
+ <XMI.extensions xmi.extender="umbrello">
+  <docsettings documentation="" viewid="vbflgzJiL7R9" uniqueid="3ULq0qeWrtlz"/>
+  <listview>
+   <listitem type="800" open="1" id="Views">
+    <listitem type="836" open="1" id="Entity Relationship Model"/>
+    <listitem type="821" open="1" id="Component View"/>
+    <listitem type="801" open="1" id="Logical View">
+     <listitem type="813" open="1" id="8hYVGvPepo9r"/>
+     <listitem type="813" open="1" id="F4YG5DAn0wnS">
+      <listitem type="814" open="0" id="zR49PDD1320o"/>
+      <listitem type="815" open="0" id="G9v763UxGWS0"/>
+      <listitem type="815" open="0" id="Z8JUWaMnocvl"/>
+      <listitem type="814" open="0" id="z0XBoCkluICc"/>
+     </listitem>
+     <listitem type="813" open="1" id="OF72e636eAW7">
+      <listitem type="814" open="0" id="lJJb8YMyjZfy"/>
+      <listitem type="815" open="0" id="YboM32mrUARY"/>
+      <listitem type="814" open="0" id="DvweOL09i6DL"/>
+     </listitem>
+     <listitem type="830" open="0" id="Datatypes">
+      <listitem type="829" open="1" id="tHbs3HAyTxOy"/>
+      <listitem type="829" open="1" id="6hdYN41IHr4Y"/>
+      <listitem type="829" open="1" id="wfnMFn19Nsrx"/>
+      <listitem type="829" open="1" id="zUFPHjh7KDYM"/>
+      <listitem type="829" open="1" id="s0WBrvGHldLI"/>
+      <listitem type="829" open="1" id="4FnWn8aMML5C"/>
+      <listitem type="829" open="1" id="0jZrFre26Hcf"/>
+      <listitem type="829" open="1" id="ClT94UXkioKh"/>
+      <listitem type="829" open="1" id="IlATqPieTXgl"/>
+      <listitem type="829" open="1" id="5NcymcbisFDg"/>
+      <listitem type="829" open="1" id="XKe7RiDQI1ca"/>
+      <listitem type="829" open="1" id="FEQ2fNEsDGPS"/>
+      <listitem type="829" open="1" id="BZ26rvH8Ee1x"/>
+      <listitem type="829" open="1" id="Dm5XtyBQrSXu"/>
+      <listitem type="829" open="1" id="hoSNBQSYdINR"/>
+      <listitem type="829" open="1" id="1Ncwf8DMmco3"/>
+      <listitem type="829" open="1" id="aTbx6yv526Dv"/>
+      <listitem type="829" open="1" id="6EthTXfhrrG9"/>
+     </listitem>
+     <listitem label="Diagram třídy" type="807" open="0" id="vbflgzJiL7R9"/>
+     <listitem type="813" open="1" id="htJUt0xqAs3g"/>
+     <listitem type="813" open="1" id="cZ8dsszVJgQS"/>
+     <listitem type="813" open="1" id="NTfznvloa2wU"/>
+     <listitem type="813" open="1" id="Jmaoc1ymHyD3">
+      <listitem type="814" open="0" id="Cx3pdZoqkM7R"/>
+      <listitem type="815" open="0" id="5dNbSeTTZ7yf"/>
+      <listitem type="815" open="0" id="sM6Mjw0qPb7w"/>
+      <listitem type="814" open="0" id="0HW43x1Z1XBb"/>
+      <listitem type="814" open="0" id="y4w7fMeJdUCv"/>
+      <listitem type="814" open="0" id="RymWaQSGZeOc"/>
+     </listitem>
+     <listitem type="813" open="1" id="zxCmvjoRDVEQ"/>
+     <listitem type="813" open="1" id="O2a2LSzH427W"/>
+     <listitem type="813" open="1" id="2TOVhh3e4HqO"/>
+     <listitem type="813" open="1" id="S4yiqbVFd6NK">
+      <listitem type="814" open="0" id="3V2ItjmfAAjk"/>
+      <listitem type="814" open="0" id="YChc8kbx31BL"/>
+      <listitem type="815" open="0" id="biHzaSAgxWXE"/>
+     </listitem>
+     <listitem type="813" open="1" id="milrlksfeuXz">
+      <listitem type="815" open="0" id="zChwJd43GYAF"/>
+      <listitem type="814" open="0" id="IU6Yy30Lb6YI"/>
+      <listitem type="814" open="0" id="S8e5SevMbKeM"/>
+     </listitem>
+     <listitem type="813" open="1" id="BBVygmAAJDYA">
+      <listitem type="815" open="0" id="fyqXM24rK1z5"/>
+      <listitem type="814" open="0" id="6xCr6OQtGF9X"/>
+      <listitem type="814" open="0" id="XiOhU0VGgVos"/>
+      <listitem type="815" open="0" id="WbkrksVcVFX4"/>
+     </listitem>
+     <listitem type="813" open="1" id="6bMAiKxftcnP"/>
+     <listitem type="813" open="1" id="o6627heT5qM4">
+      <listitem type="815" open="0" id="lwTN4mnaLggE"/>
+     </listitem>
+     <listitem type="813" open="1" id="KGURbznxPmsi">
+      <listitem type="815" open="0" id="GfTnYeRFiHI9"/>
+      <listitem type="814" open="0" id="m4W27ul6kGPo"/>
+      <listitem type="814" open="0" id="C7v5TXx8fQug"/>
+     </listitem>
+     <listitem type="813" open="1" id="546tooNL0Q7Y"/>
+     <listitem type="813" open="1" id="fzV68th7UN3X"/>
+     <listitem type="813" open="1" id="ze5MCX48bLX4"/>
+     <listitem type="813" open="1" id="fi38S1qDbrHT">
+      <listitem type="814" open="0" id="IdIcTKu9zCv3"/>
+      <listitem type="815" open="0" id="uvmTb2N3VgZT"/>
+      <listitem type="814" open="0" id="Ag9jouq67hGx"/>
+     </listitem>
+     <listitem type="813" open="1" id="SB6OQvCndoBr">
+      <listitem type="814" open="0" id="HvB6kgqvcHSs"/>
+      <listitem type="815" open="0" id="U2o6Ov0o8hAv"/>
+      <listitem type="814" open="0" id="UmZPqBbrYr99"/>
+     </listitem>
+     <listitem type="813" open="1" id="6EW05LbGMOY8">
+      <listitem type="814" open="0" id="1GN2uw4XNw2g"/>
+      <listitem type="815" open="0" id="BDMH9PVhqO3J"/>
+      <listitem type="815" open="0" id="Ho7qTT4jDHAP"/>
+      <listitem type="814" open="0" id="7zZQmWbmrdEU"/>
+      <listitem type="814" open="0" id="F2MOR56TS1TY"/>
+      <listitem type="814" open="0" id="On5nFCFRzQzN"/>
+      <listitem type="815" open="0" id="BsKszwVuRQH1"/>
+      <listitem type="814" open="0" id="T0oEooCt4Nlm"/>
+      <listitem type="814" open="0" id="IG3pjk6B3uCb"/>
+      <listitem type="815" open="0" id="J3CbHquqSzVJ"/>
+      <listitem type="814" open="0" id="AdJ6mBJqetyB"/>
+      <listitem type="814" open="0" id="rJmrTgGFMexP"/>
+      <listitem type="815" open="0" id="qNi53cMl7KBi"/>
+     </listitem>
+     <listitem type="813" open="1" id="L5wnqwnbipsk">
+      <listitem type="815" open="0" id="pZorSJEasT3M"/>
+     </listitem>
+     <listitem type="813" open="1" id="cojesY1fJAk8">
+      <listitem type="815" open="0" id="BRUn56mAEjMF"/>
+      <listitem type="814" open="0" id="SmAGDEJ7bah4"/>
+      <listitem type="815" open="0" id="jkeGs5V6Ggp3"/>
+      <listitem type="814" open="0" id="1RuCMgoJw84q"/>
+      <listitem type="814" open="0" id="GxDZNlTHCPlg"/>
+      <listitem type="814" open="0" id="IIYSppUZFR2l"/>
+      <listitem type="815" open="0" id="zZMXSi2Jz9a2"/>
+      <listitem type="815" open="0" id="OWdVuAIKQfsB"/>
+      <listitem type="814" open="0" id="tqO5C6ArUCnk"/>
+     </listitem>
+     <listitem type="813" open="1" id="4b2dQ0x2dmpU">
+      <listitem type="815" open="0" id="pofA1N3vufGD"/>
+     </listitem>
+     <listitem type="813" open="1" id="PHugkksgUauS"/>
+     <listitem type="813" open="1" id="bUWixFoVWNoa"/>
+     <listitem type="813" open="1" id="0kYPY6UanTEn"/>
+     <listitem type="813" open="1" id="pVo1bm8rOh70"/>
+     <listitem type="813" open="1" id="Icfa9xxQSrS4"/>
+     <listitem type="813" open="1" id="UgdNpEKELGcw">
+      <listitem type="814" open="0" id="12VRlzoxIUrB"/>
+      <listitem type="815" open="0" id="Rco0p5UQT6a6"/>
+      <listitem type="814" open="0" id="scEoqcuHPHm9"/>
+     </listitem>
+     <listitem type="813" open="1" id="1gMUZGxpPnQh">
+      <listitem type="814" open="0" id="BvqYtqQTBDa7"/>
+      <listitem type="815" open="0" id="Ua6m3pw2NCx3"/>
+      <listitem type="815" open="0" id="cVc5Ilj6lx8D"/>
+      <listitem type="814" open="0" id="lM4XevmEDv86"/>
+      <listitem type="814" open="0" id="9UqzvOkdgPk9"/>
+      <listitem type="815" open="0" id="q2vigNubxBDs"/>
+      <listitem type="815" open="0" id="aWgIco91oX2y"/>
+     </listitem>
+     <listitem type="813" open="1" id="ydWWY77Z7IjU">
+      <listitem type="814" open="0" id="TaTi8tGfHS7q"/>
+      <listitem type="815" open="0" id="8ghnumXJ9J5u"/>
+      <listitem type="814" open="0" id="9zkjpl8vQL0g"/>
+      <listitem type="815" open="0" id="P0me119SFne7"/>
+     </listitem>
+    </listitem>
+    <listitem type="827" open="1" id="Deployment View"/>
+    <listitem type="802" open="1" id="Use Case View"/>
+   </listitem>
+  </listview>
+  <codegeneration>
+   <codegenerator language="C++"/>
+  </codegeneration>
+ </XMI.extensions>
+</XMI>

@@ -244,12 +244,12 @@ class ScoreAggregationStrategy(NamedEntity):
 class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
     """
     This class represents a strategy for aggregating a score, and a probability estimate into
-    an aggregate score. The aggregate score corresponds to the score, the probability estimate is
-    discarded.
+    an aggregate score. The aggregate score corresponds to the MIaS score, the probability estimate
+    is discarded.
     """
     def __init__(self):
         self.identifier = "orig"
-        self.description = "The original score with the probability estimate discarded"
+        self.description = "The original MIaS score with the probability estimate discarded"
 
     def aggregate_score(self, result):
         assert isinstance(result, Result)
@@ -343,7 +343,7 @@ class Formula(object):
 
     Attributes
     ----------
-    tex_tex : str
+    tex_text : str
         The text of the TeX representation of the formula.
     pmath_text : str
         The text of the {http://www.w3.org/1998/Math/MathML}math element containing a Presentation
@@ -592,7 +592,7 @@ class Query(object):
     ----------
     aggregation : ScoreAggregationStrategy
         The score aggregation strategy that will be used to compute the aggregate score of the query
-        results. By default, this corresponds to MIaSScore(), i.e. no score aggregation will be
+        results. By default, this corresponds to MIaSScore, i.e. no score aggregation will be
         performed. Change this attribute by using the use_aggregation context manager method.
     topic : Topic
         The topic that served as the source of the query.
@@ -649,7 +649,7 @@ class Query(object):
             A map from paragraph identifiers to estimated positions of paragraphs in their parent
             documents. The positions are in the range [0; 1].
         estimates : sequence of float
-        Estimates of P(relevant | position) in the form of a histogram.
+            Estimates of P(relevant | position) in the form of a histogram.
         """
         assert "_results" in self.__dict__
         assert not self.results
@@ -824,7 +824,7 @@ class Result(object):
     score : float
         The score of the result.
     p_relevant : float
-        The estimated probability of relevance of the result.
+        The estimated probability of relevance of the paragraph in the result.
 
     Attributes
     ----------
@@ -936,7 +936,7 @@ class Result(object):
     def __lt__(self, other):
         return isinstance(other, Result) and self.aggregate_score() > other.aggregate_score()
 
-    aggregation_strategies = set(
+    aggregations = set(
         [MIaSScore(), LogGeometricMean()] + \
         [LogHarmonicMean(alpha) for alpha in linspace(0, 1, 11)])
 
@@ -952,7 +952,7 @@ class Result(object):
             self.__class__.__name__, self.identifier, self.score, self.p_relevant)
 
 
-class FakeResult(Result):
+class ArtificialResult(Result):
     """
     This class represents an artificially created result.
 
@@ -1066,7 +1066,7 @@ def query_webmias(topics, webmias, positions, estimates, num_workers=1):
 def _rerank_and_merge_results_helper(args):
     math_format, topic, queries, output_directory, num_results = args
     results = []
-    for aggregation in Result.aggregation_strategies:
+    for aggregation in Result.aggregations:
         result_deques = []
         for query in queries:
             with query.use_aggregation(aggregation):
@@ -1139,13 +1139,14 @@ def rerank_and_merge_results(
 
     final_results = dict()
     already_warned = set()
-    artificial_results = [  # Take only num_results from identifiers, without making them a list
-        FakeResult(identifier, -inf) for identifier, _ in zip(identifiers, range(num_results))]
+    artificial_results = [  # Take only num_results from identifiers, without creating a list
+        ArtificialResult(identifier, -inf)
+        for identifier, _ in zip(identifiers, range(num_results))]
 
     LOGGER.info(
         "Using %d strategies to aggregate MIaS scores with probability estimates:",
-        len(Result.aggregation_strategies))
-    for aggregation in sorted(Result.aggregation_strategies):
+        len(Result.aggregations))
+    for aggregation in sorted(Result.aggregations):
         LOGGER.info("- %s", aggregation)
     if output_directory:
         LOGGER.info("Storing reranked per-query result lists in %s", output_directory)

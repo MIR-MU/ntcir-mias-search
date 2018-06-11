@@ -214,7 +214,7 @@ class LeaveRightmostOut(QueryExpansionStrategy):
         for query_index_formulae, last_formula in enumerate(range(len(topic.formulae) - 1, -1, -1)):
             yield (
                 topic.formulae[0:last_formula], topic.keywords,
-                num_queries - query_index_keywords - query_index_formulae)
+                num_queries - len(topic.keywords) - query_index_formulae - 1)
 
 
 class ScoreAggregationStrategy(NamedEntity):

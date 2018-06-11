@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 
 import numpy  # Required to unpickle positions.pkl.gz
 
-from .processing import get_results, merge_results, rerank_results, Topic, WebMIaSIndex
+from .processing import get_topics, get_webmias, query_webmias, rerank_and_merge_results
 
 
 LOG_PATH = Path("__main__.log")
@@ -80,7 +80,7 @@ def main():
             that querying, reranking, and merging takes place simmultaneously.
         """)
     parser.add_argument(
-        "--num-workers-reranking", type=int, default=5, help="""
+        "--num-workers-merging", type=int, default=3, help="""
             The number of processes that will rerank results. Defaults to %(default)d. Note that
             querying, reranking, and merging takes place simmultaneously.
         """)
@@ -102,11 +102,10 @@ def main():
         args.output_directory
     assert args.webmias_index_number >= 0
     assert args.num_workers_querying > 0
-    assert args.num_workers_reranking > 0
+    assert args.num_workers_merging > 0
 
     LOGGER.info("Reading topics from %s", args.topics.name)
-    with args.topics.open("rt") as f:
-        topics = list(Topic.from_file(f))
+    topics = get_topics(args.topics)
     assert len(topics) >= 2
     LOGGER.info("%d topics (%s, %s, ...) contain %d formulae, and %d keywords",
         len(topics), topics[0], topics[1],
@@ -115,7 +114,7 @@ def main():
 
     LOGGER.info(
         "Establishing connection with a WebMIaS Java Servlet at %s", args.webmias_url.geturl())
-    webmias = WebMIaSIndex(args.webmias_url, args.webmias_index_number)
+    webmias = get_webmias(args.webmias_url, args.webmias_index_number)
 
     LOGGER.info("Unpickling %s", args.positions.name)
     with gzip.open(args.positions.open("rb"), "rb") as f:
@@ -125,12 +124,11 @@ def main():
     with gzip.open(args.estimates.open("rb"), "rb") as f:
         estimates = pickle.load(f)[-1]
 
-    LOGGER.info("Querying %s, reranking, and merging", webmias)
-    results = get_results(topics, webmias, args.output_directory, args.num_workers_querying)
-    reranked_results = rerank_results(
-        results, positions, estimates, args.output_directory, args.num_workers_reranking)
+    LOGGER.info("Querying %s, reranking, merging", webmias)
+    results = query_webmias(topics, webmias, positions, estimates, args.num_workers_querying)
     identifiers = positions.keys()
-    final_results = merge_results(reranked_results, identifiers, args.output_directory)
+    final_results = rerank_and_merge_results(
+        results, identifiers, args.output_directory, args.num_workers_merging)
     for _ in final_results: pass
 
 

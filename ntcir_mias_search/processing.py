@@ -4,6 +4,7 @@ These are the processing functions and data types for the NTCIR MIaS Search pack
 
 from abc import abstractmethod
 from collections import deque, KeysView
+from contextlib import contextmanager
 from copy import deepcopy
 from itertools import cycle
 from logging import getLogger
@@ -207,9 +208,9 @@ class LeaveRightmostOut(QueryExpansionStrategy):
         assert isinstance(topic, Topic)
 
         num_queries = len(topic.formulae) + len(topic.keywords) + 1
-        for query_index_keywords, last_keyword in enumerate(range(len(topic.keywords), -1, -1)):
+        for query_index_keywords, first_keyword in enumerate(range(len(topic.keywords) + 1)):
             yield (
-                topic.formulae, topic.keywords[0:last_keyword], num_queries - query_index_keywords)
+                topic.formulae, topic.keywords[first_keyword:], num_queries - query_index_keywords)
         for query_index_formulae, last_formula in enumerate(range(len(topic.formulae) - 1, -1, -1)):
             yield (
                 topic.formulae[0:last_formula], topic.keywords,
@@ -221,69 +222,28 @@ class ScoreAggregationStrategy(NamedEntity):
     This class represents a strategy for aggregating a real score, and a probability of relevance
     into a single aggregate score.
     """
-    def aggregate_score(self, estimated_result, query):
-        """
-        Aggregates a score assigned to a paragraph in a result by MIaS, and an estimated probability
-        that the paragraph is relevant by the NTCIR Math Density Estimator package.
-
-        Parameters
-        ----------
-        estimated_result : EstimatedResult
-            A query result along with a score assigned by MIaS, and a relevance probability
-            estimate.
-        query : Query
-            The query that produced the result.
-
-        Returns
-        -------
-        float
-            The aggregate score.
-        """
-        assert isinstance(estimated_result, EstimatedResult)
-        assert isinstance(query, Query)
-        assert query.aggregation == MIaSScore()
-        assert estimated_result in query.results
-
-        min_score = min(estimated_result.result.score for estimated_result in query.results)
-        max_score = max(estimated_result.result.score for estimated_result in query.results)
-
-        if max_score == min_score:
-            score = 1.0
-        else:
-            score = (estimated_result.result.score - min_score) / (max_score - min_score)
-        assert score >= 0.0 and score <= 1.0
-
-        p_relevant = estimated_result.p_relevant
-        assert p_relevant >= 0.0 and p_relevant <= 1.0
-
-        aggregate_score = self._aggregate_score(score, p_relevant)
-        return aggregate_score
-
     @abstractmethod
-    def _aggregate_score(self, score, p_relevant):
+    def aggregate_score(self, result):
         """
         Aggregates a score assigned to a paragraph in a result by MIaS, and an estimated probability
         that the paragraph is relevant by the NTCIR Math Density Estimator package.
 
         Parameters
         ----------
-        score : float
-            The score assigned to a paragraph by MIaS linearly rescaled to the range [0; 1] by
-            taking into account all the results to a query.
-        p_relevant : float
-            The estimated probability that the paragraph is relevant by the NTCIR Density Estimator
-            Package.
+        result : Result
+            A result.
 
         Returns
         -------
         float
-            The aggregate score.
+            The aggregate score of the result.
         """
+        pass
 
 
 class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
     """
-    This class represents a strategy for aggregating a score, and a probability estimate into the
+    This class represents a strategy for aggregating a score, and a probability estimate into
     an aggregate score. The aggregate score corresponds to the score, the probability estimate is
     discarded.
     """
@@ -291,10 +251,13 @@ class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
         self.identifier = "orig"
         self.description = "The original score with the probability estimate discarded"
 
-    def aggregate_score(self, result, *args):
+    def aggregate_score(self, result):
         assert isinstance(result, Result)
 
-        return result.score
+        score = result.score
+        assert isinstance(score, float)
+
+        return score
 
 
 class LogGeometricMean(ScoreAggregationStrategy, metaclass=Singleton):
@@ -306,9 +269,14 @@ class LogGeometricMean(ScoreAggregationStrategy, metaclass=Singleton):
         self.identifier = "geom"
         self.description = "Log10 of the geometric mean"
 
-    def _aggregate_score(self, score, p_relevant):
+    def aggregate_score(self, result):
+        assert isinstance(result, Result)
+
+        score = result.rescaled_score()
         assert isinstance(score, float)
         assert score >= 0.0 and score <= 1.0
+
+        p_relevant = result.p_relevant
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
@@ -340,9 +308,14 @@ class LogHarmonicMean(ScoreAggregationStrategy):
         self.description = "Log10 of the weighted harmonic mean (alpha = %0.1f)" % alpha
         self.alpha = alpha
 
-    def _aggregate_score(self, score, p_relevant):
+    def aggregate_score(self, result):
+        assert isinstance(result, Result)
+
+        score = result.rescaled_score()
         assert isinstance(score, float)
         assert score >= 0.0 and score <= 1.0
+
+        p_relevant = result.p_relevant
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
@@ -525,11 +498,12 @@ class Topic(object):
 
     def from_file(input_file):
         """
-        Reads topics in the NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR format.
+        Reads topics in the NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR format from an XML
+        file.
 
         Note
         ----
-        Topics are yielded in the order they appear in the XML file.
+        Topics are yielded in the order in which they appear in the XML file.
 
         Parameters
         ----------
@@ -554,7 +528,7 @@ class Topic(object):
         def __eq__(self, other):
             return instanceof(other, Topic) and self.name == other.name
 
-    def query(self, math_format, webmias, output_directory=None):
+    def query(self, math_format, webmias):
         """
         Produces queries from the topic, queries a WebMIaS index, and returns the queries along with
         the XML responses, and query results.
@@ -566,22 +540,16 @@ class Topic(object):
         webmias : WebMIaSIndex
             The index of a deployed WebMIaS Java Servlet that will be queried to retrieve the query
             results.
-        output_directory : Path or None, optional
-            The path to a directore, where all queries, XML responses, and results will be stored as
-            files. When the output_directory is None, no files will be produced.
 
         Yields
         ------
         Query
-            A query along with the XML responses, and query results.
+            An unfinalized query along with the XML responses, and query results.
         """
         assert isinstance(math_format, MathFormat)
         assert isinstance(webmias, WebMIaSIndex)
-        assert output_directory is None or isinstance(output_directory, Path)
 
         for query in Query.from_topic(self, math_format, webmias):
-            if output_directory:
-                query.save(output_directory)
             yield query
 
     def __hash__(self):
@@ -623,10 +591,9 @@ class Query(object):
     Attributes
     ----------
     aggregation : ScoreAggregationStrategy
-        The score aggregation strategy that was used to rerank the results. By default, this
-        corresponds to MIaSScore(), i.e. no score aggregation strategy was used. Change this
-        attribute after you have aggregated the scores in the query results using some different
-        strategy.
+        The score aggregation strategy that will be used to compute the aggregate score of the query
+        results. By default, this corresponds to MIaSScore(), i.e. no score aggregation will be
+        performed. Change this attribute by using the use_aggregation context manager method.
     topic : Topic
         The topic that served as the source of the query.
     payload : str
@@ -641,7 +608,8 @@ class Query(object):
     response_text : str
         The text of the XML response.
     results : iterable of Result
-        The query results.
+        The query results. After the Query object has been constructed, this iterable will be empty.
+        Use the finalize method to obtain the results.
     """
     def __init__(self, topic, math_format, webmias, payload, query_number, stripe_width):
         assert isinstance(topic, Topic)
@@ -657,9 +625,9 @@ class Query(object):
         assert isinstance(response, _Element)
         response_text = etree.tostring(response, pretty_print=True).decode("utf-8")
         assert isinstance(response_text, str)
-        results = [Result.from_element(result_tree) for result_tree in response.xpath(".//result")]
-        for result in results:
-            assert isinstance(result, (EstimatedResult, Result))
+        results = [
+            etree.tostring(result_tree).decode("utf-8")
+            for result_tree in response.xpath(".//result")]
 
         self.aggregation = MIaSScore()
         self.topic = topic
@@ -668,7 +636,47 @@ class Query(object):
         self.query_number = query_number
         self.stripe_width = stripe_width
         self.response_text = response_text
-        self.results = results
+        self._results = results
+        self.results = []
+
+    def finalize(self, positions, estimates):
+        """
+        Uses information recorded by the Query object constructor to construct the query results.
+
+        Parameters
+        ----------
+        positions : dict of (str, float)
+            A map from paragraph identifiers to estimated positions of paragraphs in their parent
+            documents. The positions are in the range [0; 1].
+        estimates : sequence of float
+        Estimates of P(relevant | position) in the form of a histogram.
+        """
+        assert "_results" in self.__dict__
+        assert not self.results
+
+        parser = XMLParser(encoding="utf-8", recover=True)
+
+        self.results = [
+            Result.from_element(
+                self, etree.fromstring(result, parser=parser), positions, estimates)
+            for result in self._results]
+        del self._results
+
+    @contextmanager
+    def use_aggregation(self, aggregation):
+        """
+        Changes the score aggregation strategy for the duration of the context.
+
+        Parameters
+        ----------
+        aggregation : ScoreAggregationStrategy
+            The score aggregation strategy that will be used to compute the aggregate score of the
+            query results for the duration of the context.
+        """
+        original_aggregation = self.aggregation
+        self.aggregation = aggregation
+        yield
+        self.aggregation = original_aggregation
 
     query_expansions = set((LeaveRightmostOut(), ))
 
@@ -717,7 +725,8 @@ class Query(object):
     def save(self, output_directory):
         """
         Stores the text content of the query, the XML document with the response, and the results as
-        files.
+        files. As a side effect, the query results are sorted in-place according to the current
+        score aggregation strategy.
 
         Parameters
         ----------
@@ -732,6 +741,7 @@ class Query(object):
         with (output_directory / Path(PATH_RESPONSE % (
                 self.topic.name, self.math_format.identifier, self.query_number))).open("wt") as f:
             f.write(self.response_text)
+        self.results = sorted(self.results)
         with (output_directory / Path(PATH_RESULT % (
                 self.topic.name, self.math_format.identifier, self.query_number,
                 self.aggregation.identifier))).open("wt") as f:
@@ -747,16 +757,14 @@ class WebMIaSIndex(object):
     url : ParseResult
         The URL at which a WebMIaS Java Servlet has been deployed.
     index_number : int, optional
-        The numeric identifier of the WebMIaS index that corresponds to the dataset. Defaults to
-        %(default)d.
+        The numeric identifier of the WebMIaS index that corresponds to the dataset.
 
     Attributes
     ----------
     url : ParseResult
         The URL at which a WebMIaS Java Servlet has been deployed.
     index_number : int, optional
-        The numeric identifier of the WebMIaS index that corresponds to the dataset. Defaults to
-        %(default)d.
+        The numeric identifier of the WebMIaS index that corresponds to the dataset.
     """
     def __init__(self, url, index_number=0):
         assert isinstance(url, ParseResult)
@@ -804,33 +812,62 @@ class Result(object):
 
     Parameters
     ----------
+    query : Query
+        The query that produced the result.
     identifier : str
         The identifier of the paragraph in the result.
     score : float
         The score of the result.
+    p_relevant : float
+        The estimated probability of relevance of the result.
+
+    Attributes
+    ----------
+    query : Query
+        The query that produced the result.
+    identifier : str
+        The identifier of the paragraph in the result.
+    score : float
+        The MIaS score of the result.
+    p_relevant : float
+        The estimated probability of relevance of the paragraph in the result.
     """
-    def __init__(self, identifier, score):
+    def __init__(self, query, identifier, score, p_relevant):
+        assert isinstance(query, Query)
         assert isinstance(identifier, str)
         assert isinstance(score, float)
+        assert isinstance(p_relevant, float)
+        assert p_relevant >= 0.0 and p_relevant <= 1.0
 
+        self.query = query
         self.identifier = identifier
         self.score = score
+        self.p_relevant = p_relevant
+        self._aggregate_scores = dict()
 
     @staticmethod
-    def from_element(result_tree):
+    def from_element(query, result_tree, positions, estimates):
         """
-        Extracts a result from a result XML element in a response from WebMIaS.
+        Extracts a result from a result XML element in a WebMIaS response.
 
         Parameters
         ----------
+        query : Query
+            The query that produced the result.
         result_tree : _Element
             A result XML element.
+        positions : dict of (str, float)
+            A map from paragraph identifiers to estimated positions of paragraphs in their parent
+            documents. The positions are in the range [0; 1].
+        estimates : sequence of float
+            Estimates of P(relevant | position) in the form of a histogram.
 
         Returns
         -------
         Result
             The extracted result.
         """
+        assert isinstance(query, Query)
         assert isinstance(result_tree, _Element)
 
         identifier_path_trees = result_tree.xpath(".//path")
@@ -846,75 +883,99 @@ class Result(object):
         assert score_match
         score = float(score_match.group(1))
 
-        return Result(identifier, score)
-
-    def __lt__(self, other):
-        return isinstance(other, Result) and self.score > other.score
-
-    aggregation_strategies = set(
-        [LogGeometricMean()] + [LogHarmonicMean(alpha) for alpha in linspace(0, 1, 11)])
-
-
-class EstimatedResult(object):
-    """
-    This class represents the result of a query along with its relevance probability estimate.
-
-    Parameters
-    ----------
-    result : Result
-        A query result.
-    p_relevant : float
-        The relevance probability estimate of the result.
-
-    Attributes
-    ----------
-    result : Result
-        A query result.
-    p_relevant : float
-        The relevance probability estimate of the result.
-    """
-    def __init__(self, result, p_relevant):
-        assert isinstance(result, Result)
-        assert isinstance(p_relevant, float)
-        assert p_relevant >= 0 and p_relevant <= 1
-
-        self.result = result
-        self.p_relevant = p_relevant
-
-    @staticmethod
-    def from_positions_and_estimates(result, positions, estimates):
-        """
-        Extracts a relevance probability estimate from position, probability, and density estimates
-        produced by the NTCIR Math Density Estimator package.
-
-        Parameters
-        ----------
-        result : Result
-            A query result.
-        positions : dict of (str, float)
-            A map from paragraph identifiers to estimated positions of paragraphs in their parent
-            documents. The positions are in the range [0; 1].
-        estimates : sequence of float
-            Estimates of P(relevant | position) in the form of a histogram.
-
-        Returns
-        -------
-        EstimatedResult
-            The result of a query along with its relevance probability estimate.
-        """
-        assert isinstance(result, Result)
-
-        position = positions[result.identifier]
+        assert identifier in positions
+        position = positions[identifier]
+        assert isinstance(position, float)
         assert position >= 0.0 and position < 1.0
 
         p_relevant = estimates[int(position * len(estimates))]
+        assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        estimated_result = EstimatedResult(result, p_relevant)
-        return estimated_result
+        return Result(query, identifier, score, p_relevant)
 
+    def rescaled_score(self):
+        """
+        Linearly rescales the MIaS score of the result to the range [0; 1] by taking into account
+        all results to the query that produced this result.
+
+        Returns
+        -------
+        float
+            The linearly rescaled MIaS score to the range [0; 1].
+        """
+        min_score = min(result.score for result in self.query.results)
+        max_score = max(result.score for result in self.query.results)
+
+        if max_score == min_score:
+            rescaled_score = 1.0
+        else:
+            rescaled_score = (self.score - min_score) / (max_score - min_score)
+        assert rescaled_score >= 0.0 and rescaled_score <= 1.0
+
+        return rescaled_score
+
+    def aggregate_score(self):
+        """
+        Aggregates the MIaS score of the result, and the estimated probability of relevance of the
+        paragraph in the result using the aggregation strategy of the query that produced this
+        result.
+        """
+        if self.query.aggregation not in self._aggregate_scores:
+            aggregate_score = self.query.aggregation.aggregate_score(self)
+            self._aggregate_scores[self.query.aggregation] = aggregate_score
+        aggregate_score = self._aggregate_scores[self.query.aggregation]
+        assert isinstance(aggregate_score, float)
+        return aggregate_score
+    
     def __lt__(self, other):
-        return isinstance(other, EstimatedResult) and self.result < other.result
+        return isinstance(other, Result) and self.aggregate_score() > other.aggregate_score()
+
+    aggregation_strategies = set(
+        [MIaSScore(), LogGeometricMean()] + \
+        [LogHarmonicMean(alpha) for alpha in linspace(0, 1, 11)])
+
+    def __getstate__(self):  # Do not serialize the aggregate score cache
+        return (self.query, self.identifier, self.score, self.p_relevant)
+
+    def __setstate__(self, state):
+        self.query, self.identifier, self.score, self.p_relevant = state
+        self._aggregate_scores = dict()
+
+
+class FakeResult(Result):
+    """
+    This class represents an artificially created result.
+
+    Parameters
+    ----------
+    identifier : str
+        The identifier of the paragraph in the result.
+    aggregate_score : float
+        The aggregate score of the result.
+
+    Attributes
+    ----------
+    identifier : str
+        The identifier of the paragraph in the result.
+    _aggregate_score : float
+        The aggregate score of the result.
+    """
+    def __init__(self, identifier, aggregate_score):
+        assert isinstance(aggregate_score, float)
+        assert isinstance(identifier, str)
+
+        self._aggregate_score = aggregate_score
+        self.identifier = identifier
+
+    def aggregate_score(self):
+        return self._aggregate_score
+
+    def __getstate__(self):
+        return (self.identifier, self._aggregate_score)
+
+    def __setstate__(self, state):
+        self.identifier, self._aggregate_score = state
 
 
 def write_tsv(output_file, topics_and_results):
@@ -927,22 +988,22 @@ def write_tsv(output_file, topics_and_results):
     ----------
     output_file : file
         The output TSV file.
-    topics_and_results : iterable of (Topic, iterable of Result)
-        Topics, each with an iterable of results.
+    topics_and_results : iterator of (Topic, iterable of Result)
+        Topics, each with a sorted iterable of results.
     """
     for topic, results in topics_and_results:
-        for rank, result in enumerate(sorted(results)):
+        for rank, result in enumerate(results):
             output_file.write("%s\tRESERVED\t%s\t%d\t%f\n" % (
-                topic.name, result.identifier, rank + 1, result.score))
+                topic.name, result.identifier, rank + 1, result.aggregate_score()))
 
 
 def _get_results_helper(args):
-    topic, math_format, webmias, output_directory = args
-    queries = list(topic.query(math_format, webmias, output_directory))
+    topic, math_format, webmias = args
+    queries = list(topic.query(math_format, webmias))
     return (math_format, topic, queries)
 
 
-def get_results(topics, webmias, output_directory=None, num_workers=1):
+def query_webmias(topics, webmias, positions, estimates, num_workers=1):
     """
     Produces queries from topics, queries a WebMIaS index, and returns the queries along with the
     XML responses, and query results. As a side effect, all queries, XML responses, and results will
@@ -950,14 +1011,16 @@ def get_results(topics, webmias, output_directory=None, num_workers=1):
 
     Parameters
     ----------
-    topics : iterable of topic
+    topics : iterator of topic
         The topics that will serve as the source of the queries.
     webmias : WebMIaSIndex
         The index of a deployed WebMIaS Java Servlet that will be queried to retrieve the query
         results.
-    output_directory : Path or None, optional
-        The path to a directore, where all queries, XML responses, and results will be stored as
-        files. When the output_directory is None, no files will be produced.
+    positions : dict of (str, float)
+        A map from paragraph identifiers to estimated positions of paragraphs in their parent
+        documents. The positions are in the range [0; 1].
+    estimates : sequence of float
+        Estimates of P(relevant | position) in the form of a histogram.
     num_workers : int, optional
         The number of processes that will send queries.
 
@@ -970,7 +1033,6 @@ def get_results(topics, webmias, output_directory=None, num_workers=1):
     for topic in topics:
         assert isinstance(topic, Topic)
     assert isinstance(webmias, WebMIaSIndex)
-    assert output_directory is None or isinstance(output_directory, Path)
     assert isinstance(num_workers, int)
     assert num_workers > 0
 
@@ -980,64 +1042,54 @@ def get_results(topics, webmias, output_directory=None, num_workers=1):
         len(Formula.math_formats))
     for math_format in sorted(Formula.math_formats):
         LOGGER.info("- %s", math_format)
-    if output_directory:
-        LOGGER.info(
-            "Storing queries, responses, and per-query result lists in %s", output_directory)
 
     with Pool(num_workers) as pool:
         for math_format, topic, queries in pool.imap_unordered(_get_results_helper, (
 #       for math_format, topic, queries in (_get_results_helper(args) for args in tqdm([
-                (topic, math_format, webmias, output_directory)
+                (topic, math_format, webmias)
                 for topic in tqdm(topics, desc="get_results")
                 for math_format in Formula.math_formats)):
+            for query in queries:
+                query.finalize(positions, estimates)
             yield(math_format, topic, queries)
 
 
-def get_estimates(queries, positions, estimates):
-    """
-    Inserts relevance probability estimates into query results.
-
-    Parameters
-    ----------
-    sequence of Query
-        Queries containing results without relevance probability estimates.
-    positions : dict of (str, float)
-        A map from paragraph identifiers to estimated positions of paragraphs in their parent
-        documents. The positions are in the range [0; 1].
-    estimates : sequence of float
-        Estimates of P(relevant | position) in the form of a histogram.
-
-    Returns
-    -------
-    sequence of Query
-        Queries containing results with relevance probability estimates.
-    """
-    estimated_queries = deepcopy(queries)
-    for query, estimated_query in zip(queries, estimated_queries):
-        estimated_query.results = [
-            EstimatedResult.from_positions_and_estimates(result, positions, estimates)
-            for result in query.results]
-    return estimated_queries
-
-
-def _rerank_results_helper(args):
-    math_format, topic, queries, estimated_queries, output_directory = args
-    results = [(MIaSScore(), math_format, topic, queries)]
+def _rerank_and_merge_results_helper(args):
+    math_format, topic, queries, output_directory, num_results = args
+    results = []
     for aggregation in Result.aggregation_strategies:
-        reranked_queries = deepcopy(queries)
-        for estimated_query, reranked_query in zip(estimated_queries, reranked_queries):
-            for estimated_result, reranked_result in zip(
-                    estimated_query.results, reranked_query.results):
-                reranked_result.score = aggregation.aggregate_score(
-                    estimated_result, estimated_query)
-            reranked_query.aggregation = aggregation
-            if output_directory:
-                reranked_query.save(output_directory)
-        results.append((aggregation, math_format, topic, reranked_queries))
+        if output_directory:
+            for query in queries:
+                with query.use_aggregation(aggregation):
+                    query.save(output_directory)
+        result_deques = [deque(query.results) for query in queries]
+        result_list = []
+        result_list_identifiers = set()
+        for query, result_dequeue in cycle(zip(queries, result_deques)):
+            if not sum(len(result_dequeue) for result_dequeue in result_deques):
+                break  # All result deques are already empty, stop altogether
+            if len(result_list) == num_results:
+                break  # The result list is already full, stop altogether
+            if not result_dequeue:
+                continue  # The result deque for this query is already empty, try the next one
+            try:
+                for _ in range(query.stripe_width):
+                    result = result_dequeue.popleft()
+                    while result.identifier in result_list_identifiers:
+                        result = result_dequeue.popleft()
+                    result_list.append(result)
+                    result_list_identifiers.add(result.identifier)
+                    if len(result_list) == num_results:
+                        break
+            except IndexError:
+                continue
+        results.append((aggregation, math_format, topic, result_list))
     return results
 
 
-def rerank_results(results, positions, estimates, output_directory=None, num_workers=1):
+def rerank_and_merge_results(
+        results, identifiers, output_directory=None, num_workers=1,
+        num_results=TARGET_NUMBER_OF_RESULTS):
     """
     Reranks results using position, probability, and density estimates produced by the NTCIR Math
     Density Estimator package. As a side effect, the reranked results will be stored in an output
@@ -1045,19 +1097,19 @@ def rerank_results(results, positions, estimates, output_directory=None, num_wor
 
     Parameters
     ----------
-    results : iterable of (MathFormat, Topic, sequence of Query)
+    results : iterator of (MathFormat, Topic, sequence of Query)
         A format in which the mathematical formulae were represented in a query, and topics, each
         with in iterable of queries along with the XML responses and query results.
-    positions : dict of (str, float)
-        A map from paragraph identifiers to estimated positions of paragraphs in their parent
-        documents. The positions are in the range [0; 1].
-    estimates : sequence of float
-        Estimates of P(relevant | position) in the form of a histogram.
+    identifiers : set of str, or KeysView of str
+        A set of all paragraph identifiers in a dataset. When the target number of results for a
+        topic cannot be met by merging the queries, the identifiers are randomly sampled.
     output_directory : Path or None, optional
         The path to a directore, where reranked results will be stored as files. When the
         output_directory is None, no files will be produced.
     num_workers : int, optional
         The number of processes that will rerank results.
+    num_results : int, optional
+        The target number of results for a topic.
 
     Yields
     ------
@@ -1066,9 +1118,19 @@ def rerank_results(results, positions, estimates, output_directory=None, num_wor
         mathematical formulae were represented in a query, and topics, each with in iterable of
         queries along with the XML responses and query results.
     """
+    assert isinstance(identifiers, (set, KeysView))
     assert output_directory is None or isinstance(output_directory, Path)
     assert isinstance(num_workers, int)
     assert num_workers > 0
+    assert isinstance(num_results, int)
+    assert num_results > 0
+    assert len(identifiers) >= num_results, \
+        "The target number of results for a topic is greater than the dataset size"
+
+    final_results = dict()
+    already_warned = set()
+    artificial_results = [  # Take only num_results from identifiers, without making them a list
+        FakeResult(identifier, -inf) for identifier, _ in zip(identifiers, range(num_results))]
 
     LOGGER.info(
         "Using %d strategies to aggregate MIaS scores with probability estimates:",
@@ -1077,104 +1139,24 @@ def rerank_results(results, positions, estimates, output_directory=None, num_wor
         LOGGER.info("- %s", aggregation)
     if output_directory:
         LOGGER.info("Storing reranked per-query result lists in %s", output_directory)
-
     with Pool(num_workers) as pool:
-        for reranked_results in pool.imap_unordered(_rerank_results_helper, (
-                        (
-                            math_format, topic, queries,
-                            get_estimates(queries, positions, estimates), output_directory)
-                        for math_format, topic, queries in tqdm(results, desc="rerank_results"))):
-            for aggregation, math_format, topic, reranked_queries in reranked_results:
-                yield (aggregation, math_format, topic, reranked_queries)
+        for merged_results in pool.imap_unordered(_rerank_and_merge_results_helper, (
+                        (math_format, topic, queries, output_directory, num_results)
+                        for math_format, topic, queries in tqdm(results,
+                            desc="rerank_and_merge_results"))):
+            for aggregation, math_format, topic, result_list in merged_results:
+                if len(result_list) < num_results:
+                    if topic not in already_warned:
+                        LOGGER.warning(
+                            "Result list for topic %s contains only %d / %d results, sampling",
+                            topic, len(result_list), num_results)
+                        already_warned.add(topic)
+                    result_list.extend(artificial_results[:num_results - len(result_list)])
+                assert len(result_list) == num_results
 
-
-def _merge_results_helper(args):
-    aggregation, math_format, topic, reranked_queries, num_results = args
-    result_dequeues = [deque(sorted(query.results)) for query in reranked_queries]
-    result_list = []
-    result_list_identifiers = set()
-    for query, result_dequeue in cycle(zip(reranked_queries, result_dequeues)):
-        if not sum(len(result_dequeue) for result_dequeue in result_dequeues):
-            break  # All result dequeues are already empty, stop altogether
-        if len(result_list) == num_results:
-            break  # The result list is already full, stop altogether
-        if not result_dequeue:
-            continue  # The result deque for this query is already empty, try the next one
-        try:
-            for _ in range(query.stripe_width):
-                result = result_dequeue.popleft()
-                while result.identifier in result_list_identifiers:
-                    result = result_dequeue.popleft()
-                result_list.append(result)
-                result_list_identifiers.add(result.identifier)
-                if len(result_list) == num_results:
-                    break
-        except IndexError:
-            continue
-    return aggregation, math_format, topic, result_list
-
-
-def merge_results(
-        reranked_results, identifiers, output_directory=None, num_workers=1,
-        num_results=TARGET_NUMBER_OF_RESULTS):
-    """
-    Merges reranked results into final result lists.
-
-    Parameters
-    ----------
-    reranked_results : iterable of (ScoreAggregationStrategy, MathFormat, Topic, sequence of Query)
-        A score aggregation strategy that was used to rerank the results, a format in which the
-        mathematical formulae were represented in a query, and topics, each with in iterable of
-        queries along with the XML responses and query results.
-    identifiers : set of str, or KeysView of str
-        A set of all paragraph identifiers in a dataset. When the target number of results for a
-        topic cannot be met by merging the queries, the identifiers are randomly sampled.
-    output_directory : Path or None, optional
-        The path to a directore, where reranked results will be stored as files. When the
-        output_directory is None, no files will be produced.
-    num_workers : int, optional
-        The number of processes that will merge results.
-    num_results : int, optional
-        The target number of results for a topic.
-    
-    Returns
-    -------
-    ((ScoreAggregationStrategy, MathFormat), iterable of (Topic, iterable of Result))
-        A score aggregation strategy that was used to rerank the results, a format in which the
-        mathematical formulae were represented in a query, and topics, each with an iterable of
-        results.
-    """
-    assert isinstance(identifiers, (set, KeysView))
-    assert output_directory is None or isinstance(output_directory, Path)
-    assert isinstance(num_results, int)
-    assert num_results > 0
-    assert len(identifiers) >= num_results, \
-        "The target number of results for a topic is greater than the dataset size"
-    assert isinstance(num_workers, int)
-    assert num_workers > 0
-
-    final_results = dict()
-    already_warned = set()
-    artificial_results = [  # Take only num_results from identifiers, without making them a list
-        Result(identifier, -inf) for identifier, _ in zip(identifiers, range(num_results))]
-    with Pool(num_workers) as pool:
-        for aggregation, math_format, topic, result_list in pool.imap(
-                _merge_results_helper, (
-                    (aggregation, math_format, topic, reranked_queries, num_results)
-                    for aggregation, math_format, topic, reranked_queries
-                    in tqdm(reranked_results, desc="merge_results"))):
-            if len(result_list) < num_results:
-                if topic not in already_warned:
-                    LOGGER.warning(
-                        "Result list for topic %s contains only %d / %d results, sampling randomly",
-                        topic, len(result_list), num_results)
-                    already_warned.add(topic)
-                result_list.extend(artificial_results[:num_results - len(result_list)])
-            assert len(result_list) == num_results
-
-            if (aggregation, math_format) not in final_results:
-                final_results[(aggregation, math_format)] = []
-            final_results[(aggregation, math_format)].append((topic, result_list))
+                if (aggregation, math_format) not in final_results:
+                    final_results[(aggregation, math_format)] = []
+                final_results[(aggregation, math_format)].append((topic, result_list))
 
     if output_directory:
         LOGGER.info("Storing final result lists in %s", output_directory)
@@ -1184,3 +1166,46 @@ def merge_results(
                     math_format.identifier, aggregation.identifier))).open("wt") as f:
                 write_tsv(f, topics_and_results)
         yield ((aggregation, math_format), topics_and_results)
+
+
+def get_topics(input_file):
+    """
+    Reads topics in the NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR format from an XML file.
+
+    Note
+    ----
+    Topics are returneed in the order in which they appear in the XML file.
+
+    Parameters
+    ----------
+    input_file : Path
+        The path to an input file with topics.
+
+    Returns
+    -------
+    iterable of Topic
+        Topics from the XML file.
+    """
+    with input_file.open("rt") as f:
+        topics = list(Topic.from_file(f))
+    return topics
+
+
+def get_webmias(url, index_number):
+    """
+    Establishes a connection with an index of a deployed WebMIaS Java Servlet.
+
+    Parameters
+    ----------
+    url : ParseResult
+        The URL at which a WebMIaS Java Servlet has been deployed.
+    index_number : int, optional
+        The numeric identifier of the WebMIaS index that corresponds to the dataset.
+
+    Return
+    ------
+    WebMIaS
+        A representation of the WebMIaS index.
+    """
+    webmias = WebMIaSIndex(url, index_number)
+    return webmias

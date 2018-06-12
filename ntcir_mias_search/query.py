@@ -62,14 +62,30 @@ class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
         return score
 
 
-class LogGeometricMean(ScoreAggregationStrategy, metaclass=Singleton):
+class LogGeometricMean(ScoreAggregationStrategy):
     """
     This class represents a strategy for aggregating a score, and a probability estimate into the
-    common logarithm of their geometric mean.
+    common logarithm of their weighted geometric mean.
+
+    Parameters
+    ----------
+    alpha : float
+        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
+        score is 1 - alpha.
+
+    Attributes
+    ----------
+    alpha : float
+        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
+        score is 1 - alpha.
     """
-    def __init__(self):
-        self.identifier = "geom"
-        self.description = "Log10 of the geometric mean"
+    def __init__(self, alpha):
+        assert isinstance(alpha, float)
+        assert alpha >= 0.0 and alpha <= 1.0
+
+        self.identifier = "geom%0.1f" % alpha
+        self.description = "Log10 of the weighted geometric mean (alpha = %0.1f)" % alpha
+        self.alpha = alpha
 
     def aggregate_score(self, result):
         assert isinstance(result, Result)
@@ -87,7 +103,7 @@ class LogGeometricMean(ScoreAggregationStrategy, metaclass=Singleton):
         else:
             log_score = log10(score)
             log_p_relevant = log10(p_relevant)
-            log_geometric_mean = (log_score + log_p_relevant) / 2.0
+            log_geometric_mean = log_score * (1 - self.alpha) + log_p_relevant * self.alpha
         return log_geometric_mean
 
 
@@ -443,7 +459,8 @@ class Result(object):
         return isinstance(other, Result) and self.aggregate_score() > other.aggregate_score()
 
     aggregations = set(
-        [MIaSScore(), LogGeometricMean()] +
+        [MIaSScore()] +
+        [LogGeometricMean(alpha) for alpha in linspace(0, 1, 11)] +
         [LogHarmonicMean(alpha) for alpha in linspace(0, 1, 11)])
 
     def __getstate__(self):  # Do not serialize the aggregate score cache

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI xmi.version="1.2" xmlns:UML="http://schema.omg.org/spec/UML/1.3" verified="false" timestamp="2018-06-12T17:56:30">
+<XMI xmi.version="1.2" xmlns:UML="http://schema.omg.org/spec/UML/1.3" verified="false" timestamp="2018-06-12T20:37:42">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -382,13 +382,13 @@
           </UML:Operation>
          </UML:Classifier.feature>
         </UML:Class>
-        <UML:Class name="LogGeometricMean" xmi.id="milrlksfeuXz" namespace="OLi8f5jOJwYT" isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" visibility="public" comment="This class represents a strategy for aggregating a score, and a probability estimate into the common logarithm of their geometric mean." stereotype="37JEobTwuFkU">
+        <UML:Class name="LogGeometricMean" xmi.id="milrlksfeuXz" namespace="OLi8f5jOJwYT" isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" visibility="public" comment="This class represents a strategy for aggregating a score, and a probability estimate into the common logarithm of their geometric mean.">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="DMUy1IScxYYU"/>
          </UML:GeneralizableElement.generalization>
          <UML:Classifier.feature>
-          <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="S8e5SevMbKeM" initialValue="&quot;geom&quot;" isSpecification="false" visibility="public" comment="A unique identifier"/>
-          <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="IU6Yy30Lb6YI" initialValue="&quot;Log10 of the geometric mean&quot;" isSpecification="false" visibility="public" comment="A human-readable text description."/>
+          <UML:Attribute name="identifier" type="BZ26rvH8Ee1x" xmi.id="S8e5SevMbKeM" isSpecification="false" visibility="public" comment="A unique identifier"/>
+          <UML:Attribute name="description" type="BZ26rvH8Ee1x" xmi.id="IU6Yy30Lb6YI" isSpecification="false" visibility="public" comment="A human-readable text description."/>
           <UML:Operation name="aggregate_score" xmi.id="zChwJd43GYAF" isAbstract="false" isLeaf="false" isRoot="false" isSpecification="false" isQuery="false" visibility="public" comment="Aggregates a score assigned to a paragraph in a result by MIaS, and an estimated probability that the paragraph is relevant by the NTCIR Math Density Estimator package.">
            <UML:BehavioralFeature.parameter>
             <UML:Parameter type="6hdYN41IHr4Y" xmi.id="MGhqgM13CPN2" kind="return"/>
@@ -517,7 +517,7 @@
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams>
-       <diagram canvaswidth="2782.19" showattsig="1" showpubliconly="0" showattribassocs="1" showscope="1" showgrid="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="-1" snapx="25" griddotcolor="#d3d3d3" snapy="25" showopsig="1" name="Diagram třídy" xmi.id="vbflgzJiL7R9" snapgrid="0" linewidth="0" isopen="1" documentation="" showpackage="1" showstereotype="1" snapcsgrid="0" linecolor="#000000" showatts="1" type="1" backgroundcolor="#ffffff" textcolor="#000000" zoom="81,37061629162326" canvasheight="1178.24" showops="1" usefillcolor="1" fillcolor="#ffffff">
+       <diagram canvaswidth="2782.19" showattsig="1" showpubliconly="0" showattribassocs="1" showscope="1" showgrid="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" localid="-1" snapx="25" griddotcolor="#d3d3d3" snapy="25" showopsig="1" name="Diagram třídy" xmi.id="vbflgzJiL7R9" snapgrid="0" linewidth="0" isopen="1" documentation="" showpackage="1" showstereotype="1" snapcsgrid="0" linecolor="#000000" showatts="1" type="1" backgroundcolor="#ffffff" textcolor="#000000" zoom="93,57620873536679" canvasheight="1178.24" showops="1" usefillcolor="1" fillcolor="#ffffff">
         <widgets>
          <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="LVk1z18vJi1T" drawascircle="0" xmi.id="546tooNL0Q7Y" linewidth="0" showstereotype="1" y="-769.983" showpackage="1" linecolor="#000000" showattributes="1" width="180" height="45" textcolor="#000000" x="-1222.27" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
          <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="3kd8XNiP7kXI" drawascircle="0" xmi.id="o6627heT5qM4" linewidth="0" showstereotype="1" y="-684.272" showpackage="1" linecolor="#000000" showattributes="1" width="303" height="57" textcolor="#000000" x="-1434.21" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
@@ -529,7 +529,7 @@
          <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="JecFxTfIkA0I" xmi.id="S4yiqbVFd6NK" linewidth="0" showstereotype="1" y="-1009.5" showpackage="1" linecolor="#000000" showattributes="1" width="540" height="115" textcolor="#000000" x="-1402.9" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
          <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="h5FXrOs91X0W" drawascircle="0" xmi.id="4b2dQ0x2dmpU" linewidth="0" showstereotype="1" y="-682.692" showpackage="1" linecolor="#000000" showattributes="1" width="358" height="57" textcolor="#000000" x="-1093.82" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
          <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="ZxWV9y53YfZn" xmi.id="KGURbznxPmsi" linewidth="0" showstereotype="1" y="-405.54" showpackage="1" linecolor="#000000" showattributes="1" width="621" height="115" textcolor="#000000" x="-1232.5" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
-         <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="GPltqYE11XVM" xmi.id="milrlksfeuXz" linewidth="0" showstereotype="1" y="-538.405" showpackage="1" linecolor="#000000" showattributes="1" width="387" height="115" textcolor="#000000" x="-1232.52" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
+         <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="GPltqYE11XVM" xmi.id="milrlksfeuXz" linewidth="0" showstereotype="1" y="-515.217" showpackage="1" linecolor="#000000" showattributes="1" width="311" height="92" textcolor="#000000" x="-1158.74" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
          <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="GJBr0XWmKJnl" xmi.id="BBVygmAAJDYA" linewidth="0" showstereotype="1" y="-561.023" showpackage="1" linecolor="#000000" showattributes="1" width="270" height="138" textcolor="#000000" x="-814.67" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
          <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="UBrzxBIrUtvZ" xmi.id="Jmaoc1ymHyD3" linewidth="0" showstereotype="1" y="-959.836" showpackage="1" linecolor="#000000" showattributes="1" width="427" height="161" textcolor="#000000" x="-2206.83" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
          <classwidget usesdiagramfillcolor="0" isinstance="0" showattsigs="601" showpubliconly="0" showscope="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" localid="26RYoVf4Js24" xmi.id="1gMUZGxpPnQh" linewidth="0" showstereotype="1" y="-673.22" showpackage="1" linecolor="#000000" showattributes="1" width="587" height="184" textcolor="#000000" x="-2478.32" showopsigs="601" showoperations="1" usefillcolor="1" fillcolor="#ffffff"/>
@@ -600,8 +600,8 @@
          </assocwidget>
          <assocwidget font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" seqnum="" widgetaid="milrlksfeuXz" widgetbid="4b2dQ0x2dmpU" indexa="1" type="500" indexb="1" xmi.id="DMUy1IScxYYU" totalcountb="2" textcolor="none" totalcounta="2" usefillcolor="1" usesdiagramfillcolor="0" linewidth="0" fillcolor="#ffff00" usesdiagramusefillcolor="1" linecolor="#000000">
           <linepath layout="Polyline">
-           <startpoint startx="-854.569" starty="-538.405"/>
-           <endpoint endy="-625.692" endx="-854.569"/>
+           <startpoint startx="-853.215" starty="-515.217"/>
+           <endpoint endy="-625.692" endx="-853.215"/>
           </linepath>
          </assocwidget>
          <assocwidget font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" seqnum="" widgetaid="BBVygmAAJDYA" widgetbid="4b2dQ0x2dmpU" indexa="1" type="500" indexb="1" xmi.id="CcFPJrVSVqH9" totalcountb="2" textcolor="none" totalcounta="2" usefillcolor="1" usesdiagramfillcolor="0" linewidth="0" fillcolor="#ffff00" usesdiagramusefillcolor="0" linecolor="#000000">
@@ -874,7 +874,7 @@
          <assocwidget usesdiagramfillcolor="0" widgetaid="OLi8f5jOJwYT" indexb="1" indexa="1" visibilityB="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" changeabilityB="900" usesdiagramusefillcolor="0" seqnum="" changeabilityA="900" widgetbid="milrlksfeuXz" roleBdoc="" roleAdoc="" visibilityA="0" linewidth="0" totalcountb="2" documentation="" linecolor="#000000" type="509" totalcounta="2" textcolor="none" usefillcolor="1" fillcolor="#ffff00">
           <linepath layout="Polyline">
            <startpoint startx="-422.41" starty="-169.915"/>
-           <endpoint endy="-442.42" endx="-1232.52"/>
+           <endpoint endy="-442.42" endx="-1158.74"/>
            <point x="-1139.18" y="-169.915"/>
            <point x="-1139.18" y="-247.926"/>
            <point x="-1283.45" y="-248.995"/>

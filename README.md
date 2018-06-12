@@ -90,7 +90,7 @@ Querying a local WebMIaS instance using 64 worker processes:
 
     $ mkdir search_results
     
-    $ ntcir-mias-search --num-workers-querying 16 --num-workers-merging 48 \
+    $ ntcir-mias-search --num-workers-querying 8 --num-workers-merging 56 \
     >     --dataset ntcir-11-12 \
     >     --topics NTCIR11-Math2-queries-participants.xml \
     >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
@@ -102,8 +102,18 @@ Querying a local WebMIaS instance using 64 worker processes:
     Unpickling positions.pkl.gz
     Unpickling estimates.pkl.gz
     Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking and merging results
-    Using 13 strategies to aggregate MIaS scores with probability estimates:
-    - Log10 of the geometric mean (look for 'geom' in filenames)
+    Using 23 strategies to aggregate MIaS scores with probability estimates:
+    - Log10 of the weighted geometric mean (alpha = 0.0) (look for 'geom0.0' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.1) (look for 'geom0.1' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.2) (look for 'geom0.2' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.3) (look for 'geom0.3' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.4) (look for 'geom0.4' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.5) (look for 'geom0.5' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.6) (look for 'geom0.6' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.7) (look for 'geom0.7' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.8) (look for 'geom0.8' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.9) (look for 'geom0.9' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 1.0) (look for 'geom1.0' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.0) (look for 'harm0.0' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.1) (look for 'harm0.1' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.2) (look for 'harm0.2' in filenames)
@@ -115,7 +125,7 @@ Querying a local WebMIaS instance using 64 worker processes:
     - Log10 of the weighted harmonic mean (alpha = 0.8) (look for 'harm0.8' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.9) (look for 'harm0.9' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 1.0) (look for 'harm1.0' in filenames)
-    - The original score with the probability estimate discarded (look for 'orig' in filenames)
+    - The original MIaS score with the probability estimate discarded (look for 'orig' in filenames)
     Storing reranked per-query result lists in search_results
     Using 4 formats to represent mathematical formulae in queries:
     - Content MathML XML language (look for 'CMath' in filenames)
@@ -152,7 +162,7 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
 
     $ mkdir search_results
     
-    $ ntcir-mias-search --num-workers-querying 16 --num-workers-merging 48 \
+    $ ntcir-mias-search --num-workers-querying 8 --num-workers-merging 56 \
     >     --dataset ntcir-11-12 \
     >     --topics NTCIR11-Math2-queries-participants.xml \
     >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
@@ -164,8 +174,18 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     Unpickling positions.pkl.gz
     Unpickling estimates.pkl.gz
     Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking and merging results
-    Using 13 strategies to aggregate MIaS scores with probability estimates:
-    - Log10 of the geometric mean (look for 'geom' in filenames)
+    Using 23 strategies to aggregate MIaS scores with probability estimates:
+    - Log10 of the weighted geometric mean (alpha = 0.0) (look for 'geom0.0' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.1) (look for 'geom0.1' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.2) (look for 'geom0.2' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.3) (look for 'geom0.3' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.4) (look for 'geom0.4' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.5) (look for 'geom0.5' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.6) (look for 'geom0.6' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.7) (look for 'geom0.7' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.8) (look for 'geom0.8' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.9) (look for 'geom0.9' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 1.0) (look for 'geom1.0' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.0) (look for 'harm0.0' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.1) (look for 'harm0.1' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.2) (look for 'harm0.2' in filenames)
@@ -177,7 +197,7 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     - Log10 of the weighted harmonic mean (alpha = 0.8) (look for 'harm0.8' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.9) (look for 'harm0.9' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 1.0) (look for 'harm1.0' in filenames)
-    - The original score with the probability estimate discarded (look for 'orig' in filenames)
+    - The original MIaS score with the probability estimate discarded (look for 'orig' in filenames)
     Storing reranked per-query result lists in search_results
     Using 4 formats to represent mathematical formulae in queries:
     - Content MathML XML language (look for 'CMath' in filenames)

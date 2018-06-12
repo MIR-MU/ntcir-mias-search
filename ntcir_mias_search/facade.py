@@ -171,7 +171,7 @@ def rerank_and_merge_results(
                 if len(result_list) < num_results:
                     if topic not in already_warned:
                         LOGGER.warning(
-                            "Result list for topic %s contains only %d / %d results, sampling"
+                            "Result list for topic %s contains only %d / %d results, sampling "
                             "the dataset", topic, len(result_list), num_results)
                         already_warned.add(topic)
                     result_list.extend(artificial_results[:num_results - len(result_list)])

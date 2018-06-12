@@ -87,6 +87,7 @@ class Singleton(type):
     of the class will be instantiated.
     """
     _instances = {}
+
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
@@ -203,7 +204,7 @@ class LeaveRightmostOut(QueryExpansionStrategy):
     def __init__(self):
         self.identifier = "LRO"
         self.description = "Leave Rightmost Out strategy (Růžička et al. 2014)"
-    
+
     def produce_queries(self, topic):
         assert isinstance(topic, Topic)
 
@@ -419,11 +420,11 @@ class Formula(object):
         cmath_query_tree_tex_trees = cmath_query_tree.xpath(XPATH_TEX, namespaces=NAMESPACES)
         assert len(cmath_query_tree_tex_trees) == 1
         cmath_query_tree_tex_tree = cmath_query_tree_tex_trees[0]
-        cmath_query_tree_tex_tree.getparent().remove(cmath_query_tree_tex_tree)  # Remove TeX
+        cmath_query_tree_tex_tree.getparent().remove(cmath_query_tree_tex_tree)   # Remove TeX
         cmath_query_tree_pmath_trees = cmath_query_tree.xpath(XPATH_PMATH, namespaces=NAMESPACES)
         assert len(cmath_query_tree_pmath_trees) == 1
         cmath_query_tree_pmath_tree = cmath_query_tree_pmath_trees[0]
-        cmath_query_tree_pmath_tree.getparent().remove(cmath_query_tree_pmath_tree) # Remove PMath
+        cmath_query_tree_pmath_tree.getparent().remove(cmath_query_tree_pmath_tree)  # Remove PMath
         remove_namespaces(cmath_query_tree)
 
         return Formula(tex_query_text, pmath_query_tree, cmath_query_tree)
@@ -529,10 +530,10 @@ class Topic(object):
             return "%s(%s)" % (self.__class__.__name__, self.name)
 
         def __hash__(self):
-            return hash(name)
-        
+            return hash(self.name)
+
         def __eq__(self, other):
-            return instanceof(other, Topic) and self.name == other.name
+            return isinstance(other, Topic) and self.name == other.name
 
     def query(self, math_format, webmias):
         """
@@ -566,7 +567,7 @@ class Topic(object):
 
     def __str__(self):
         return self.name
-    
+
     def __repr__(self):
         return "%s(%s, %d formulae, %d topics)" % (
             self.__class__.__name__, self.name, len(self.formulae), len(self.keywords))
@@ -803,7 +804,7 @@ class WebMIaSIndex(object):
         """
         assert isinstance(payload, str)
 
-        response = requests.post("%s/ws/search" % self.url.geturl(), data = {
+        response = requests.post("%s/ws/search" % self.url.geturl(), data={
             "limit": TARGET_NUMBER_OF_RESULTS,
             "index": self.index_number,
             "query": payload,
@@ -886,7 +887,7 @@ class Result(object):
         identifier_path_tree = identifier_path_trees[0]
         identifier_path = Path(identifier_path_tree.text)
         identifier = identifier_path.stem
-        
+
         score_trees = result_tree.xpath(".//info")
         assert len(score_trees) == 1
         score_tree = score_trees[0]
@@ -938,12 +939,12 @@ class Result(object):
         aggregate_score = self._aggregate_scores[self.query.aggregation]
         assert isinstance(aggregate_score, float)
         return aggregate_score
-    
+
     def __lt__(self, other):
         return isinstance(other, Result) and self.aggregate_score() > other.aggregate_score()
 
     aggregations = set(
-        [MIaSScore(), LogGeometricMean()] + \
+        [MIaSScore(), LogGeometricMean()] +
         [LogHarmonicMean(alpha) for alpha in linspace(0, 1, 11)])
 
     def __getstate__(self):  # Do not serialize the aggregate score cache
@@ -1051,7 +1052,6 @@ def query_webmias(topics, webmias, positions, estimates, num_workers=1):
     assert isinstance(num_workers, int)
     assert num_workers > 0
 
-    result = dict()
     LOGGER.info(
         "Using %d formats to represent mathematical formulae in queries:",
         len(Formula.math_formats))
@@ -1060,7 +1060,6 @@ def query_webmias(topics, webmias, positions, estimates, num_workers=1):
 
     with Pool(num_workers) as pool:
         for math_format, topic, queries in pool.imap_unordered(_get_results_helper, (
-#       for math_format, topic, queries in (_get_results_helper(args) for args in tqdm([
                 (topic, math_format, webmias)
                 for topic in tqdm(topics, desc="get_results")
                 for math_format in Formula.math_formats)):
@@ -1159,8 +1158,8 @@ def rerank_and_merge_results(
     with Pool(num_workers) as pool:
         for merged_results in pool.imap_unordered(_rerank_and_merge_results_helper, (
                         (math_format, topic, queries, output_directory, num_results)
-                        for math_format, topic, queries in tqdm(results,
-                            desc="rerank_and_merge_results"))):
+                        for math_format, topic, queries in tqdm(
+                            results, desc="rerank_and_merge_results"))):
             for aggregation, math_format, topic, result_list in merged_results:
                 if len(result_list) < num_results:
                     if topic not in already_warned:

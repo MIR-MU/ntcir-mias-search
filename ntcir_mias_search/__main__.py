@@ -11,7 +11,7 @@ import pickle
 from sys import stdout
 from urllib.parse import urlparse
 
-import numpy  # Required to unpickle positions.pkl.gz
+import numpy  # noqa:F401 Required to unpickle positions.pkl.gz
 
 from .processing import get_topics, get_webmias, query_webmias, rerank_and_merge_results
 
@@ -107,9 +107,9 @@ def main():
     LOGGER.info("Reading topics from %s", args.topics.name)
     topics = get_topics(args.topics)
     assert len(topics) >= 2
-    LOGGER.info("%d topics (%s, %s, ...) contain %d formulae, and %d keywords",
-        len(topics), topics[0], topics[1],
-        sum(len(topic.formulae) for topic in topics),
+    LOGGER.info(
+        "%d topics (%s, %s, ...) contain %d formulae, and %d keywords", len(topics), topics[0],
+        topics[1], sum(len(topic.formulae) for topic in topics),
         sum(len(topic.keywords) for topic in topics))
 
     LOGGER.info(
@@ -129,7 +129,8 @@ def main():
     identifiers = positions.keys()
     final_results = rerank_and_merge_results(
         results, identifiers, args.output_directory, args.num_workers_merging)
-    for _ in final_results: pass
+    for _ in final_results:
+        pass
 
 
 if __name__ == "__main__":

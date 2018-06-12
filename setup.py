@@ -28,7 +28,7 @@ setup(
     """,
     entry_points={
         'console_scripts': [
-            'ntcir-mias-search=nctir-mias_search.__main__:main',
+            'ntcir-mias-search=ntcir_mias_search.__main__:main',
         ],
     },
     keywords="ntcir mias math_information_retrieval",

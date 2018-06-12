@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 
 import numpy  # noqa:F401 Required to unpickle positions.pkl.gz
 
-from .processing import get_topics, get_webmias, query_webmias, rerank_and_merge_results
+from .facade import get_topics, get_webmias, query_webmias, rerank_and_merge_results
 
 
 LOG_PATH = Path("__main__.log")

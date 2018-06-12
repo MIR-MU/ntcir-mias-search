@@ -101,7 +101,7 @@ Querying a local WebMIaS instance using 64 worker processes:
     Establishing connection with a WebMIaS Java Servlet at http://localhost:58080/WebMIaS
     Unpickling positions.pkl.gz
     Unpickling estimates.pkl.gz
-    Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking, merging
+    Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking and merging results
     Using 13 strategies to aggregate MIaS scores with probability estimates:
     - Log10 of the geometric mean (look for 'geom' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.0) (look for 'harm0.0' in filenames)
@@ -122,11 +122,11 @@ Querying a local WebMIaS instance using 64 worker processes:
     - Combined Presentation and Content MathML XML language (look for 'PCMath' in filenames)
     - Presentation MathML XML language (look for 'PMath' in filenames)
     - The TeX language by professor Knuth (look for 'TeX' in filenames)
-    Result list for topic NTCIR11-Math-9 contains only 188 / 1000 results, sampling
-    Result list for topic NTCIR11-Math-17 contains only 716 / 1000 results, sampling
-    Result list for topic NTCIR11-Math-26 contains only 518 / 1000 results, sampling
-    Result list for topic NTCIR11-Math-39 contains only 419 / 1000 results, sampling
-    Result list for topic NTCIR11-Math-43 contains only 924 / 1000 results, sampling
+    Result list for topic NTCIR11-Math-9 contains only 188 / 1000 results, sampling the dataset
+    Result list for topic NTCIR11-Math-17 contains only 716 / 1000 results, sampling the dataset
+    Result list for topic NTCIR11-Math-26 contains only 518 / 1000 results, sampling the dataset
+    Result list for topic NTCIR11-Math-39 contains only 419 / 1000 results, sampling the dataset
+    Result list for topic NTCIR11-Math-43 contains only 924 / 1000 results, sampling the dataset
     get_results:  100%|███████████████████████████████████████████████| 50/50 [00:26<00:00,  1.88it/s]
     rerank_and_merge_results: 200it [01:02,  3.18it/s]
     Storing final result lists in mias_search_results
@@ -163,7 +163,7 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     Establishing connection with a WebMIaS Java Servlet at https://mir.fi.muni.cz/webmias-demo
     Unpickling positions.pkl.gz
     Unpickling estimates.pkl.gz
-    Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking, merging
+    Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking and merging results
     Using 13 strategies to aggregate MIaS scores with probability estimates:
     - Log10 of the geometric mean (look for 'geom' in filenames)
     - Log10 of the weighted harmonic mean (alpha = 0.0) (look for 'harm0.0' in filenames)

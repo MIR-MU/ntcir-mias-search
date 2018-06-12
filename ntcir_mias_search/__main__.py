@@ -124,7 +124,7 @@ def main():
     with gzip.open(args.estimates.open("rb"), "rb") as f:
         estimates = pickle.load(f)[-1]
 
-    LOGGER.info("Querying %s, reranking, merging", webmias)
+    LOGGER.info("Querying %s, reranking and merging results", webmias)
     results = query_webmias(topics, webmias, positions, estimates, args.num_workers_querying)
     identifiers = positions.keys()
     final_results = rerank_and_merge_results(

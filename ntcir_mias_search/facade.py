@@ -5,7 +5,6 @@ This module contains facade functions for the main command-line interface.
 from collections import deque, KeysView
 from itertools import cycle
 from logging import getLogger
-from math import inf
 from multiprocessing import Pool
 from pathlib import Path
 
@@ -153,7 +152,7 @@ def rerank_and_merge_results(
     final_results = dict()
     already_warned = set()
     artificial_results = [  # Take only num_results from identifiers, without creating a list
-        ArtificialResult(identifier, -inf)
+        ArtificialResult(identifier, -float("inf"))
         for identifier, _ in zip(identifiers, range(num_results))]
 
     LOGGER.info(

@@ -4,7 +4,7 @@ This module defines data types for representing queries.
 
 from contextlib import contextmanager
 from logging import getLogger
-from math import inf, log10
+from math import log10
 from pathlib import Path
 import re
 
@@ -83,7 +83,7 @@ class LogGeometricMean(ScoreAggregationStrategy, metaclass=Singleton):
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
         if score == 0.0 or p_relevant == 0.0:
-            log_geometric_mean = -inf
+            log_geometric_mean = -float("inf")
         else:
             log_score = log10(score)
             log_p_relevant = log10(p_relevant)
@@ -128,7 +128,7 @@ class LogHarmonicMean(ScoreAggregationStrategy):
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
         if score == 0.0 or p_relevant == 0.0:
-            log_harmonic_mean = -inf
+            log_harmonic_mean = -float("inf")
         else:
             log_harmonic_mean = -log10((1 - self.alpha) / score + self.alpha / p_relevant)
         return log_harmonic_mean

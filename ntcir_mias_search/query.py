@@ -87,7 +87,7 @@ class LogGeometricMean(ScoreAggregationStrategy, metaclass=Singleton):
         else:
             log_score = log10(score)
             log_p_relevant = log10(p_relevant)
-            log_geometric_mean = (log_score - log_p_relevant) / 2.0
+            log_geometric_mean = (log_score + log_p_relevant) / 2.0
         return log_geometric_mean
 
 

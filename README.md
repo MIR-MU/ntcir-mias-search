@@ -93,7 +93,7 @@ Querying a local WebMIaS instance using 64 worker processes:
     $ ntcir-mias-search --num-workers-querying 16 --num-workers-merging 48 \
     >     --dataset ntcir-11-12 \
     >     --topics NTCIR11-Math2-queries-participants.xml \
-    >     --estimates estimates.pkl.gz --positions positions.pkl.gz
+    >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
     >     --webmias-url http://localhost:58080/WebMIaS --webmias-index-number 1 \
     >     --output-directory search_results
     Reading topics from NTCIR11-Math2-queries-participants.xml
@@ -155,7 +155,7 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     $ ntcir-mias-search --num-workers-querying 16 --num-workers-merging 48 \
     >     --dataset ntcir-11-12 \
     >     --topics NTCIR11-Math2-queries-participants.xml \
-    >     --estimates estimates.pkl.gz --positions positions.pkl.gz
+    >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
     >     --webmias-url https://mir.fi.muni.cz/webmias-demo --webmias-index-number 0 \
     >     --output-directory search_results
     Reading topics from NTCIR11-Math2-queries-participants.xml

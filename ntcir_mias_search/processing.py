@@ -299,6 +299,12 @@ class LogHarmonicMean(ScoreAggregationStrategy):
     alpha : float
         The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
         score is 1 - alpha.
+
+    Attributes
+    ----------
+    alpha : float
+        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
+        score is 1 - alpha.
     """
     def __init__(self, alpha):
         assert isinstance(alpha, float)

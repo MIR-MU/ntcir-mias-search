@@ -102,7 +102,18 @@ Querying a local WebMIaS instance using 64 worker processes:
     Unpickling positions.pkl.gz
     Unpickling estimates.pkl.gz
     Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking and merging results
-    Using 23 strategies to aggregate MIaS scores with probability estimates:
+    Using 34 strategies to aggregate MIaS scores with probability estimates:
+    - Log10 of the weighted arithmetic mean (alpha = 0.0) (look for 'arith0.0' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.1) (look for 'arith0.1' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.2) (look for 'arith0.2' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.3) (look for 'arith0.3' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.4) (look for 'arith0.4' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.5) (look for 'arith0.5' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.6) (look for 'arith0.6' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.7) (look for 'arith0.7' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.8) (look for 'arith0.8' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.9) (look for 'arith0.9' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 1.0) (look for 'arith1.0' in filenames)
     - Log10 of the weighted geometric mean (alpha = 0.0) (look for 'geom0.0' in filenames)
     - Log10 of the weighted geometric mean (alpha = 0.1) (look for 'geom0.1' in filenames)
     - Log10 of the weighted geometric mean (alpha = 0.2) (look for 'geom0.2' in filenames)
@@ -140,23 +151,21 @@ Querying a local WebMIaS instance using 64 worker processes:
     get_results:  100%|███████████████████████████████████████████████| 50/50 [00:26<00:00,  1.88it/s]
     rerank_and_merge_results: 200it [01:02,  3.18it/s]
     Storing final result lists in mias_search_results
-    100%|█████████████████████████████████████████████████████████████| 52/52 [00:13<00:00,  3.85it/s]
-    
+    100%|███████████████████████████████████████████████████████████| 136/136 [00:13<00:00,  3.73it/s]
+
     $ ls search_results
-    final_CMath.geom.tsv     final_PCMath.harm0.0.tsv  final_PMath.harm0.1.tsv
-    final_CMath.harm0.0.tsv  final_PCMath.harm0.1.tsv  final_PMath.harm0.2.tsv
-    final_CMath.harm0.1.tsv  final_PCMath.harm0.2.tsv  final_PMath.harm0.3.tsv
-    final_CMath.harm0.2.tsv  final_PCMath.harm0.3.tsv  final_PMath.harm0.4.tsv
-    final_CMath.harm0.3.tsv  final_PCMath.harm0.4.tsv  final_PMath.harm0.5.tsv
-    final_CMath.harm0.4.tsv  final_PCMath.harm0.5.tsv  final_PMath.harm0.6.tsv
-    final_CMath.harm0.5.tsv  final_PCMath.harm0.6.tsv  final_PMath.harm0.7.tsv
-    final_CMath.harm0.6.tsv  final_PCMath.harm0.7.tsv  final_PMath.harm0.8.tsv
-    final_CMath.harm0.7.tsv  final_PCMath.harm0.8.tsv  final_PMath.harm0.9.tsv
-    final_CMath.harm0.8.tsv  final_PCMath.harm0.9.tsv  final_PMath.harm1.0.tsv
-    final_CMath.harm0.9.tsv  final_PCMath.harm1.0.tsv  final_PMath.orig.tsv
-    final_CMath.harm1.0.tsv  final_PCMath.orig.tsv     final_TeX.geom.tsv
-    final_CMath.orig.tsv     final_PMath.geom.tsv      final_TeX.harm0.0.tsv
-    final_PCMath.geom.tsv    final_PMath.harm0.0.tsv   ...
+    final_CMath.arith0.0.tsv   final_CMath.geom0.1.tsv   final_PMath.harm0.2.tsv
+    final_CMath.arith0.1.tsv   final_CMath.geom0.2.tsv   final_PMath.harm0.3.tsv
+    final_CMath.arith0.2.tsv   final_CMath.geom0.3.tsv   final_PMath.harm0.4.tsv
+    final_CMath.arith0.3.tsv   final_CMath.geom0.4.tsv   final_PMath.harm0.5.tsv
+    final_CMath.arith0.4.tsv   final_CMath.geom0.5.tsv   final_PMath.harm0.6.tsv
+    final_CMath.arith0.5.tsv   final_CMath.geom0.6.tsv   final_PMath.harm0.7.tsv
+    final_CMath.arith0.6.tsv   final_CMath.geom0.7.tsv   final_PMath.harm0.8.tsv
+    final_CMath.arith0.7.tsv   final_CMath.geom0.8.tsv   final_PMath.harm0.9.tsv
+    final_CMath.arith0.8.tsv   final_CMath.geom0.9.tsv   final_PMath.harm1.0.tsv
+    final_CMath.arith0.9.tsv   final_CMath.geom1.0.tsv   final_PMath.orig.tsv
+    final_CMath.arith1.0.tsv   final_CMath.harm0.0.tsv   ...
+    final_CMath.geom0.0.tsv    final_CMath.harm0.1.tsv
 
 Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes:
 
@@ -174,7 +183,18 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     Unpickling positions.pkl.gz
     Unpickling estimates.pkl.gz
     Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking and merging results
-    Using 23 strategies to aggregate MIaS scores with probability estimates:
+    Using 34 strategies to aggregate MIaS scores with probability estimates:
+    - Log10 of the weighted arithmetic mean (alpha = 0.0) (look for 'arith0.0' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.1) (look for 'arith0.1' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.2) (look for 'arith0.2' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.3) (look for 'arith0.3' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.4) (look for 'arith0.4' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.5) (look for 'arith0.5' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.6) (look for 'arith0.6' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.7) (look for 'arith0.7' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.8) (look for 'arith0.8' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.9) (look for 'arith0.9' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 1.0) (look for 'arith1.0' in filenames)
     - Log10 of the weighted geometric mean (alpha = 0.0) (look for 'geom0.0' in filenames)
     - Log10 of the weighted geometric mean (alpha = 0.1) (look for 'geom0.1' in filenames)
     - Log10 of the weighted geometric mean (alpha = 0.2) (look for 'geom0.2' in filenames)
@@ -207,23 +227,21 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     get_results:  100%|███████████████████████████████████████████████| 50/50 [05:29<00:00,  6.58s/it]
     rerank_and_merge_results: 200it [06:57,  2.09s/it]
     Storing final result lists in mias_search_results
-    100%|█████████████████████████████████████████████████████████████| 52/52 [00:13<00:00,  3.73it/s]
+    100%|███████████████████████████████████████████████████████████| 136/136 [00:13<00:00,  3.73it/s]
     
     $ ls search_results
-    final_CMath.geom.tsv     final_PCMath.harm0.0.tsv  final_PMath.harm0.1.tsv
-    final_CMath.harm0.0.tsv  final_PCMath.harm0.1.tsv  final_PMath.harm0.2.tsv
-    final_CMath.harm0.1.tsv  final_PCMath.harm0.2.tsv  final_PMath.harm0.3.tsv
-    final_CMath.harm0.2.tsv  final_PCMath.harm0.3.tsv  final_PMath.harm0.4.tsv
-    final_CMath.harm0.3.tsv  final_PCMath.harm0.4.tsv  final_PMath.harm0.5.tsv
-    final_CMath.harm0.4.tsv  final_PCMath.harm0.5.tsv  final_PMath.harm0.6.tsv
-    final_CMath.harm0.5.tsv  final_PCMath.harm0.6.tsv  final_PMath.harm0.7.tsv
-    final_CMath.harm0.6.tsv  final_PCMath.harm0.7.tsv  final_PMath.harm0.8.tsv
-    final_CMath.harm0.7.tsv  final_PCMath.harm0.8.tsv  final_PMath.harm0.9.tsv
-    final_CMath.harm0.8.tsv  final_PCMath.harm0.9.tsv  final_PMath.harm1.0.tsv
-    final_CMath.harm0.9.tsv  final_PCMath.harm1.0.tsv  final_PMath.orig.tsv
-    final_CMath.harm1.0.tsv  final_PCMath.orig.tsv     final_TeX.geom.tsv
-    final_CMath.orig.tsv     final_PMath.geom.tsv      final_TeX.harm0.0.tsv
-    final_PCMath.geom.tsv    final_PMath.harm0.0.tsv   ...
+    final_CMath.arith0.0.tsv   final_CMath.geom0.1.tsv   final_PMath.harm0.2.tsv
+    final_CMath.arith0.1.tsv   final_CMath.geom0.2.tsv   final_PMath.harm0.3.tsv
+    final_CMath.arith0.2.tsv   final_CMath.geom0.3.tsv   final_PMath.harm0.4.tsv
+    final_CMath.arith0.3.tsv   final_CMath.geom0.4.tsv   final_PMath.harm0.5.tsv
+    final_CMath.arith0.4.tsv   final_CMath.geom0.5.tsv   final_PMath.harm0.6.tsv
+    final_CMath.arith0.5.tsv   final_CMath.geom0.6.tsv   final_PMath.harm0.7.tsv
+    final_CMath.arith0.6.tsv   final_CMath.geom0.7.tsv   final_PMath.harm0.8.tsv
+    final_CMath.arith0.7.tsv   final_CMath.geom0.8.tsv   final_PMath.harm0.9.tsv
+    final_CMath.arith0.8.tsv   final_CMath.geom0.9.tsv   final_PMath.harm1.0.tsv
+    final_CMath.arith0.9.tsv   final_CMath.geom1.0.tsv   final_PMath.orig.tsv
+    final_CMath.arith1.0.tsv   final_CMath.harm0.0.tsv   ...
+    final_CMath.geom0.0.tsv    final_CMath.harm0.1.tsv
 
 [www:WebMIaS-demo]: https://mir.fi.muni.cz/webmias-demo/ (Web Math Indexer and Searcher)
 

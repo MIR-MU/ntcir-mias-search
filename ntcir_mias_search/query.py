@@ -4,7 +4,6 @@ This module defines data types for representing queries.
 
 from contextlib import contextmanager
 from logging import getLogger
-from math import log10
 from pathlib import Path
 import re
 
@@ -62,10 +61,10 @@ class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
         return score
 
 
-class LogGeometricMean(ScoreAggregationStrategy):
+class ArithmeticMean(ScoreAggregationStrategy):
     """
-    This class represents a strategy for aggregating a score, and a probability estimate into the
-    common logarithm of their weighted geometric mean.
+    This class represents a strategy for aggregating a score, and a probability estimate into their
+    weighted arithmetic mean.
 
     Parameters
     ----------
@@ -75,42 +74,35 @@ class LogGeometricMean(ScoreAggregationStrategy):
 
     Attributes
     ----------
-    alpha : float
+    alpha : float, optional
         The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
         score is 1 - alpha.
     """
-    def __init__(self, alpha):
+    def __init__(self, alpha=0.5):
         assert isinstance(alpha, float)
         assert alpha >= 0.0 and alpha <= 1.0
 
-        self.identifier = "geom%0.1f" % alpha
-        self.description = "Log10 of the weighted geometric mean (alpha = %0.1f)" % alpha
+        self.identifier = "arith%0.1f" % alpha
+        self.description = "The weighted arithmetic mean (alpha = %0.1f)" % alpha
         self.alpha = alpha
 
     def aggregate_score(self, result):
         assert isinstance(result, Result)
 
-        score = result.rescaled_score()
+        score = result.score
         assert isinstance(score, float)
-        assert score >= 0.0 and score <= 1.0
-
         p_relevant = result.p_relevant
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        if score == 0.0 or p_relevant == 0.0:
-            log_geometric_mean = -float("inf")
-        else:
-            log_score = log10(score)
-            log_p_relevant = log10(p_relevant)
-            log_geometric_mean = log_score * (1 - self.alpha) + log_p_relevant * self.alpha
-        return log_geometric_mean
+        arithmetic_mean = score * (1 - self.alpha) + p_relevant * self.alpha
+        return arithmetic_mean
 
 
-class LogHarmonicMean(ScoreAggregationStrategy):
+class GeometricMean(ScoreAggregationStrategy):
     """
-    This class represents a strategy for aggregating a score, and a probability estimate into the
-    common logarithm of their weighted harmonic mean.
+    This class represents a strategy for aggregating a score, and a probability estimate into their
+    weighted geometric mean.
 
     Parameters
     ----------
@@ -120,11 +112,49 @@ class LogHarmonicMean(ScoreAggregationStrategy):
 
     Attributes
     ----------
-    alpha : float
+    alpha : float, optional
         The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
         score is 1 - alpha.
     """
-    def __init__(self, alpha):
+    def __init__(self, alpha=0.5):
+        assert isinstance(alpha, float)
+        assert alpha >= 0.0 and alpha <= 1.0
+
+        self.identifier = "geom%0.1f" % alpha
+        self.description = "The weighted geometric mean (alpha = %0.1f)" % alpha
+        self.alpha = alpha
+
+    def aggregate_score(self, result):
+        assert isinstance(result, Result)
+
+        score = result.score
+        assert isinstance(score, float)
+        p_relevant = result.p_relevant
+        assert isinstance(p_relevant, float)
+        assert p_relevant >= 0.0 and p_relevant <= 1.0
+
+        geometric_mean = score**(1 - self.alpha) * p_relevant**self.alpha
+        return geometric_mean
+
+
+class HarmonicMean(ScoreAggregationStrategy):
+    """
+    This class represents a strategy for aggregating a score, and a probability estimate into
+    their weighted harmonic mean.
+
+    Parameters
+    ----------
+    alpha : float
+        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
+        score is 1 - alpha.
+
+    Attributes
+    ----------
+    alpha : float, optional
+        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
+        score is 1 - alpha.
+    """
+    def __init__(self, alpha=0.5):
         assert isinstance(alpha, float)
         assert alpha >= 0.0 and alpha <= 1.0
 
@@ -135,19 +165,14 @@ class LogHarmonicMean(ScoreAggregationStrategy):
     def aggregate_score(self, result):
         assert isinstance(result, Result)
 
-        score = result.rescaled_score()
+        score = result.score
         assert isinstance(score, float)
-        assert score >= 0.0 and score <= 1.0
-
         p_relevant = result.p_relevant
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        if score == 0.0 or p_relevant == 0.0:
-            log_harmonic_mean = -float("inf")
-        else:
-            log_harmonic_mean = -log10((1 - self.alpha) / score + self.alpha / p_relevant)
-        return log_harmonic_mean
+        harmonic_mean = ((1 - self.alpha) / score + self.alpha / p_relevant)**-1
+        return harmonic_mean
 
 
 class Query(object):
@@ -421,27 +446,6 @@ class Result(object):
 
         return Result(query, identifier, score, p_relevant)
 
-    def rescaled_score(self):
-        """
-        Linearly rescales the MIaS score of the result to the range [0; 1] by taking into account
-        all results to the query that produced this result.
-
-        Returns
-        -------
-        float
-            The linearly rescaled MIaS score to the range [0; 1].
-        """
-        min_score = min(result.score for result in self.query.results)
-        max_score = max(result.score for result in self.query.results)
-
-        if max_score == min_score:
-            rescaled_score = 1.0
-        else:
-            rescaled_score = (self.score - min_score) / (max_score - min_score)
-        assert rescaled_score >= 0.0 and rescaled_score <= 1.0
-
-        return rescaled_score
-
     def aggregate_score(self):
         """
         Aggregates the MIaS score of the result, and the estimated probability of relevance of the
@@ -459,9 +463,9 @@ class Result(object):
         return isinstance(other, Result) and self.aggregate_score() > other.aggregate_score()
 
     aggregations = set(
-        [MIaSScore()] +
-        [LogGeometricMean(alpha) for alpha in linspace(0, 1, 11)] +
-        [LogHarmonicMean(alpha) for alpha in linspace(0, 1, 11)])
+        [MIaSScore()] + [ArithmeticMean(alpha) for alpha in linspace(0, 1, 11)] +
+        [GeometricMean(alpha) for alpha in linspace(0, 1, 11)] +
+        [HarmonicMean(alpha) for alpha in linspace(0, 1, 11)])
 
     def __getstate__(self):  # Do not serialize the aggregate score cache
         return (self.query, self.identifier, self.score, self.p_relevant)

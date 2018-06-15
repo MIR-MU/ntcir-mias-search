@@ -80,7 +80,7 @@ def main():
             that querying, reranking, and merging takes place simmultaneously.
         """)
     parser.add_argument(
-        "--num-workers-merging", type=int, default=6, help="""
+        "--num-workers-merging", type=int, default=9, help="""
             The number of processes that will rerank results. Defaults to %(default)d. Note that
             querying, reranking, and merging takes place simmultaneously.
         """)

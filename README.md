@@ -102,40 +102,28 @@ Querying a local WebMIaS instance using 64 worker processes:
     Unpickling positions.pkl.gz
     Unpickling estimates.pkl.gz
     Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking and merging results
-    Using 34 strategies to aggregate MIaS scores with probability estimates:
-    - Log10 of the weighted arithmetic mean (alpha = 0.0) (look for 'arith0.0' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.1) (look for 'arith0.1' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.2) (look for 'arith0.2' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.3) (look for 'arith0.3' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.4) (look for 'arith0.4' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.5) (look for 'arith0.5' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.6) (look for 'arith0.6' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.7) (look for 'arith0.7' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.8) (look for 'arith0.8' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.9) (look for 'arith0.9' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 1.0) (look for 'arith1.0' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.0) (look for 'geom0.0' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.1) (look for 'geom0.1' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.2) (look for 'geom0.2' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.3) (look for 'geom0.3' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.4) (look for 'geom0.4' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.5) (look for 'geom0.5' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.6) (look for 'geom0.6' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.7) (look for 'geom0.7' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.8) (look for 'geom0.8' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.9) (look for 'geom0.9' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 1.0) (look for 'geom1.0' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.0) (look for 'harm0.0' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.1) (look for 'harm0.1' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.2) (look for 'harm0.2' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.3) (look for 'harm0.3' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.4) (look for 'harm0.4' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.5) (look for 'harm0.5' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.6) (look for 'harm0.6' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.7) (look for 'harm0.7' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.8) (look for 'harm0.8' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.9) (look for 'harm0.9' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 1.0) (look for 'harm1.0' in filenames)
+    Using 304 strategies to aggregate MIaS scores with probability estimates:
+    - Log10 of the weighted arithmetic mean (alpha = 0.00) (look for 'arith0.00' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.01) (look for 'arith0.01' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.02) (look for 'arith0.02' in filenames)
+      ...
+    - Log10 of the weighted arithmetic mean (alpha = 0.98) (look for 'arith0.98' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.99) (look for 'arith0.99' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 1.00) (look for 'arith1.00' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.00) (look for 'geom0.00' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.01) (look for 'geom0.01' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.02) (look for 'geom0.02' in filenames)
+      ...
+    - Log10 of the weighted geometric mean (alpha = 0.98) (look for 'geom0.98' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.99) (look for 'geom0.99' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 1.00) (look for 'geom1.00' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 0.00) (look for 'harm0.00' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 0.01) (look for 'harm0.01' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 0.02) (look for 'harm0.02' in filenames)
+      ...
+    - Log10 of the weighted harmonic mean (alpha = 0.98) (look for 'harm0.98' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 0.99) (look for 'harm0.99' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 1.00) (look for 'harm1.00' in filenames)
     - The original MIaS score with the probability estimate discarded (look for 'orig' in filenames)
     Storing reranked per-query result lists in search_results
     Using 4 formats to represent mathematical formulae in queries:
@@ -151,21 +139,22 @@ Querying a local WebMIaS instance using 64 worker processes:
     get_results:  100%|███████████████████████████████████████████████| 50/50 [00:26<00:00,  1.88it/s]
     rerank_and_merge_results: 200it [01:02,  3.18it/s]
     Storing final result lists in mias_search_results
-    100%|███████████████████████████████████████████████████████████| 136/136 [00:13<00:00,  3.73it/s]
-
+    100%|█████████████████████████████████████████████████████████| 1216/1216 [00:13<00:00,  3.73it/s]
+    
     $ ls search_results
-    final_CMath.arith0.0.tsv   final_CMath.geom0.1.tsv   final_PMath.harm0.2.tsv
-    final_CMath.arith0.1.tsv   final_CMath.geom0.2.tsv   final_PMath.harm0.3.tsv
-    final_CMath.arith0.2.tsv   final_CMath.geom0.3.tsv   final_PMath.harm0.4.tsv
-    final_CMath.arith0.3.tsv   final_CMath.geom0.4.tsv   final_PMath.harm0.5.tsv
-    final_CMath.arith0.4.tsv   final_CMath.geom0.5.tsv   final_PMath.harm0.6.tsv
-    final_CMath.arith0.5.tsv   final_CMath.geom0.6.tsv   final_PMath.harm0.7.tsv
-    final_CMath.arith0.6.tsv   final_CMath.geom0.7.tsv   final_PMath.harm0.8.tsv
-    final_CMath.arith0.7.tsv   final_CMath.geom0.8.tsv   final_PMath.harm0.9.tsv
-    final_CMath.arith0.8.tsv   final_CMath.geom0.9.tsv   final_PMath.harm1.0.tsv
-    final_CMath.arith0.9.tsv   final_CMath.geom1.0.tsv   final_PMath.orig.tsv
-    final_CMath.arith1.0.tsv   final_CMath.harm0.0.tsv   ...
-    final_CMath.geom0.0.tsv    final_CMath.harm0.1.tsv
+    final_CMath.arith0.00.tsv   final_CMath.geom0.01.tsv   final_PMath.harm0.02.tsv
+    final_CMath.arith0.01.tsv   final_CMath.geom0.02.tsv   final_PMath.harm0.03.tsv
+    final_CMath.arith0.02.tsv   final_CMath.geom0.03.tsv   final_PMath.harm0.04.tsv
+    final_CMath.arith0.03.tsv   final_CMath.geom0.04.tsv   final_PMath.harm0.05.tsv
+    final_CMath.arith0.04.tsv   final_CMath.geom0.05.tsv   final_PMath.harm0.06.tsv
+    final_CMath.arith0.05.tsv   final_CMath.geom0.06.tsv   final_PMath.harm0.07.tsv
+    final_CMath.arith0.06.tsv   final_CMath.geom0.07.tsv   final_PMath.harm0.08.tsv
+    final_CMath.arith0.07.tsv   final_CMath.geom0.08.tsv   final_PMath.harm0.09.tsv
+    final_CMath.arith0.08.tsv   final_CMath.geom0.09.tsv   ...
+    final_CMath.arith0.09.tsv   ...                        final_PMath.harm1.00.tsv
+    ...                         final_CMath.geom1.00.tsv   final_PMath.orig.tsv
+    final_CMath.arith1.00.tsv   final_CMath.harm0.00.tsv   ...
+    final_CMath.geom0.00.tsv    final_CMath.harm0.01.tsv
 
 Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes:
 
@@ -183,40 +172,28 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     Unpickling positions.pkl.gz
     Unpickling estimates.pkl.gz
     Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking and merging results
-    Using 34 strategies to aggregate MIaS scores with probability estimates:
-    - Log10 of the weighted arithmetic mean (alpha = 0.0) (look for 'arith0.0' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.1) (look for 'arith0.1' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.2) (look for 'arith0.2' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.3) (look for 'arith0.3' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.4) (look for 'arith0.4' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.5) (look for 'arith0.5' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.6) (look for 'arith0.6' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.7) (look for 'arith0.7' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.8) (look for 'arith0.8' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 0.9) (look for 'arith0.9' in filenames)
-    - Log10 of the weighted arithmetic mean (alpha = 1.0) (look for 'arith1.0' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.0) (look for 'geom0.0' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.1) (look for 'geom0.1' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.2) (look for 'geom0.2' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.3) (look for 'geom0.3' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.4) (look for 'geom0.4' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.5) (look for 'geom0.5' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.6) (look for 'geom0.6' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.7) (look for 'geom0.7' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.8) (look for 'geom0.8' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 0.9) (look for 'geom0.9' in filenames)
-    - Log10 of the weighted geometric mean (alpha = 1.0) (look for 'geom1.0' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.0) (look for 'harm0.0' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.1) (look for 'harm0.1' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.2) (look for 'harm0.2' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.3) (look for 'harm0.3' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.4) (look for 'harm0.4' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.5) (look for 'harm0.5' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.6) (look for 'harm0.6' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.7) (look for 'harm0.7' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.8) (look for 'harm0.8' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 0.9) (look for 'harm0.9' in filenames)
-    - Log10 of the weighted harmonic mean (alpha = 1.0) (look for 'harm1.0' in filenames)
+    Using 304 strategies to aggregate MIaS scores with probability estimates:
+    - Log10 of the weighted arithmetic mean (alpha = 0.00) (look for 'arith0.00' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.01) (look for 'arith0.01' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.02) (look for 'arith0.02' in filenames)
+      ...
+    - Log10 of the weighted arithmetic mean (alpha = 0.98) (look for 'arith0.98' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 0.99) (look for 'arith0.99' in filenames)
+    - Log10 of the weighted arithmetic mean (alpha = 1.00) (look for 'arith1.00' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.00) (look for 'geom0.00' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.01) (look for 'geom0.01' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.02) (look for 'geom0.02' in filenames)
+      ...
+    - Log10 of the weighted geometric mean (alpha = 0.98) (look for 'geom0.98' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 0.99) (look for 'geom0.99' in filenames)
+    - Log10 of the weighted geometric mean (alpha = 1.00) (look for 'geom1.00' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 0.00) (look for 'harm0.00' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 0.01) (look for 'harm0.01' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 0.02) (look for 'harm0.02' in filenames)
+      ...
+    - Log10 of the weighted harmonic mean (alpha = 0.98) (look for 'harm0.98' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 0.99) (look for 'harm0.99' in filenames)
+    - Log10 of the weighted harmonic mean (alpha = 1.00) (look for 'harm1.00' in filenames)
     - The original MIaS score with the probability estimate discarded (look for 'orig' in filenames)
     Storing reranked per-query result lists in search_results
     Using 4 formats to represent mathematical formulae in queries:
@@ -227,21 +204,22 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     get_results:  100%|███████████████████████████████████████████████| 50/50 [05:29<00:00,  6.58s/it]
     rerank_and_merge_results: 200it [06:57,  2.09s/it]
     Storing final result lists in mias_search_results
-    100%|███████████████████████████████████████████████████████████| 136/136 [00:13<00:00,  3.73it/s]
+    100%|█████████████████████████████████████████████████████████| 1216/1216 [00:13<00:00,  3.73it/s]
     
     $ ls search_results
-    final_CMath.arith0.0.tsv   final_CMath.geom0.1.tsv   final_PMath.harm0.2.tsv
-    final_CMath.arith0.1.tsv   final_CMath.geom0.2.tsv   final_PMath.harm0.3.tsv
-    final_CMath.arith0.2.tsv   final_CMath.geom0.3.tsv   final_PMath.harm0.4.tsv
-    final_CMath.arith0.3.tsv   final_CMath.geom0.4.tsv   final_PMath.harm0.5.tsv
-    final_CMath.arith0.4.tsv   final_CMath.geom0.5.tsv   final_PMath.harm0.6.tsv
-    final_CMath.arith0.5.tsv   final_CMath.geom0.6.tsv   final_PMath.harm0.7.tsv
-    final_CMath.arith0.6.tsv   final_CMath.geom0.7.tsv   final_PMath.harm0.8.tsv
-    final_CMath.arith0.7.tsv   final_CMath.geom0.8.tsv   final_PMath.harm0.9.tsv
-    final_CMath.arith0.8.tsv   final_CMath.geom0.9.tsv   final_PMath.harm1.0.tsv
-    final_CMath.arith0.9.tsv   final_CMath.geom1.0.tsv   final_PMath.orig.tsv
-    final_CMath.arith1.0.tsv   final_CMath.harm0.0.tsv   ...
-    final_CMath.geom0.0.tsv    final_CMath.harm0.1.tsv
+    final_CMath.arith0.00.tsv   final_CMath.geom0.01.tsv   final_PMath.harm0.02.tsv
+    final_CMath.arith0.01.tsv   final_CMath.geom0.02.tsv   final_PMath.harm0.03.tsv
+    final_CMath.arith0.02.tsv   final_CMath.geom0.03.tsv   final_PMath.harm0.04.tsv
+    final_CMath.arith0.03.tsv   final_CMath.geom0.04.tsv   final_PMath.harm0.05.tsv
+    final_CMath.arith0.04.tsv   final_CMath.geom0.05.tsv   final_PMath.harm0.06.tsv
+    final_CMath.arith0.05.tsv   final_CMath.geom0.06.tsv   final_PMath.harm0.07.tsv
+    final_CMath.arith0.06.tsv   final_CMath.geom0.07.tsv   final_PMath.harm0.08.tsv
+    final_CMath.arith0.07.tsv   final_CMath.geom0.08.tsv   final_PMath.harm0.09.tsv
+    final_CMath.arith0.08.tsv   final_CMath.geom0.09.tsv   ...
+    final_CMath.arith0.09.tsv   ...                        final_PMath.harm1.00.tsv
+    ...                         final_CMath.geom1.00.tsv   final_PMath.orig.tsv
+    final_CMath.arith1.00.tsv   final_CMath.harm0.00.tsv   ...
+    final_CMath.geom0.00.tsv    final_CMath.harm0.01.tsv
 
 [www:WebMIaS-demo]: https://mir.fi.muni.cz/webmias-demo/ (Web Math Indexer and Searcher)
 

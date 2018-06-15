@@ -82,8 +82,8 @@ class ArithmeticMean(ScoreAggregationStrategy):
         assert isinstance(alpha, float)
         assert alpha >= 0.0 and alpha <= 1.0
 
-        self.identifier = "arith%0.1f" % alpha
-        self.description = "The weighted arithmetic mean (alpha = %0.1f)" % alpha
+        self.identifier = "arith%0.2f" % alpha
+        self.description = "The weighted arithmetic mean (alpha = %0.2f)" % alpha
         self.alpha = alpha
 
     def aggregate_score(self, result):
@@ -120,8 +120,8 @@ class GeometricMean(ScoreAggregationStrategy):
         assert isinstance(alpha, float)
         assert alpha >= 0.0 and alpha <= 1.0
 
-        self.identifier = "geom%0.1f" % alpha
-        self.description = "The weighted geometric mean (alpha = %0.1f)" % alpha
+        self.identifier = "geom%0.2f" % alpha
+        self.description = "The weighted geometric mean (alpha = %0.2f)" % alpha
         self.alpha = alpha
 
     def aggregate_score(self, result):
@@ -158,8 +158,8 @@ class HarmonicMean(ScoreAggregationStrategy):
         assert isinstance(alpha, float)
         assert alpha >= 0.0 and alpha <= 1.0
 
-        self.identifier = "harm%0.1f" % alpha
-        self.description = "Log10 of the weighted harmonic mean (alpha = %0.1f)" % alpha
+        self.identifier = "harm%0.2f" % alpha
+        self.description = "Log10 of the weighted harmonic mean (alpha = %0.2f)" % alpha
         self.alpha = alpha
 
     def aggregate_score(self, result):
@@ -463,9 +463,9 @@ class Result(object):
         return isinstance(other, Result) and self.aggregate_score() > other.aggregate_score()
 
     aggregations = set(
-        [MIaSScore()] + [ArithmeticMean(alpha) for alpha in linspace(0, 1, 11)] +
-        [GeometricMean(alpha) for alpha in linspace(0, 1, 11)] +
-        [HarmonicMean(alpha) for alpha in linspace(0, 1, 11)])
+        [MIaSScore()] + [ArithmeticMean(alpha) for alpha in linspace(0, 1, 101)] +
+        [GeometricMean(alpha) for alpha in linspace(0, 1, 101)] +
+        [HarmonicMean(alpha) for alpha in linspace(0, 1, 101)])
 
     def __getstate__(self):  # Do not serialize the aggregate score cache
         return (self.query, self.identifier, self.score, self.p_relevant)

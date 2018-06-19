@@ -10,7 +10,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from .query import Result, ArtificialResult
+from .query import MIaSResult, ArtificialResult
 from .topic import Topic, Formula
 from .util import write_tsv
 from .webmias import WebMIaSIndex, TARGET_NUMBER_OF_RESULTS
@@ -78,7 +78,7 @@ def query_webmias(topics, webmias, positions, estimates, num_workers=1):
 def _rerank_and_merge_results_helper(args):
     math_format, topic, queries, output_directory, num_results = args
     results = []
-    for aggregation in Result.aggregations:
+    for aggregation in MIaSResult.aggregations:
         result_deques = []
         for query in queries:
             with query.use_aggregation(aggregation):
@@ -157,8 +157,8 @@ def rerank_and_merge_results(
 
     LOGGER.info(
         "Using %d strategies to aggregate MIaS scores with probability estimates:",
-        len(Result.aggregations))
-    for aggregation in sorted(Result.aggregations):
+        len(MIaSResult.aggregations))
+    for aggregation in sorted(MIaSResult.aggregations):
         LOGGER.info("- %s", aggregation)
     if output_directory:
         LOGGER.info("Storing reranked per-query result lists in %s", output_directory)

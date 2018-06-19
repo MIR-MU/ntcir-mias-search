@@ -160,7 +160,7 @@ class HarmonicMean(ScoreAggregationStrategy):
         assert alpha >= 0.0 and alpha <= 1.0
 
         self.identifier = "harm%0.2f" % alpha
-        self.description = "Log10 of the weighted harmonic mean (alpha = %0.2f)" % alpha
+        self.description = "The weighted harmonic mean (alpha = %0.2f)" % alpha
         self.alpha = alpha
 
     def aggregate_score(self, result):
@@ -174,6 +174,30 @@ class HarmonicMean(ScoreAggregationStrategy):
 
         harmonic_mean = ((1 - self.alpha) / score + self.alpha / p_relevant)**-1
         return harmonic_mean
+
+
+class PerfectScore(ScoreAggregationStrategy, metaclass=Singleton):
+    """
+    This class represents a strategy assigning a perfect score to a MIaS result. The score is either
+    infinity, negative infinity, or zero depending on whether the result is relevant, non-relevant,
+    or non-judged according to relevance judgements.
+    """
+    def __init__(self):
+        self.identifier = "perfect"
+        self.description = "The perfect score that uses relevance judgements"
+
+    def aggregate_score(self, result):
+        assert isinstance(result, MIaSResult)
+
+        if result.relevant:
+            score = float("inf")
+        elif result.relevant is False:
+            score = float("-inf")
+        else:
+            score = 0.0
+        assert isinstance(score, float)
+
+        return score
 
 
 class Query(object):
@@ -483,7 +507,7 @@ class MIaSResult(Result):
         return isinstance(other, MIaSResult) and self.aggregate_score() > other.aggregate_score()
 
     aggregations = set(
-        [MIaSScore()] + [ArithmeticMean(alpha) for alpha in linspace(0, 1, 101)] +
+        [MIaSScore(), PerfectScore()] + [ArithmeticMean(alpha) for alpha in linspace(0, 1, 101)] +
         [GeometricMean(alpha) for alpha in linspace(0, 1, 101)] +
         [HarmonicMean(alpha) for alpha in linspace(0, 1, 101)])
 

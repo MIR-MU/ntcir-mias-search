@@ -93,14 +93,16 @@ Querying a local WebMIaS instance using 64 worker processes:
     $ ntcir-mias-search --num-workers-querying 8 --num-workers-merging 56 \
     >     --dataset ntcir-11-12 \
     >     --topics NTCIR11-Math2-queries-participants.xml \
+    >     --judgements NTCIR11_Math-qrels.dat \
     >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
     >     --webmias-url http://localhost:58080/WebMIaS --webmias-index-number 1 \
     >     --output-directory search_results
+    Reading relevance judgements from NTCIR11_Math-qrels.dat
     Reading topics from NTCIR11-Math2-queries-participants.xml
     50 topics (NTCIR11-Math-1, NTCIR11-Math-2, ...) contain 55 formulae, and 113 keywords
     Establishing connection with a WebMIaS Java Servlet at http://localhost:58080/WebMIaS
-    Unpickling positions.pkl.gz
-    Unpickling estimates.pkl.gz
+    Reading paragraph position estimates from positions.pkl.gz
+    Reading density, and probability estimates from estimates.pkl.gz
     Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking and merging results
     Using 304 strategies to aggregate MIaS scores with probability estimates:
     - Log10 of the weighted arithmetic mean (alpha = 0.00) (look for 'arith0.00' in filenames)
@@ -163,14 +165,16 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     $ ntcir-mias-search --num-workers-querying 8 --num-workers-merging 56 \
     >     --dataset ntcir-11-12 \
     >     --topics NTCIR11-Math2-queries-participants.xml \
+    >     --judgements NTCIR11_Math-qrels.dat \
     >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
     >     --webmias-url https://mir.fi.muni.cz/webmias-demo --webmias-index-number 0 \
     >     --output-directory search_results
+    Reading relevance judgements from NTCIR11_Math-qrels.dat
     Reading topics from NTCIR11-Math2-queries-participants.xml
     50 topics (NTCIR11-Math-1, NTCIR11-Math-2, ...) contain 55 formulae, and 113 keywords
     Establishing connection with a WebMIaS Java Servlet at https://mir.fi.muni.cz/webmias-demo
-    Unpickling positions.pkl.gz
-    Unpickling estimates.pkl.gz
+    Reading paragraph position estimates from positions.pkl.gz
+    Reading density, and probability estimates from estimates.pkl.gz
     Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking and merging results
     Using 304 strategies to aggregate MIaS scores with probability estimates:
     - Log10 of the weighted arithmetic mean (alpha = 0.00) (look for 'arith0.00' in filenames)

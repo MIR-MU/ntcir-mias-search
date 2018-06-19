@@ -199,6 +199,8 @@ class Topic(object):
     keywords : iterable of str
         One or more keywords from the topic as specified in the
         {http://ntcir-math.nii.ac.jp/}keyword elements.
+    judgements : dict of (str, bool)
+        A map paragraph identifiers, and relevance judgements.
 
     Attributes
     ----------
@@ -210,8 +212,10 @@ class Topic(object):
     keywords : iterable of str
         One or more keywords from the topic as specified in the
         {http://ntcir-math.nii.ac.jp/}keyword elements.
+    judgements : dict of (str, bool)
+        A map paragraph identifiers, and relevance judgements.
     """
-    def __init__(self, name, formulae, keywords):
+    def __init__(self, name, formulae, keywords, judgements):
         assert isinstance(name, str)
         for formula in formulae:
             assert isinstance(formula, Formula)
@@ -221,9 +225,10 @@ class Topic(object):
         self.name = name
         self.formulae = formulae
         self.keywords = keywords
+        self.judgements = judgements
 
     @staticmethod
-    def from_element(topic_tree):
+    def from_element(topic_tree, judgements):
         """
         Extracts a topic from a {http://ntcir-math.nii.ac.jp/}topic XML element.
 
@@ -231,6 +236,9 @@ class Topic(object):
         ----------
         topic_tree : _Element
             A {http://ntcir-math.nii.ac.jp/}topic XML element.
+        judgements : dict of (str, dict of (str, bool))
+            A map between NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR judgement identifiers,
+            paragraph identifiers, and relevance judgements.
 
         Returns
         -------
@@ -242,6 +250,8 @@ class Topic(object):
         names = topic_tree.xpath("ntcir:num/text()", namespaces=NAMESPACES)
         assert len(names) == 1
         name = names[0]
+        assert isinstance(name, str)
+        assert name in judgements
 
         formulae = [
             Formula.from_element(formula_tree)
@@ -251,9 +261,9 @@ class Topic(object):
         keywords = topic_tree.xpath(".//ntcir:keyword/text()", namespaces=NAMESPACES)
         assert len(keywords) > 0
 
-        return Topic(name, formulae, keywords)
+        return Topic(name, formulae, keywords, judgements[name])
 
-    def from_file(input_file):
+    def from_file(input_file, judgements):
         """
         Reads topics in the NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR format from an XML
         file.
@@ -266,6 +276,9 @@ class Topic(object):
         ----------
         input_file : file
             An input XML file containing topics.
+        judgements : dict of (str, dict of (str, bool))
+            A map between NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR judgement identifiers,
+            paragraph identifiers, and relevance judgements.
 
         Yields
         ------
@@ -274,7 +287,7 @@ class Topic(object):
         """
         input_tree = etree.parse(input_file)
         for topic_tree in input_tree.xpath(".//ntcir:topic", namespaces=NAMESPACES):
-            yield Topic.from_element(topic_tree)
+            yield Topic.from_element(topic_tree, judgements)
 
         def __repr__(self):
             return "%s(%s)" % (self.__class__.__name__, self.name)

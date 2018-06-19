@@ -388,8 +388,10 @@ class MIaSResult(Result):
         The estimated position of the paragraph in the original document.
     p_relevant : float
         The estimated probability of relevance of the paragraph in the result.
+    relevant : bool or None
+        Whether the result is considered relevant according to relevance judgements.
     """
-    def __init__(self, query, identifier, score, position, p_relevant):
+    def __init__(self, query, identifier, score, position, p_relevant, relevant):
         assert isinstance(query, Query)
         assert isinstance(identifier, str)
         assert isinstance(score, float)
@@ -398,12 +400,14 @@ class MIaSResult(Result):
         assert position >= 0.0 and position < 1.0
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
+        assert isinstance(relevant, bool) or relevant is None
 
         self.query = query
         self.identifier = identifier
         self.score = score
         self.position = position
         self.p_relevant = p_relevant
+        self.relevant = relevant
         self._aggregate_scores = dict()
 
     @staticmethod
@@ -454,7 +458,13 @@ class MIaSResult(Result):
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        return MIaSResult(query, identifier, score, position, p_relevant)
+        if identifier in query.topic.judgements:
+            relevant = query.topic.judgements[identifier]
+            assert isinstance(relevant, bool)
+        else:
+            relevant = None  # No relevance judgement as opposed to positive / negative judgement
+
+        return MIaSResult(query, identifier, score, position, p_relevant, relevant)
 
     def aggregate_score(self):
         """
@@ -485,8 +495,8 @@ class MIaSResult(Result):
         self._aggregate_scores = dict()
 
     def __str__(self):
-        return "%0.4f\t%0.4f\t%0.4f" % (
-            self.aggregate_score(), self.position, self.p_relevant)
+        return "%0.4f\t%0.4f\t%0.4f\t%s" % (
+            self.aggregate_score(), self.position, self.p_relevant, self.relevant)
 
     def __repr__(self):
         return "%s(%s, %f, %f)" % (
@@ -528,4 +538,4 @@ class ArtificialResult(Result):
         self.identifier, self._aggregate_score = state
 
     def __str__(self):
-        return "%0.4f\tUNKNOWN\tUNKNOWN" % self._aggregate_score
+        return "%0.4f\tUNKNOWN\tUNKNOWN\t%s" % (self._aggregate_score, False)

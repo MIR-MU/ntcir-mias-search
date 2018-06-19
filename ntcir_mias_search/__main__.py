@@ -3,17 +3,16 @@ This is the command-line interface for the NTCIR MIaS Search package.
 """
 
 from argparse import ArgumentParser
-import gzip
 import logging
 from logging import getLogger
 from pathlib import Path
-import pickle
 from sys import stdout
 from urllib.parse import urlparse
 
 import numpy  # noqa:F401 Required to unpickle positions.pkl.gz
 
 from .facade import get_topics, get_webmias, query_webmias, rerank_and_merge_results
+from .util import get_judgements, get_positions, get_estimates
 
 
 LOG_PATH = Path("__main__.log")
@@ -66,6 +65,10 @@ def main():
             stored by the NTCIR Math Density Estimator package.
         """)
     parser.add_argument(
+        "--judgements", type=Path, required=True, help="""
+            The path to the file containing relevance judgements for our dataset.
+        """)
+    parser.add_argument(
         "--webmias-url", type=urlparse, required=True, help="""
             The URL at which a WebMIaS Java Servlet has been deployed.
         """)
@@ -97,12 +100,19 @@ def main():
         "The file %s with positions does not exist" % args.positions
     assert args.estimates.exists() or args.estimates.is_file(), \
         "The file %s with estimates does not exist" % args.estimates
+    assert args.judgements.exists() or args.judgements.is_file(), \
+        "The file %s with relevance judgements does not exist" % args.judgements
     assert args.output_directory.exists() and args.output_directory.is_dir(), \
         "Directory %s, where the output files are to be stored, does not exist" % \
         args.output_directory
     assert args.webmias_index_number >= 0
     assert args.num_workers_querying > 0
     assert args.num_workers_merging > 0
+
+    LOGGER.info("Reading relevance judgements from %s", args.judgements.name)
+    with args.judgements.open("rt") as f:
+        judgements = get_judgements(f)
+        assert judgements
 
     LOGGER.info("Reading topics from %s", args.topics.name)
     topics = get_topics(args.topics)
@@ -116,17 +126,27 @@ def main():
         "Establishing connection with a WebMIaS Java Servlet at %s", args.webmias_url.geturl())
     webmias = get_webmias(args.webmias_url, args.webmias_index_number)
 
-    LOGGER.info("Unpickling %s", args.positions.name)
-    with gzip.open(args.positions.open("rb"), "rb") as f:
-        positions = pickle.load(f)[args.dataset]
+    LOGGER.info("Reading paragraph position estimates from %s", args.positions.name)
+    with args.positions.open("rb") as f:
+        positions_all = get_positions(f)
+    assert args.dataset in positions_all
+    positions = positions_all[args.dataset]
+    assert positions
+    identifiers = positions.keys()
 
-    LOGGER.info("Unpickling %s", args.estimates.name)
-    with gzip.open(args.estimates.open("rb"), "rb") as f:
-        estimates = pickle.load(f)[-1]
+    LOGGER.info("Reading density, and probability estimates from %s", args.estimates.name)
+    with args.estimates.open("rb") as f:
+        estimates_all = get_estimates(f)
+    assert len(estimates_all) == 6
+    estimates = estimates_all[-1]
+    assert(estimates)
+
+    LOGGER.info(
+        "%d / %d / %d relevant / judged / total identifiers",
+        sum(judgements.values()), len(judgements), len(identifiers))
 
     LOGGER.info("Querying %s, reranking and merging results", webmias)
     results = query_webmias(topics, webmias, positions, estimates, args.num_workers_querying)
-    identifiers = positions.keys()
     final_results = rerank_and_merge_results(
         results, identifiers, args.output_directory, args.num_workers_merging)
     for _ in final_results:

@@ -388,6 +388,7 @@ class Result(object):
         assert isinstance(query, Query)
         assert isinstance(identifier, str)
         assert isinstance(score, float)
+        assert score >= 0.0
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
@@ -434,6 +435,7 @@ class Result(object):
         score_match = re.match(r"\s*score\s*=\s*([-0-9.]*)", score_tree.text)
         assert score_match
         score = float(score_match.group(1))
+        assert score >= 0.0
 
         assert identifier in positions
         position = positions[identifier]

@@ -3,8 +3,9 @@ The NTCIR MIaS Search package implements the Math Information Retrieval system
 that won the NTCIR-11 Math-2 main task (Růžička et al., 2014).
 """
 
-from .abstract import NamedEntity, Singleton, MathFormat, Result  # noqa:F401
+from .abstract import NamedEntity, Singleton, MathFormat, Result, EvaluationStrategy  # noqa:F401
 from .abstract import QueryExpansionStrategy, ScoreAggregationStrategy  # noqa:F401
+from .eval import ResultList, Bpref  # noqa:F401
 from .facade import get_topics, get_webmias, query_webmias, rerank_and_merge_results  # noqa:F401
 from .query import LeaveRightmostOut  # noqa:F401
 from .query import MIaSScore, ArithmeticMean, GeometricMean, HarmonicMean, PerfectScore  # noqa:F401

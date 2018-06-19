@@ -150,8 +150,12 @@ def main():
         topics, webmias, positions, estimates, args.output_directory, args.num_workers_querying)
     final_results = rerank_and_merge_results(
         results, identifiers, args.output_directory, args.num_workers_merging)
-    for _ in final_results:
-        pass
+
+    LOGGER.info("Evaluation results:")
+    for aggregation, math_format, result_list in sorted(final_results, key=lambda x: x[2]):
+        LOGGER.info(
+            "- %s, %s: %0.4f", aggregation.identifier, math_format.identifier,
+            result_list.evaluate())
 
 
 if __name__ == "__main__":

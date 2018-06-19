@@ -10,6 +10,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
+from .eval import ResultList
 from .query import MIaSResult, ArtificialResult, ExecutedQuery, ExecutedProcessedQuery
 from .topic import Topic, Formula
 from .util import write_tsv
@@ -147,10 +148,9 @@ def rerank_and_merge_results(
 
     Yields
     ------
-    (ScoreAggregationStrategy, MathFormat), sequence of (Topic, sequence of Result)
+    (ScoreAggregationStrategy, MathFormat, ResultList)
         A score aggregation strategy that was used to rerank the results, a format in which the
-        mathematical formulae were represented in a query, and topics, each with a sequence of
-        final results.
+        mathematical formulae were represented in a query, and a final result list.
     """
     assert isinstance(identifiers, (set, KeysView))
     assert output_directory is None or isinstance(output_directory, Path)
@@ -200,7 +200,8 @@ def rerank_and_merge_results(
             with (output_directory / Path(PATH_FINAL_RESULT % (
                     math_format.identifier, aggregation.identifier))).open("wt") as f:
                 write_tsv(f, topics_and_results)
-        yield ((aggregation, math_format), topics_and_results)
+        for topic, result in topics_and_results:
+            yield (aggregation, math_format, ResultList(topic, result))
 
 
 def get_topics(input_file):

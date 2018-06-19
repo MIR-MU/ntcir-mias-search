@@ -142,3 +142,25 @@ class Result(object):
             The aggregate score.
         """
         pass
+
+
+class EvaluationStrategy(NamedEntity):
+    """
+    This class represents a strategy for evaluating result lists using relevance judgements.
+    """
+    @abstractmethod
+    def evaluate(self):
+        """
+        Evaluates a result list.
+
+        Parameters
+        ----------
+        results : ResultList
+            A result list to be evaluated.
+
+        Returns
+        -------
+        float
+            The evaluation result.
+        """
+        pass

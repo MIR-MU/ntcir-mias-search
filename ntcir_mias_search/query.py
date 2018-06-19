@@ -11,7 +11,8 @@ from lxml import etree
 from numpy import linspace
 from lxml.etree import _Element, XMLParser
 
-from .abstract import QueryExpansionStrategy, ScoreAggregationStrategy, MathFormat, Singleton
+from .abstract import QueryExpansionStrategy, ScoreAggregationStrategy, MathFormat, Result
+from .abstract import Singleton
 from .util import write_tsv
 from .webmias import WebMIaSIndex
 
@@ -53,7 +54,7 @@ class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
         self.description = "The original MIaS score with the probability estimate discarded"
 
     def aggregate_score(self, result):
-        assert isinstance(result, Result)
+        assert isinstance(result, MIaSResult)
 
         score = result.score
         assert isinstance(score, float)
@@ -87,7 +88,7 @@ class ArithmeticMean(ScoreAggregationStrategy):
         self.alpha = alpha
 
     def aggregate_score(self, result):
-        assert isinstance(result, Result)
+        assert isinstance(result, MIaSResult)
 
         score = result.score
         assert isinstance(score, float)
@@ -125,7 +126,7 @@ class GeometricMean(ScoreAggregationStrategy):
         self.alpha = alpha
 
     def aggregate_score(self, result):
-        assert isinstance(result, Result)
+        assert isinstance(result, MIaSResult)
 
         score = result.score
         assert isinstance(score, float)
@@ -163,7 +164,7 @@ class HarmonicMean(ScoreAggregationStrategy):
         self.alpha = alpha
 
     def aggregate_score(self, result):
-        assert isinstance(result, Result)
+        assert isinstance(result, MIaSResult)
 
         score = result.score
         assert isinstance(score, float)
@@ -216,7 +217,7 @@ class Query(object):
         each time the query gets its turn.
     response_text : str
         The text of the XML response.
-    results : iterable of Result
+    results : iterable of MIaSResult
         The query results. After the Query object has been constructed, this iterable will be empty.
         Use the finalize method to obtain the results.
     """
@@ -265,7 +266,7 @@ class Query(object):
         parser = XMLParser(encoding="utf-8", recover=True)
 
         self.results = [
-            Result.from_element(
+            MIaSResult.from_element(
                 self, etree.fromstring(result, parser=parser), positions, estimates)
             for result in self._results]
         del self._results
@@ -358,9 +359,9 @@ class Query(object):
             write_tsv(f, [(self.topic, self.results)])
 
 
-class Result(object):
+class MIaSResult(Result):
     """
-    This class represents the result of a query.
+    This class represents an actual result of a query to a WebMIaS Java Servlet.
 
     Parameters
     ----------
@@ -424,7 +425,7 @@ class Result(object):
 
         Returns
         -------
-        Result
+        MIaSResult
             The extracted result.
         """
         assert isinstance(query, Query)
@@ -453,7 +454,7 @@ class Result(object):
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        return Result(query, identifier, score, position, p_relevant)
+        return MIaSResult(query, identifier, score, position, p_relevant)
 
     def aggregate_score(self):
         """
@@ -469,7 +470,7 @@ class Result(object):
         return aggregate_score
 
     def __lt__(self, other):
-        return isinstance(other, Result) and self.aggregate_score() > other.aggregate_score()
+        return isinstance(other, MIaSResult) and self.aggregate_score() > other.aggregate_score()
 
     aggregations = set(
         [MIaSScore()] + [ArithmeticMean(alpha) for alpha in linspace(0, 1, 101)] +
@@ -485,7 +486,7 @@ class Result(object):
 
     def __str__(self):
         return "%0.4f\t%0.4f\t%0.4f" % (
-            result.aggregate_score(), result.position, result.p_relevant)
+            self.aggregate_score(), self.position, self.p_relevant)
 
     def __repr__(self):
         return "%s(%s, %f, %f)" % (
@@ -525,3 +526,6 @@ class ArtificialResult(Result):
 
     def __setstate__(self, state):
         self.identifier, self._aggregate_score = state
+
+    def __str__(self):
+        return "%0.4f\tUNKNOWN\tUNKNOWN" % self._aggregate_score

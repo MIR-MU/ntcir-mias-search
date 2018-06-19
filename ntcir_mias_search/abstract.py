@@ -109,12 +109,36 @@ class ScoreAggregationStrategy(NamedEntity):
 
         Parameters
         ----------
-        result : Result
+        result : MIaSResult
             A result.
 
         Returns
         -------
         float
             The aggregate score of the result.
+        """
+        pass
+
+
+class Result(object):
+    """
+    This class represents the result of a query.
+
+    Attributes
+    ----------
+    identifier : str
+        The identifier of the paragraph in the result.
+    """
+    @abstractmethod
+    def aggregate_score(self):
+        """
+        Aggregates the MIaS score of the result, and the estimated probability of relevance of the
+        paragraph in the result using the aggregation strategy of the query that produced this
+        result.
+
+        Returns
+        -------
+        float
+            The aggregate score.
         """
         pass

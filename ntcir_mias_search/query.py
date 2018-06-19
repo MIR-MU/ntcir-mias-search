@@ -370,6 +370,8 @@ class Result(object):
         The identifier of the paragraph in the result.
     score : float
         The score of the result.
+    position : float
+        The estimated position of the paragraph in the original document.
     p_relevant : float
         The estimated probability of relevance of the paragraph in the result.
 
@@ -381,20 +383,25 @@ class Result(object):
         The identifier of the paragraph in the result.
     score : float
         The MIaS score of the result.
+    position : float
+        The estimated position of the paragraph in the original document.
     p_relevant : float
         The estimated probability of relevance of the paragraph in the result.
     """
-    def __init__(self, query, identifier, score, p_relevant):
+    def __init__(self, query, identifier, score, position, p_relevant):
         assert isinstance(query, Query)
         assert isinstance(identifier, str)
         assert isinstance(score, float)
         assert score >= 0.0
+        assert isinstance(position, float)
+        assert position >= 0.0 and position < 1.0
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
         self.query = query
         self.identifier = identifier
         self.score = score
+        self.position = position
         self.p_relevant = p_relevant
         self._aggregate_scores = dict()
 
@@ -446,7 +453,7 @@ class Result(object):
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        return Result(query, identifier, score, p_relevant)
+        return Result(query, identifier, score, position, p_relevant)
 
     def aggregate_score(self):
         """
@@ -475,6 +482,10 @@ class Result(object):
     def __setstate__(self, state):
         self.query, self.identifier, self.score, self.p_relevant = state
         self._aggregate_scores = dict()
+
+    def __str__(self):
+        return "%0.4f\t%0.4f\t%0.4f" % (
+            result.aggregate_score(), result.position, result.p_relevant)
 
     def __repr__(self):
         return "%s(%s, %f, %f)" % (

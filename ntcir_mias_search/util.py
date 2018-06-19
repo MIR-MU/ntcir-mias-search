@@ -30,8 +30,9 @@ def remove_namespaces(tree):
 def write_tsv(output_file, topics_and_results):
     """
     Produces a tab-separated-value (TSV) file, each line containing a topic identifier, a reserved
-    value, an identifier of a paragraph in a result, the rank of the result, and the score of the
-    result.
+    value, an identifier of a paragraph in a result, the rank of the result, the score of the
+    result, the estimated position of the paragraph in the original document, and the estimated
+    probability of relevance of the result.
 
     Parameters
     ----------
@@ -42,5 +43,5 @@ def write_tsv(output_file, topics_and_results):
     """
     for topic, results in topics_and_results:
         for rank, result in enumerate(results):
-            output_file.write("%s\tRESERVED\t%s\t%d\t%f\n" % (
-                topic.name, result.identifier, rank + 1, result.aggregate_score()))
+            output_file.write("%s\tRESERVED\t%s\t%d\t%s\n" % (
+                topic.name, result.identifier, rank + 1, result))

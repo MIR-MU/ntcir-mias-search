@@ -42,26 +42,24 @@ class WebMIaSIndex(object):
         self.url = url
         self.index_number = index_number
 
-    def query(self, payload):
+    def query(self, query):
         """
-        Queries the WebMIaS index and returns the response XML document.
+        Queries the WebMIaS index and returns a response XML document.
 
         Parameters
         ----------
-        payload : str
-            The text content of the query.
+        query : Query
+            The query.
 
         Return
         ------
         _Element
             The response XML document.
         """
-        assert isinstance(payload, str)
-
         response = requests.post("%s/ws/search" % self.url.geturl(), data={
             "limit": TARGET_NUMBER_OF_RESULTS,
             "index": self.index_number,
-            "query": payload,
+            "query": query.payload,
         })
         parser = XMLParser(encoding="utf-8", recover=True)
         response_element = etree.fromstring(response.content, parser=parser)

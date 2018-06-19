@@ -13,7 +13,6 @@ from lxml.etree import _Element, Element, QName
 from .abstract import MathFormat
 from .query import Query
 from .util import remove_namespaces
-from .webmias import WebMIaSIndex
 
 
 LOGGER = getLogger(__name__)
@@ -298,7 +297,7 @@ class Topic(object):
         def __eq__(self, other):
             return isinstance(other, Topic) and self.name == other.name
 
-    def query(self, math_format, webmias):
+    def get_queries(self, math_format):
         """
         Produces queries from the topic, queries a WebMIaS index, and returns the queries along with
         the XML responses, and query results.
@@ -307,9 +306,6 @@ class Topic(object):
         ----------
         math_format : MathFormat
             The format in which the mathematical formulae will be represented in a query.
-        webmias : WebMIaSIndex
-            The index of a deployed WebMIaS Java Servlet that will be queried to retrieve the query
-            results.
 
         Yields
         ------
@@ -317,9 +313,8 @@ class Topic(object):
             An unfinalized query along with the XML responses, and query results.
         """
         assert isinstance(math_format, MathFormat)
-        assert isinstance(webmias, WebMIaSIndex)
 
-        for query in Query.from_topic(self, math_format, webmias):
+        for query in Query.from_topic(self, math_format):
             yield query
 
     def __hash__(self):

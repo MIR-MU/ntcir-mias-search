@@ -146,7 +146,8 @@ def main():
         sum(judgements.values()), len(judgements), len(identifiers))
 
     LOGGER.info("Querying %s, reranking and merging results", webmias)
-    results = query_webmias(topics, webmias, positions, estimates, args.num_workers_querying)
+    results = query_webmias(
+        topics, webmias, positions, estimates, args.output_directory, args.num_workers_querying)
     final_results = rerank_and_merge_results(
         results, identifiers, args.output_directory, args.num_workers_merging)
     for _ in final_results:

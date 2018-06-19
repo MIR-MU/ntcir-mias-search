@@ -21,6 +21,7 @@ LOGGER = getLogger(__name__)
 PATH_QUERY = "%s_%s.%d.query.txt"
 PATH_RESPONSE = "%s_%s.%d.response.xml"
 PATH_RESULT = "%s_%s.%d.results.%s.tsv"
+XPATH_RESULT = ".//result"
 
 
 class LeaveRightmostOut(QueryExpansionStrategy):
@@ -203,7 +204,7 @@ class PerfectScore(ScoreAggregationStrategy, metaclass=Singleton):
 class Query(object):
     """
     This class represents a query extracted from a NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12
-    MathIR topic along with the query results.
+    MathIR topic.
 
     Parameters
     ----------
@@ -211,9 +212,6 @@ class Query(object):
         The topic that will serve as the source of the query.
     math_format : MathFormat
         The format in which the mathematical formulae are represented in the query.
-    webmias : WebMIaSIndex
-        The index of a deployed WebMIaS Java Servlet. The index will be immediately queried to
-        retrieve the query results.
     payload : str
         The text content of the query.
     query_number : int
@@ -224,10 +222,6 @@ class Query(object):
 
     Attributes
     ----------
-    aggregation : ScoreAggregationStrategy
-        The score aggregation strategy that will be used to compute the aggregate score of the query
-        results. By default, this corresponds to MIaSScore, i.e. no score aggregation will be
-        performed. Change this attribute by using the use_aggregation context manager method.
     topic : Topic
         The topic that served as the source of the query.
     payload : str
@@ -245,55 +239,171 @@ class Query(object):
         The query results. After the Query object has been constructed, this iterable will be empty.
         Use the finalize method to obtain the results.
     """
-    def __init__(self, topic, math_format, webmias, payload, query_number, stripe_width):
+    def __init__(self, topic, math_format, payload, query_number, stripe_width):
         assert isinstance(math_format, MathFormat)
-        assert isinstance(webmias, WebMIaSIndex)
         assert isinstance(payload, str)
         assert isinstance(query_number, int)
         assert query_number > 0
         assert isinstance(stripe_width, int)
         assert stripe_width > 0
 
-        response = webmias.query(payload)
-        assert isinstance(response, _Element)
-        response_text = etree.tostring(response, pretty_print=True).decode("utf-8")
-        assert isinstance(response_text, str)
-        results = [
-            etree.tostring(result_tree).decode("utf-8")
-            for result_tree in response.xpath(".//result")]
-
-        self.aggregation = MIaSScore()
         self.topic = topic
         self.math_format = math_format
         self.payload = payload
         self.query_number = query_number
         self.stripe_width = stripe_width
-        self.response_text = response_text
-        self._results = results
-        self.results = []
 
-    def finalize(self, positions, estimates):
+    query_expansions = set((LeaveRightmostOut(), ))
+
+    @staticmethod
+    def from_topic(topic, math_format, query_expansion=LeaveRightmostOut()):
         """
-        Uses information recorded by the Query object constructor to construct the query results.
+        Produces queries from a NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic.
 
         Parameters
         ----------
-        positions : dict of (str, float)
-            A map from paragraph identifiers to estimated positions of paragraphs in their parent
-            documents. The positions are in the range [0; 1].
-        estimates : sequence of float
-            Estimates of P(relevant | position) in the form of a histogram.
+        topic : Topic
+            A topic that will serve as the source of the queries.
+        math_format : MathFormat
+            The format in which the mathematical formulae will be represented in a query.
+        query_expansion : QueryExpansionStrategy
+            A query expansion strategy that produces triples of formulae, keywords, and stripe
+            widths.
+
+        Yield
+        -----
+        Query
+            A query produced from the topic.
         """
-        assert "_results" in self.__dict__
-        assert not self.results
+        assert isinstance(math_format, MathFormat)
+        assert isinstance(query_expansion, QueryExpansionStrategy)
 
-        parser = XMLParser(encoding="utf-8", recover=True)
+        for query_number, (formulae, keywords, stripe_width) in \
+                enumerate(query_expansion.produce_queries(topic)):
+            for keyword in keywords:
+                assert isinstance(keyword, str)
+            assert stripe_width > 0
 
-        self.results = [
-            MIaSResult.from_element(
-                self, etree.fromstring(result, parser=parser), positions, estimates)
-            for result in self._results]
-        del self._results
+            payload_formulae = ' '.join(math_format.encode(formula) for formula in formulae)
+            payload_keywords = ' '.join('"%s"' % keyword for keyword in keywords)
+            payload = "%s %s" % (payload_keywords, payload_formulae)
+
+            yield Query(topic, math_format, payload, query_number + 1, stripe_width)
+
+    def save(self, output_directory):
+        """
+        Stores the text content of the query.
+
+        Parameters
+        ----------
+        output_directory : Path
+            The path to the directory, where the output files will be stored.
+        """
+        assert isinstance(output_directory, Path)
+
+        with (output_directory / Path(PATH_QUERY % (
+                self.topic.name, self.math_format.identifier, self.query_number))).open("wt") as f:
+            f.write(self.payload)
+
+
+class ExecutedQuery(object):
+    """
+    This class represents a query after it has been executed.
+
+    Parameters
+    ----------
+    query : Query
+        The query that has been executed.
+    response_text : str
+        The text of the WebMIaS response.
+
+    Attributes
+    ----------
+    query : Query
+        The query that has been executed.
+    response_text : str
+        The text of the WebMIaS response.
+    """
+    def __init__(self, query, response_text):
+        assert isinstance(query, Query)
+        assert isinstance(response_text, str)
+        assert response_text
+
+        self.query = query
+        self.response_text = response_text
+
+    @staticmethod
+    def from_webmias(query, webmias):
+        """
+        Retrieves a query response from a deployed WebMIaS Java Servlet.
+
+        Parameters
+        ----------
+        query : Query
+            That query that will be executed.
+        webmias : WebMIaSIndex
+            The index of a deployed WebMIaS Java Servlet.
+
+        Returns
+        -------
+        ExecutedQuery
+            The executed query with the WebMIaS response.
+        """
+        assert isinstance(query, Query)
+        assert isinstance(webmias, WebMIaSIndex)
+
+        response = webmias.query(query)
+        assert isinstance(response, _Element)
+        response_text = etree.tostring(response, pretty_print=True).decode("utf-8")
+        assert isinstance(response_text, str)
+
+        return ExecutedQuery(query, response_text)
+
+    def save(self, output_directory):
+        """
+        Stores the WebMIaS response to the query.
+
+        Parameters
+        ----------
+        output_directory : Path
+            The path to the directory, where the output files will be stored.
+        """
+        assert isinstance(output_directory, Path)
+
+        with (output_directory / Path(PATH_RESPONSE % (
+                self.query.topic.name, self.query.math_format.identifier,
+                self.query.query_number))).open("wt") as f:
+            f.write(self.response_text)
+
+
+class ExecutedProcessedQuery(object):
+    """
+    This class represents a query after it has been executed, and the query results processed.
+
+    Parameters
+    ----------
+    executed_query : ExecutedQuery
+        The executed query whose results have been processed.
+    results : iterable of MIaSResult
+        The query results.
+
+    Attributes
+    ----------
+    aggregation : ScoreAggregationStrategy
+        The score aggregation strategy that will be used to compute the aggregate score of the query
+        results. By default, this corresponds to MIaSScore, i.e. no score aggregation will be
+        performed. Change this attribute by using the use_aggregation context manager method.
+    executed_query : ExecutedQuery
+        The executed query whose results have been processed.
+    results : sequence of MIaSResult
+        The query results.
+    """
+    def __init__(self, executed_query, results):
+        assert isinstance(executed_query, ExecutedQuery)
+
+        self.aggregation = MIaSScore()
+        self.executed_query = executed_query
+        self.results = list(results)
 
     @contextmanager
     def use_aggregation(self, aggregation):
@@ -318,51 +428,39 @@ class Query(object):
         self.aggregation = original_aggregation
         self.results = original_results
 
-    query_expansions = set((LeaveRightmostOut(), ))
-
     @staticmethod
-    def from_topic(topic, math_format, webmias, query_expansion=LeaveRightmostOut()):
+    def from_elements(executed_query, positions, estimates):
         """
-        Produces queries from a NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR topic.
+        Constructs results from XML elements in a WebMIaS response.
 
         Parameters
         ----------
-        topic : Topic
-            A topic that will serve as the source of the queries.
-        math_format : MathFormat
-            The format in which the mathematical formulae will be represented in a query.
-        webmias : WebMIaSIndex
-            The index of a deployed WebMIaS Java Servlet. The index will be immediately queried to
-            retrieve the query results.
-        query_expansion : QueryExpansionStrategy
-            A query expansion strategy that produces triples of formulae, keywords, and stripe
-            widths.
+        executed_query : ExecutedQuery
+            The executed query with the WebMIaS response.
+        positions : dict of (string, double)
+            A map from paragraph identifiers to estimated positions of paragraphs in their parent
+            documents. The positions are in the range [0; 1].
+        estimates : sequence of double
+            Estimates of P(relevant | position) in the form of a histogram.
 
-        Yield
-        -----
-        Query
-            A query produced from the topic.
+        Returns
+        -------
+        ExecutedProcessedQuery
+            An executed query with processed results.
         """
-        assert isinstance(math_format, MathFormat)
-        assert isinstance(query_expansion, QueryExpansionStrategy)
-        assert isinstance(webmias, WebMIaSIndex)
+        assert isinstance(executed_query, ExecutedQuery)
 
-        for query_number, (formulae, keywords, stripe_width) in \
-                enumerate(query_expansion.produce_queries(topic)):
-            for keyword in keywords:
-                assert isinstance(keyword, str)
-            assert stripe_width > 0
+        parser = XMLParser(encoding="utf-8", recover=True)
+        response = etree.fromstring(executed_query.response_text, parser=parser)
+        results = (
+            MIaSResult.from_element(result, positions, estimates)
+            for result in response.xpath(XPATH_RESULT))
 
-            payload_formulae = ' '.join(math_format.encode(formula) for formula in formulae)
-            payload_keywords = ' '.join('"%s"' % keyword for keyword in keywords)
-            payload = "%s %s" % (payload_keywords, payload_formulae)
-
-            yield Query(topic, math_format, webmias, payload, query_number + 1, stripe_width)
+        return ExecutedProcessedQuery(executed_query, results)
 
     def save(self, output_directory):
         """
-        Stores the text content of the query, the XML document with the response, and the results as
-        files.
+        Stores the query results as files.
 
         Parameters
         ----------
@@ -371,16 +469,12 @@ class Query(object):
         """
         assert isinstance(output_directory, Path)
 
-        with (output_directory / Path(PATH_QUERY % (
-                self.topic.name, self.math_format.identifier, self.query_number))).open("wt") as f:
-            f.write(self.payload)
-        with (output_directory / Path(PATH_RESPONSE % (
-                self.topic.name, self.math_format.identifier, self.query_number))).open("wt") as f:
-            f.write(self.response_text)
         with (output_directory / Path(PATH_RESULT % (
-                self.topic.name, self.math_format.identifier, self.query_number,
+                self.executed_query.query.topic.name,
+                self.executed_query.query.math_format.identifier,
+                self.executed_query.query.query_number,
                 self.aggregation.identifier))).open("wt") as f:
-            write_tsv(f, [(self.topic, self.results)])
+            write_tsv(f, [(self.executed_query.query.topic, self.results)])
 
 
 class MIaSResult(Result):
@@ -437,7 +531,7 @@ class MIaSResult(Result):
     @staticmethod
     def from_element(query, result_tree, positions, estimates):
         """
-        Extracts a result from a result XML element in a WebMIaS response.
+        Constructs a result from a XML element in a WebMIaS response.
 
         Parameters
         ----------

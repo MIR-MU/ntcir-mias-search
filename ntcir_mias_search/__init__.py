@@ -8,7 +8,8 @@ from .abstract import QueryExpansionStrategy, ScoreAggregationStrategy  # noqa:F
 from .facade import get_topics, get_webmias, query_webmias, rerank_and_merge_results  # noqa:F401
 from .query import LeaveRightmostOut  # noqa:F401
 from .query import MIaSScore, ArithmeticMean, GeometricMean, HarmonicMean, PerfectScore  # noqa:F401
-from .query import Query, MIaSResult, ArtificialResult  # noqa:F401
+from .query import MIaSResult, ArtificialResult  # noqa:F401
+from .query import Query, ExecutedQuery, ExecutedProcessedQuery  # noqa:F401
 from .topic import Topic, Formula, TeX, PMath, CMath, PCMath  # noqa:F401
 from .util import remove_namespaces, write_tsv  # noqa:F401
 from .util import get_judgements, get_positions, get_estimates  # noqa:F401

@@ -10,7 +10,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-from .query import MIaSResult, ArtificialResult
+from .query import MIaSResult, ArtificialResult, ExecutedQuery, ExecutedProcessedQuery
 from .topic import Topic, Formula
 from .util import write_tsv
 from .webmias import WebMIaSIndex, TARGET_NUMBER_OF_RESULTS
@@ -21,12 +21,16 @@ PATH_FINAL_RESULT = "final_%s.%s.tsv"
 
 
 def _query_webmias_helper(args):
-    topic, math_format, webmias = args
-    queries = list(topic.query(math_format, webmias))
-    return (math_format, topic, queries)
+    topic, math_format, webmias, output_directory = args
+    executed_queries = []
+    for query in topic.get_queries(math_format):
+        if output_directory:
+            query.save(output_directory)
+        executed_queries.append(ExecutedQuery.from_webmias(query, webmias))
+    return (math_format, topic, executed_queries)
 
 
-def query_webmias(topics, webmias, positions, estimates, num_workers=1):
+def query_webmias(topics, webmias, positions, estimates, output_directory=None, num_workers=1):
     """
     Produces queries from topics, queries a WebMIaS index, and returns the queries along with the
     XML responses, and query results. As a side effect, all queries, XML responses, and results will
@@ -44,12 +48,15 @@ def query_webmias(topics, webmias, positions, estimates, num_workers=1):
         documents. The positions are in the range [0; 1].
     estimates : sequence of float
         Estimates of P(relevant | position) in the form of a histogram.
+    output_directory : Path or None, optional
+        The path to a directore, where reranked results will be stored as files. When the
+        output_directory is None, no files will be produced.
     num_workers : int, optional
         The number of processes that will send queries.
 
     Yields
     ------
-    (MathFormat, Topic, sequence of Query)
+    (MathFormat, Topic, sequence of ExecutedProcessedQuery)
         A format in which the mathematical formulae were represented in a query, and topics, each
         with in iterable of queries along with the XML responses and query results.
     """
@@ -66,13 +73,17 @@ def query_webmias(topics, webmias, positions, estimates, num_workers=1):
         LOGGER.info("- %s", math_format)
 
     with Pool(num_workers) as pool:
-        for math_format, topic, queries in pool.imap_unordered(_query_webmias_helper, (
-                (topic, math_format, webmias)
+        for math_format, topic, executed_queries in pool.imap_unordered(_query_webmias_helper, (
+                (topic, math_format, webmias, output_directory)
                 for topic in tqdm(topics, desc="get_results")
                 for math_format in Formula.math_formats)):
-            for query in queries:
-                query.finalize(positions, estimates)
-            yield(math_format, topic, queries)
+            executed_processed_queries = []
+            for executed_query in executed_queries:
+                if output_directory:
+                    executed_query.save(output_directory)
+                executed_processed_queries.append(
+                        ExecutedProcessedQuery.from_elements(executed_query, positions, estimates))
+            yield(math_format, topic, executed_processed_queries)
 
 
 def _rerank_and_merge_results_helper(args):
@@ -114,12 +125,13 @@ def rerank_and_merge_results(
         num_results=TARGET_NUMBER_OF_RESULTS):
     """
     Reranks results using position, probability, and density estimates produced by the NTCIR Math
-    Density Estimator package. As a side effect, the reranked results will be stored in an output
-    directory for manual inspection as files.
+    Density Estimator package, and merges them into final result lists. As a side effect, the
+    reranked results as well as the final result lists will be stored in an output directory for
+    manual inspection as files.
 
     Parameters
     ----------
-    results : iterator of (MathFormat, Topic, sequence of Query)
+    results : iterator of (MathFormat, Topic, sequence of ExecutedProcessedQuery)
         A format in which the mathematical formulae were represented in a query, and topics, each
         with in iterable of queries along with the XML responses and query results.
     identifiers : set of str, or KeysView of str
@@ -135,10 +147,10 @@ def rerank_and_merge_results(
 
     Yields
     ------
-    (ScoreAggregationStrategy, MathFormat, Topic, sequence of Query)
+    (ScoreAggregationStrategy, MathFormat), sequence of (Topic, sequence of Result)
         A score aggregation strategy that was used to rerank the results, a format in which the
-        mathematical formulae were represented in a query, and topics, each with in iterable of
-        queries along with the XML responses and query results.
+        mathematical formulae were represented in a query, and topics, each with a sequence of
+        final results.
     """
     assert isinstance(identifiers, (set, KeysView))
     assert output_directory is None or isinstance(output_directory, Path)

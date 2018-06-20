@@ -12,7 +12,7 @@ from lxml.etree import _Element, QName
 from lxml.objectify import deannotate
 
 LOGGER = getLogger(__name__)
-MIN_RELEVANT_SCORE = 2.0
+MIN_RELEVANT_SCORE = 0.0
 XPATH_NAMESPACED = "descendant-or-self::*[namespace-uri() != '']"
 
 
@@ -62,8 +62,8 @@ def get_judgements(input_file, min_relevant_score=MIN_RELEVANT_SCORE):
     input_file : file
         An input file with relevance judgements in the NTCIR-11 Math-2, and NTCIR-12 MathIR format.
     min_relevant_score : double
-        Only relevance judgements with score greater than or equal to min_relevant_score are
-        considered relevant.
+        Only relevance judgements with score greater than min_relevant_score are considered
+        relevant.
 
     Returns
     -------
@@ -74,7 +74,7 @@ def get_judgements(input_file, min_relevant_score=MIN_RELEVANT_SCORE):
     judgements = dict()
     for line in input_file:
         topic, _, identifier, score = line.split(' ')
-        relevant = float(score) >= min_relevant_score
+        relevant = float(score) > min_relevant_score
         if topic not in judgements:
             judgements[topic] = dict()
         judgements[topic][identifier] = relevant

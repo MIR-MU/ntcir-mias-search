@@ -149,7 +149,7 @@ def rerank_and_merge_results(
 
     Yields
     ------
-    (ScoreAggregationStrategy, MathFormat, iterable of ResultList)
+    (ScoreAggregationStrategy, MathFormat, sequence of ResultList)
         A score aggregation strategy that was used to rerank the results, a format in which the
         mathematical formulae were represented in a query, and the final result lists for the
         individual topics.
@@ -204,7 +204,7 @@ def rerank_and_merge_results(
             with (output_directory / Path(PATH_FINAL_RESULT % (
                     math_format.identifier, aggregation.identifier))).open("wt") as f:
                 write_tsv(f, topics_and_results)
-        result_lists = (ResultList(topic, result) for topic, result in topics_and_results)
+        result_lists = [ResultList(topic, result) for topic, result in topics_and_results]
         yield (aggregation, math_format, result_lists)
 
 

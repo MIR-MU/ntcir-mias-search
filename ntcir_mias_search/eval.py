@@ -26,13 +26,17 @@ class Bpref(EvaluationStrategy, metaclass=Singleton):
 
         R = sum(results.topic.judgements.values())
         N = len(results.topic.judgements.values()) - R
+        assert R > 0
+        assert N > 0
         n = 0
         bpref = 0.0
         for result in results:
-            if result.identifier not in results.topic.judgements:
-                n = min(n + 1, R)
-            else:
-                bpref += 1.0 - n / min(R, N)
+            if result.identifier in results.topic.judgements:
+                if results.topic.judgements[result.identifier]:
+                    bpref += 1.0 - n / min(R, N)
+                else:
+                    n = min(n + 1, R)
+                    assert n <= N
         bpref /= R
 
         return bpref

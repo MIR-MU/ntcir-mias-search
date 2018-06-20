@@ -204,7 +204,7 @@ def rerank_and_merge_results(
             yield (aggregation, math_format, ResultList(topic, result))
 
 
-def get_topics(input_file):
+def get_topics(input_file, judgements):
     """
     Reads topics in the NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR format from an XML file.
 
@@ -216,6 +216,9 @@ def get_topics(input_file):
     ----------
     input_file : Path
         The path to an input file with topics.
+    judgements : dict of (str, dict of (str, bool))
+        A map between NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR judgement identifiers,
+        paragraph identifiers, and relevance judgements.
 
     Returns
     -------
@@ -223,7 +226,7 @@ def get_topics(input_file):
         Topics from the XML file.
     """
     with input_file.open("rt") as f:
-        topics = list(Topic.from_file(f))
+        topics = list(Topic.from_file(f, judgements))
     return topics
 
 

@@ -112,10 +112,10 @@ def main():
     LOGGER.info("Reading relevance judgements from %s", args.judgements.name)
     with args.judgements.open("rt") as f:
         judgements = get_judgements(f)
-        assert judgements
+        assert judgements, "No judgements were read"
 
     LOGGER.info("Reading topics from %s", args.topics.name)
-    topics = get_topics(args.topics)
+    topics = get_topics(args.topics, judgements)
     assert len(topics) >= 2
     LOGGER.info(
         "%d topics (%s, %s, ...) contain %d formulae, and %d keywords", len(topics), topics[0],

@@ -607,10 +607,13 @@ class MIaSResult(Result):
         [HarmonicMean(alpha) for alpha in linspace(0, 1, 101)])
 
     def __getstate__(self):  # Do not serialize the aggregate score cache
-        return (self.executed_query, self.identifier, self.score, self.p_relevant)
+        return (
+            self.executed_query, self.identifier, self.score, self.position, self.p_relevant,
+            self.relevant)
 
     def __setstate__(self, state):
-        self.executed_query, self.identifier, self.score, self.p_relevant = state
+        self.executed_query, self.identifier, self.score, self.position, self.p_relevant, \
+            self.relevant = state
         self._aggregate_scores = dict()
 
     def __str__(self):

@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 from numpy import mean
 
 from .facade import get_topics, get_webmias, query_webmias, rerank_and_merge_results
-from .util import get_judgements, get_positions, get_estimates
+from .util import get_judgements, get_positions, get_estimates, log_sequence
 
 
 LOG_PATH = Path("__main__.log")
@@ -162,9 +162,12 @@ def main():
             aggregation, math_format,
             mean([results.evaluate() for results in result_lists])))
     LOGGER.info("Evaluation results:")
+    lines = []
     for aggregation, math_format, score in sorted(
             evaluation_results, key=lambda x: x[2], reverse=True):
-        LOGGER.info("- %s, %s: %0.4f", aggregation.identifier, math_format.identifier, score)
+        line = "%s, %s: %0.4f" % (aggregation.identifier, math_format.identifier, score)
+        lines.append(line)
+    log_sequence(lines)
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ from tqdm import tqdm
 from .eval import ResultList
 from .query import MIaSResult, ArtificialResult, ExecutedQuery, ExecutedProcessedQuery
 from .topic import Topic, Formula
-from .util import write_tsv
+from .util import write_tsv, log_sequence
 from .webmias import WebMIaSIndex, TARGET_NUMBER_OF_RESULTS
 
 
@@ -70,8 +70,7 @@ def query_webmias(topics, webmias, positions, estimates, output_directory=None, 
     LOGGER.info(
         "Using %d formats to represent mathematical formulae in queries:",
         len(Formula.math_formats))
-    for math_format in sorted(Formula.math_formats):
-        LOGGER.info("- %s", math_format)
+    log_sequence(sorted(Formula.math_formats))
 
     with Pool(num_workers) as pool:
         for math_format, topic, executed_queries in pool.imap_unordered(_query_webmias_helper, (
@@ -172,8 +171,7 @@ def rerank_and_merge_results(
     LOGGER.info(
         "Using %d strategies to aggregate MIaS scores with probability estimates:",
         len(MIaSResult.aggregations))
-    for aggregation in sorted(MIaSResult.aggregations):
-        LOGGER.info("- %s", aggregation)
+    log_sequence(sorted(MIaSResult.aggregations))
     if output_directory:
         LOGGER.info("Storing reranked per-query result lists in %s", output_directory)
     with Pool(num_workers) as pool:

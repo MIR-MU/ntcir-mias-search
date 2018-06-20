@@ -14,6 +14,8 @@ from lxml.objectify import deannotate
 LOGGER = getLogger(__name__)
 MIN_RELEVANT_SCORE = 0.0
 XPATH_NAMESPACED = "descendant-or-self::*[namespace-uri() != '']"
+TOP_ITEMS_NUMBER = 5
+BOTTOM_ITEMS_NUMBER = 3
 
 
 def remove_namespaces(tree):
@@ -121,3 +123,22 @@ def get_estimates(input_file):
     """
     with gzip.open(input_file, "rb") as f:
         return pickle.load(f)
+
+
+def log_sequence(items):
+    """
+    Logs a sequence of values, only showing a couple to the user.
+
+    Parameters
+    ----------
+    items : sequence of values
+        The values that wlll be converted to string, and logged.
+    """
+    for item_number, item in enumerate(items):
+        line = "- %s" % item
+        if item_number < TOP_ITEMS_NUMBER or item_number > len(items) - BOTTOM_ITEMS_NUMBER - 1:
+            LOGGER.info(line)
+        else:
+            if item_number == TOP_ITEMS_NUMBER:
+                LOGGER.info("- ...")
+            LOGGER.debug(line)

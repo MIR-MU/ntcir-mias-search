@@ -12,7 +12,7 @@ from .query import MIaSScore, ArithmeticMean, GeometricMean, HarmonicMean, Perfe
 from .query import MIaSResult, ArtificialResult  # noqa:F401
 from .query import Query, ExecutedQuery, ExecutedProcessedQuery  # noqa:F401
 from .topic import Topic, Formula, TeX, PMath, CMath, PCMath  # noqa:F401
-from .util import remove_namespaces, write_tsv  # noqa:F401
+from .util import remove_namespaces, write_tsv, log_sequence  # noqa:F401
 from .util import get_judgements, get_positions, get_estimates  # noqa:F401
 from .webmias import WebMIaSIndex  # noqa:F401
 

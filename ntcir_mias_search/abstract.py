@@ -149,7 +149,7 @@ class EvaluationStrategy(NamedEntity):
     This class represents a strategy for evaluating result lists using relevance judgements.
     """
     @abstractmethod
-    def evaluate(self):
+    def evaluate(self, results):
         """
         Evaluates a result list.
 

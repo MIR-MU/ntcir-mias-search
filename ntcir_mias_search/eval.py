@@ -21,7 +21,7 @@ class Bpref(EvaluationStrategy, metaclass=Singleton):
         self.identifier = "bpref"
         self.description = "Bpref"
 
-    def evaluate(results):
+    def evaluate(self, results):
         assert isinstance(results, ResultList)
 
         R = sum(results.topic.judgements.values())
@@ -73,7 +73,7 @@ class ResultList(object):
 
         Parameters
         ----------
-        evaluation : EvaluationStrategy
+        evaluation : EvaluationStrategy, optional
             The strategy for evaluation the result list.
 
         Returns

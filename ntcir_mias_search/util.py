@@ -76,6 +76,7 @@ def get_judgements(input_file, min_relevant_score=MIN_RELEVANT_SCORE):
         if topic not in judgements:
             judgements[topic] = dict()
         judgements[topic][identifier] = relevant
+    return judgements
 
 
 def get_positions(input_file):

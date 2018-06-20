@@ -114,6 +114,10 @@ def main():
     with args.judgements.open("rt") as f:
         judgements = get_judgements(f)
         assert judgements, "No judgements were read"
+    LOGGER.info(
+        "%d judged topics and %d total judgements in %s", len(judgements),
+        sum(len(topic_judgements) for topic_judgements in judgements.values()),
+        args.judgements.name)
 
     LOGGER.info("Reading topics from %s", args.topics.name)
     topics = get_topics(args.topics, judgements)
@@ -134,6 +138,7 @@ def main():
     positions = positions_all[args.dataset]
     assert positions
     identifiers = positions.keys()
+    LOGGER.info("%d total identifiers in %s", len(identifiers), args.positions.name)
 
     LOGGER.info("Reading density, and probability estimates from %s", args.estimates.name)
     with args.estimates.open("rb") as f:
@@ -141,10 +146,6 @@ def main():
     assert len(estimates_all) == NUM_ESTIMATES
     estimates = estimates_all[-1]
     assert(len(estimates))
-
-    LOGGER.info(
-        "%d / %d / %d relevant / judged / total identifiers",
-        sum(judgements.values()), len(judgements), len(identifiers))
 
     LOGGER.info("Querying %s, reranking and merging results", webmias)
     results = query_webmias(

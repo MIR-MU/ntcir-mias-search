@@ -138,7 +138,7 @@ def main():
     positions = positions_all[args.dataset]
     assert positions
     identifiers = positions.keys()
-    LOGGER.info("%d total identifiers in %s", len(identifiers), args.positions.name)
+    LOGGER.info("%d total paragraph identifiers in %s", len(identifiers), args.positions.name)
 
     LOGGER.info("Reading density, and probability estimates from %s", args.estimates.name)
     with args.estimates.open("rb") as f:

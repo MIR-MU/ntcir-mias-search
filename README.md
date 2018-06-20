@@ -98,10 +98,12 @@ Querying a local WebMIaS instance using 64 worker processes:
     >     --webmias-url http://localhost:58080/WebMIaS --webmias-index-number 1 \
     >     --output-directory search_results
     Reading relevance judgements from NTCIR11_Math-qrels.dat
+    50 judged topics and 2500 total judgements in NTCIR11_Math-qrels.dat
     Reading topics from NTCIR11-Math2-queries-participants.xml
     50 topics (NTCIR11-Math-1, NTCIR11-Math-2, ...) contain 55 formulae, and 113 keywords
     Establishing connection with a WebMIaS Java Servlet at http://localhost:58080/WebMIaS
     Reading paragraph position estimates from positions.pkl.gz
+    8301578 total paragraph identifiers in positions.pkl.gz
     Reading density, and probability estimates from estimates.pkl.gz
     Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking and merging results
     Using 305 strategies to aggregate MIaS scores with probability estimates:
@@ -171,10 +173,12 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     >     --webmias-url https://mir.fi.muni.cz/webmias-demo --webmias-index-number 0 \
     >     --output-directory search_results
     Reading relevance judgements from NTCIR11_Math-qrels.dat
+    50 judged topics and 2500 total judgements in NTCIR11_Math-qrels.dat
     Reading topics from NTCIR11-Math2-queries-participants.xml
     50 topics (NTCIR11-Math-1, NTCIR11-Math-2, ...) contain 55 formulae, and 113 keywords
     Establishing connection with a WebMIaS Java Servlet at https://mir.fi.muni.cz/webmias-demo
     Reading paragraph position estimates from positions.pkl.gz
+    8301578 total paragraph identifiers in positions.pkl.gz
     Reading density, and probability estimates from estimates.pkl.gz
     Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking and merging results
     Using 305 strategies to aggregate MIaS scores with probability estimates:

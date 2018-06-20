@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI xmi.version="1.2" verified="false" timestamp="2018-06-20T16:19:12" xmlns:UML="http://schema.omg.org/spec/UML/1.3">
+<XMI xmi.version="1.2" verified="false" timestamp="2018-06-20T17:45:40" xmlns:UML="http://schema.omg.org/spec/UML/1.3">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -800,7 +800,7 @@
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams>
-       <diagram usefillcolor="1" backgroundcolor="#ffffff" documentation="" type="1" snapcsgrid="0" snapy="25" linecolor="#000000" localid="-1" snapgrid="0" xmi.id="vbflgzJiL7R9" griddotcolor="#d3d3d3" showatts="1" canvasheight="6634.56" showgrid="0" snapx="25" showstereotype="1" showattsig="1" showpubliconly="0" canvaswidth="3997.98" showopsig="1" showscope="1" showattribassocs="1" fillcolor="#ffffff" linewidth="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" isopen="1" zoom="123,5923530609329" showops="1" showpackage="1" textcolor="#000000" name="Diagram třídy">
+       <diagram usefillcolor="1" backgroundcolor="#ffffff" documentation="" type="1" snapcsgrid="0" snapy="25" linecolor="#000000" localid="-1" snapgrid="0" xmi.id="vbflgzJiL7R9" griddotcolor="#d3d3d3" showatts="1" canvasheight="6634.56" showgrid="0" snapx="25" showstereotype="1" showattsig="1" showpubliconly="0" canvaswidth="3997.98" showopsig="1" showscope="1" showattribassocs="1" fillcolor="#ffffff" linewidth="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" isopen="1" zoom="93,453575093333" showops="1" showpackage="1" textcolor="#000000" name="Diagram třídy">
         <widgets>
          <classwidget usefillcolor="1" width="180" linecolor="#000000" y="-769.983" showoperations="1" localid="LVk1z18vJi1T" usesdiagramfillcolor="0" xmi.id="546tooNL0Q7Y" isinstance="0" showattributes="1" x="-1223.68" showstereotype="1" showpubliconly="0" showscope="1" fillcolor="#ffffff" linewidth="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" drawascircle="0" height="45" showpackage="1" showopsigs="601" showattsigs="601" textcolor="#000000" usesdiagramusefillcolor="0"/>
          <classwidget usefillcolor="1" width="304" linecolor="#000000" y="-682.859" showoperations="1" localid="3kd8XNiP7kXI" usesdiagramfillcolor="0" xmi.id="o6627heT5qM4" isinstance="0" showattributes="1" x="-1425.73" showstereotype="1" showpubliconly="0" showscope="1" fillcolor="#ffffff" linewidth="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" drawascircle="0" height="57" showpackage="1" showopsigs="601" showattsigs="601" textcolor="#000000" usesdiagramusefillcolor="0"/>

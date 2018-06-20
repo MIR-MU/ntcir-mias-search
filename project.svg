@@ -2474,7 +2474,7 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
-<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-334.995,-176.893 L-5.66056,-176.893 L-6.51335,-332.839 L546.244,-336.804 L546.244,-770.232"/>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-334.995,-176.893 L-5.66056,-176.893 L-6.51335,-332.839 L546.244,-336.804 L546.244,-773.589"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
@@ -2534,18 +2534,18 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998362,-1.79322e-13,1.79322e-13,-0.998362,2490.39,508.883)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998362,-1.79322e-13,1.79322e-13,-0.998362,2490.39,505.531)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-0.998362,-1.79322e-13,1.79322e-13,-0.998362,2490.39,508.883)"
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-0.998362,-1.79322e-13,1.79322e-13,-0.998362,2490.39,505.531)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 <path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M0,-10 L-5,0 L0,10 L5,0 L0,-10"/>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998362,-1.79322e-13,1.79322e-13,-0.998362,2490.39,508.883)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998362,-1.79322e-13,1.79322e-13,-0.998362,2490.39,505.531)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
@@ -2568,28 +2568,6 @@ font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2426.9,644.786)"
-font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2467.28,471.069)"
-font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2467.28,471.069)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2467.28,471.069)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="20.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
- >1</text>
-</g>
-
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2467.28,471.069)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
@@ -2624,10 +2602,32 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
-<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-172.341,-750.232 L-172.341,-592.877"/>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-172.341,-753.589 L-172.341,-592.877"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
+font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2499.59,493.687)"
+font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2499.59,493.687)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2499.59,493.687)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="20.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+ >1</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2499.59,493.687)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
@@ -2794,7 +2794,7 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
-<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-189.34,-796.166 L-757.328,-796.166 L-757.328,-682.084"/>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-188.005,-796.166 L-757.328,-796.166 L-757.328,-682.084"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
@@ -3055,18 +3055,18 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998362,1.07905e-14,-1.07905e-14,-0.998362,2460.5,316.59)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998362,2.25521e-14,-2.25521e-14,-0.998362,2462.12,316.59)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-0.998362,1.07905e-14,-1.07905e-14,-0.998362,2460.5,316.59)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(-0.998362,2.25521e-14,-2.25521e-14,-0.998362,2462.12,316.59)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 <path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-6,0 L0,10 L6,0"/>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998362,1.07905e-14,-1.07905e-14,-0.998362,2460.5,316.59)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(-0.998362,2.25521e-14,-2.25521e-14,-0.998362,2462.12,316.59)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
@@ -3079,7 +3079,7 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
-<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M8.00123,-674.799 L-202.278,-674.799 L-202.278,-962.841"/>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M8.00123,-674.799 L-200.66,-674.799 L-200.66,-962.841"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
@@ -3087,68 +3087,68 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2651.47,567.02)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2652.28,567.02)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2651.47,567.02)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2652.28,567.02)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2651.47,567.02)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2652.28,567.02)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="20.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
  >1</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2651.47,567.02)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2652.28,567.02)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2465.41,303.835)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2467.02,303.835)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2465.41,303.835)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2467.02,303.835)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2465.41,303.835)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2467.02,303.835)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="20.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
  >+query</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2465.41,303.835)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2467.02,303.835)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2441.04,304.982)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2442.65,304.982)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2441.04,304.982)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2442.65,304.982)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2441.04,304.982)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2442.65,304.982)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="20.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
  >1</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2441.04,304.982)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2442.65,304.982)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
@@ -3187,7 +3187,7 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
-<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-55.8287,-770.232 L-55.8287,-621.398 L8.00123,-621.398"/>
+<path vector-effect="non-scaling-stroke" fill-rule="evenodd" d="M-55.8287,-773.589 L-55.8287,-621.398 L8.00123,-621.398"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2662.45,1267.87)"
@@ -3217,46 +3217,46 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2650.66,616.702)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2645.01,619.933)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2650.66,616.702)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2645.01,619.933)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2650.66,616.702)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2645.01,619.933)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="20.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
  >1</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2650.66,616.702)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2645.01,619.933)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2537.03,645.811)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2530.57,645.003)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2537.03,645.811)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2530.57,645.003)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2537.03,645.811)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2530.57,645.003)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="20.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
  >+executed_query</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2537.03,645.811)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2530.57,645.003)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
@@ -3689,24 +3689,24 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2630.11,598.381)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2630.92,600.805)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2630.11,598.381)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2630.92,600.805)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2630.11,598.381)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2630.92,600.805)"
 font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="4" y="20.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
  >1..m</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2630.11,598.381)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2630.92,600.805)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>
@@ -8235,299 +8235,6 @@ font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal"
 >
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
->
-<rect vector-effect="non-scaling-stroke" x="0" y="0" width="837" height="161"/>
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
->
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="287" y="18.5" font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
- >query::ExecutedProcessedQuery</text>
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<polyline fill="none" vector-effect="non-scaling-stroke" points="0,23 837,23 " />
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="41.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
- >+ executed_query : ExecutedQuery</text>
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="64.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
- >+ results : sequence of MIaSResult</text>
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<polyline fill="none" vector-effect="non-scaling-stroke" points="0,69 837,69 " />
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="87.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
- >+ use_aggregation(aggregation : abstract::ScoreAggregationStrategy)</text>
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="110.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
- >+ ExecutedProcessedQuery(executed_query : ExecutedQuery, results : iterable of MIaSResult)</text>
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<polyline fill="none" vector-effect="none" points="5,114 673,114 " />
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="133.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
- >+ from_elements(executed_query : ExecutedQuery, positions : dict of (string, double), estimates : sequence of double)</text>
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="156.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
- >+ save(output_directory : Path)</text>
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
-font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2473.42,338.163)"
-font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
->
-</g>
-
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2112.66,611.86)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
@@ -8935,6 +8642,299 @@ font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2670.44,507.133)"
+font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
+>
+<rect vector-effect="non-scaling-stroke" x="0" y="0" width="837" height="161"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="287" y="18.5" font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
+ >query::ExecutedProcessedQuery</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="0,23 837,23 " />
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="41.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+ >+ executed_query : ExecutedQuery</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="64.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+ >+ results : sequence of MIaSResult</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="non-scaling-stroke" points="0,69 837,69 " />
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="87.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+ >+ use_aggregation(aggregation : abstract::ScoreAggregationStrategy)</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="110.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+ >+ ExecutedProcessedQuery(executed_query : ExecutedQuery, results : iterable of MIaSResult)</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="5,114 673,114 " />
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="133.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+ >+ from_elements(executed_query : ExecutedQuery, positions : dict of (string, double), estimates : sequence of double)</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="156.5" font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+ >+ save(output_directory : Path)</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="TeX Gyre Heros" font-size="16" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(0.998362,0,0,0.998362,2474.75,334.811)"
 font-family="Noto Sans" font-size="16" font-weight="400" font-style="normal" 
 >
 </g>

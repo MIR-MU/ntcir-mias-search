@@ -88,18 +88,19 @@ def query_webmias(topics, webmias, positions, estimates, output_directory=None, 
 
 
 def _rerank_and_merge_results_helper(args):
-    math_format, topic, queries, output_directory, num_results = args
+    math_format, topic, executed_processed_queries, output_directory, num_results = args
     results = []
     for aggregation in MIaSResult.aggregations:
         result_deques = []
-        for query in queries:
-            with query.use_aggregation(aggregation):
+        for executed_processed_query in executed_processed_queries:
+            with executed_processed_query.use_aggregation(aggregation):
                 if output_directory:
-                    query.save(output_directory)
-                result_deques.append(deque(query.results))
+                    executed_processed_query.save(output_directory)
+                result_deques.append(deque(executed_processed_query.results))
         result_list = []
         result_list_identifiers = set()
-        for query, result_dequeue in cycle(zip(queries, result_deques)):
+        for executed_processed_query, result_dequeue in cycle(zip(
+                executed_processed_queries, result_deques)):
             if not sum(len(result_dequeue) for result_dequeue in result_deques):
                 break  # All result deques are already empty, stop altogether
             if len(result_list) == num_results:
@@ -107,7 +108,7 @@ def _rerank_and_merge_results_helper(args):
             if not result_dequeue:
                 continue  # The result deque for this query is already empty, try the next one
             try:
-                for _ in range(query.stripe_width):
+                for _ in range(executed_processed_query.executed_query.query.stripe_width):
                     result = result_dequeue.popleft()
                     while result.identifier in result_list_identifiers:
                         result = result_dequeue.popleft()
@@ -176,8 +177,10 @@ def rerank_and_merge_results(
         LOGGER.info("Storing reranked per-query result lists in %s", output_directory)
     with Pool(num_workers) as pool:
         for merged_results in pool.imap_unordered(_rerank_and_merge_results_helper, (
-                        (math_format, topic, queries, output_directory, num_results)
-                        for math_format, topic, queries in tqdm(
+                        (
+                            math_format, topic, executed_processed_queries, output_directory,
+                            num_results)
+                        for math_format, topic, executed_processed_queries in tqdm(
                             results, desc="rerank_and_merge_results"))):
             for aggregation, math_format, topic, result_list in merged_results:
                 if len(result_list) < num_results:

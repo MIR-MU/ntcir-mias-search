@@ -25,18 +25,17 @@ class Bpref(EvaluationStrategy, metaclass=Singleton):
         assert isinstance(results, ResultList)
 
         R = sum(results.topic.judgements.values())
-        N = len(results.topic.judgements.values()) - R
-        assert R > 0
-        assert N > 0
+        N = len(results.topic.judgements) - R
+        assert min(R, N) > 0
         n = 0
         bpref = 0.0
         for result in results:
             if result.identifier in results.topic.judgements:
                 if results.topic.judgements[result.identifier]:
-                    bpref += 1.0 - n / min(R, N)
+                    bpref += 1.0 - (1.0 * n) / min(R, N)
                 else:
                     n = min(n + 1, R)
-                    assert n <= N
+                    assert n >= 0 and n <= min(R, N)
         bpref /= R
 
         return bpref
@@ -96,9 +95,3 @@ class ResultList(object):
     def __setstate__(self, state):
         self.topic, self.results = state
         self._evaluation_results = dict()
-
-    def __eq__(self, other):
-        return isinstance(other, ResultList) and self.evaluate() == other.evaluate()
-
-    def __lt__(self, other):
-        return isinstance(other, ResultList) and self.evaluate() > other.evaluate()

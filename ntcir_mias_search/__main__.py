@@ -9,7 +9,7 @@ from pathlib import Path
 from sys import stdout
 from urllib.parse import urlparse
 
-import numpy  # noqa:F401 Required to unpickle positions.pkl.gz
+from numpy import mean
 
 from .facade import get_topics, get_webmias, query_webmias, rerank_and_merge_results
 from .util import get_judgements, get_positions, get_estimates
@@ -89,8 +89,9 @@ def main():
             querying, reranking, and merging takes place simmultaneously.
         """)
     parser.add_argument(
-        "--output-directory", type=Path, required=True, help="""
-            The path to the directory, where the output files will be stored.
+        "--output-directory", type=Path, default=None, help="""
+            The path to the directory, where the output files will be stored. Defaults to
+            %(default)s.
         """)
     args = parser.parse_args()
 
@@ -103,7 +104,8 @@ def main():
         "The file %s with estimates does not exist" % args.estimates
     assert args.judgements.exists() or args.judgements.is_file(), \
         "The file %s with relevance judgements does not exist" % args.judgements
-    assert args.output_directory.exists() and args.output_directory.is_dir(), \
+    assert args.output_directory is None or args.output_directory.exists() and \
+        args.output_directory.is_dir(), \
         "Directory %s, where the output files are to be stored, does not exist" % \
         args.output_directory
     assert args.webmias_index_number >= 0
@@ -153,11 +155,15 @@ def main():
     final_results = rerank_and_merge_results(
         results, identifiers, args.output_directory, args.num_workers_merging)
 
+    evaluation_results = []
+    for aggregation, math_format, result_lists in final_results:
+        evaluation_results.append((
+            aggregation, math_format,
+            mean([results.evaluate() for results in result_lists])))
     LOGGER.info("Evaluation results:")
-    for aggregation, math_format, result_list in sorted(final_results, key=lambda x: x[2]):
-        LOGGER.info(
-            "- %s, %s: %0.4f", aggregation.identifier, math_format.identifier,
-            result_list.evaluate())
+    for aggregation, math_format, score in sorted(
+            evaluation_results, key=lambda x: x[2], reverse=True):
+        LOGGER.info("- %s, %s: %0.4f", aggregation.identifier, math_format.identifier, score)
 
 
 if __name__ == "__main__":

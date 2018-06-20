@@ -6,6 +6,8 @@ from logging import getLogger
 import gzip
 import pickle
 
+import numpy  # noqa:F401 Required to unpickle positions.pkl.gz
+
 from lxml.etree import _Element, QName
 from lxml.objectify import deannotate
 

@@ -618,7 +618,7 @@ class MIaSResult(Result):
 
     def __str__(self):
         return "%0.4f\t%0.4f\t%0.4f\t%s" % (
-            self.aggregate_score(), self.position, self.p_relevant, self.relevant)
+            self.score, self.position, self.p_relevant, self.relevant)
 
     def __repr__(self):
         return "%s(%s, %f, %f)" % (
@@ -633,31 +633,31 @@ class ArtificialResult(Result):
     ----------
     identifier : str
         The identifier of the paragraph in the result.
-    aggregate_score : float
-        The aggregate score of the result.
+    score : float
+        The artificial score of the result.
 
     Attributes
     ----------
     identifier : str
         The identifier of the paragraph in the result.
-    _aggregate_score : float
-        The aggregate score of the result.
+    score : float
+        The artificial score of the result.
     """
-    def __init__(self, identifier, aggregate_score):
-        assert isinstance(aggregate_score, float)
+    def __init__(self, identifier, score):
+        assert isinstance(score, float)
         assert isinstance(identifier, str)
 
-        self._aggregate_score = aggregate_score
+        self.score = score
         self.identifier = identifier
 
     def aggregate_score(self):
-        return self._aggregate_score
+        return self.score
 
     def __getstate__(self):
-        return (self.identifier, self._aggregate_score)
+        return (self.identifier, self.score)
 
     def __setstate__(self, state):
-        self.identifier, self._aggregate_score = state
+        self.identifier, self.score = state
 
     def __str__(self):
-        return "%0.4f\tUNKNOWN\tUNKNOWN\t%s" % (self._aggregate_score, False)
+        return "%0.4f\tUNKNOWN\tUNKNOWN\t%s" % (self.score, False)

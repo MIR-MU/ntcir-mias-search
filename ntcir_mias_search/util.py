@@ -37,7 +37,7 @@ def remove_namespaces(tree):
 def write_tsv(output_file, topics_and_results):
     """
     Produces a tab-separated-value (TSV) file, each line containing a topic identifier, a reserved
-    value, an identifier of a paragraph in a result, the rank of the result, the score of the
+    value, an identifier of a paragraph in a result, the rank of the result, the MIaS score of the
     result, the estimated position of the paragraph in the original document, the estimated
     probability of relevance of the result, and the relevance of the result according to relevance
     judgements.

@@ -18,6 +18,7 @@ from .util import get_judgements, get_positions, get_estimates
 LOG_PATH = Path("__main__.log")
 LOG_FORMAT = "%(asctime)s : %(levelname)s : %(message)s"
 LOGGER = getLogger(__name__)
+NUM_ESTIMATES = 5  # The number of estimates produced by the NTCIR Math Density Estimator package
 ROOT_LOGGER = getLogger()
 
 
@@ -137,7 +138,7 @@ def main():
     LOGGER.info("Reading density, and probability estimates from %s", args.estimates.name)
     with args.estimates.open("rb") as f:
         estimates_all = get_estimates(f)
-    assert len(estimates_all) == 6
+    assert len(estimates_all) == NUM_ESTIMATES
     estimates = estimates_all[-1]
     assert(estimates)
 

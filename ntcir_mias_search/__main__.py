@@ -157,6 +157,7 @@ def main():
 
     evaluation_results = []
     for aggregation, math_format, result_lists in final_results:
+        assert len(result_lists) == len(topics)
         evaluation_results.append((
             aggregation, math_format,
             mean([results.evaluate() for results in result_lists])))

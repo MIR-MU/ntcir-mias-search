@@ -13,9 +13,8 @@ LOGGER = getLogger(__name__)
 
 class Bpref(EvaluationStrategy, metaclass=Singleton):
     """
-    This class represents a strategy for aggregating a score, and a probability estimate into
-    an aggregate score. The aggregate score corresponds to the MIaS score, the probability estimate
-    is discarded.
+    This class represents a strategy for evaluating result lists using the Bpref evaluation metric.
+    (Buckley and Voorhees, 2004)
     """
     def __init__(self):
         self.identifier = "bpref"
@@ -24,14 +23,16 @@ class Bpref(EvaluationStrategy, metaclass=Singleton):
     def evaluate(self, results):
         assert isinstance(results, ResultList)
 
-        R = sum(results.topic.judgements.values())
-        N = len(results.topic.judgements) - R
+        R = sum(1 for relevant in results.topic.judgements.values() if relevant is True)
+        N = sum(1 for relevant in results.topic.judgements.values() if relevant is False)
+        assert N == len(results.topic.judgements) - R
         assert min(R, N) > 0
+
         n = 0
         bpref = 0.0
         for result in results:
             if result.identifier in results.topic.judgements:
-                if results.topic.judgements[result.identifier]:
+                if results.topic.judgements[result.identifier] is True:
                     bpref += 1.0 - (1.0 * n) / min(R, N)
                 else:
                     n = min(n + 1, R)

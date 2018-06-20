@@ -140,7 +140,7 @@ def main():
         estimates_all = get_estimates(f)
     assert len(estimates_all) == NUM_ESTIMATES
     estimates = estimates_all[-1]
-    assert(estimates)
+    assert(len(estimates))
 
     LOGGER.info(
         "%d / %d / %d relevant / judged / total identifiers",

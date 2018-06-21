@@ -8,7 +8,8 @@ import pickle
 
 import numpy  # noqa:F401 Required to unpickle positions.pkl.gz
 
-from lxml.etree import _Element, QName
+from lxml import etree
+from lxml.etree import _Element, QName, XMLParser
 from lxml.objectify import deannotate
 
 LOGGER = getLogger(__name__)
@@ -32,6 +33,57 @@ def remove_namespaces(tree):
     for element in tree.xpath(XPATH_NAMESPACED):
         element.tag = QName(element).localname
     deannotate(tree, cleanup_namespaces=True)
+
+
+def xml_documents_equal(first, second):
+    """
+    Tests two XML documents for equality.
+
+    Parameters
+    ----------
+    first : str
+        A string with the first XML document.
+    second : str
+        A string with the second XML document.
+
+    Returns
+    -------
+    bool
+        Whether the two documents are equal.
+    """
+    parser = XMLParser(encoding="utf-8", remove_blank_text=True)
+    first_document = etree.fromstring(first, parser=parser)
+    second_document = etree.fromstring(second, parser=parser)
+    return xml_elements_equal(first_document, second_document)
+
+
+def xml_elements_equal(first, second):
+    """
+    Tests two XML elements for equality.
+
+    Parameters
+    ----------
+    first : _Element
+        The first element.
+    second : _Element
+        The second element.
+
+    Returns
+    -------
+    bool
+        Whether the two elements are equal.
+    """
+    if first.tag != second.tag:
+        return False
+    if first.text != second.text:
+        return False
+    if first.tail != second.tail:
+        return False
+    if first.attrib != second.attrib:
+        return False
+    if len(first) != len(second):
+        return False
+    return all(xml_elements_equal(c1, c2) for c1, c2 in zip(first, second))
 
 
 def write_tsv(output_file, topics_and_results):

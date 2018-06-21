@@ -13,7 +13,7 @@ with open(path.join(HERE, "README.md"), encoding="utf-8") as f:
 setup(
     author=AUTHOR,
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Console",
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
@@ -49,5 +49,5 @@ setup(
         "Source": SOURCE_URL,
     },
     url=SOURCE_URL,
-    version="0.1.0",
+    version="0.2.0",
 )

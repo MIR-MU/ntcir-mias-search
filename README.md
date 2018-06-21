@@ -1,42 +1,35 @@
-# Introduction
-NTCIR MIaS Search is a Python 3 command-line utility that implements the Math
-Information Retrival system that won the NTCIR-11 Math-2 main task (see the
-[task paper][paper:aizawaetal14-ntcir11], and the [system description
-paper][paper:ruzickaetal14-math]):
+NTCIR MIaS Search – Our search engine for the NTCIR Math tasks
+==============================================================
+[![CircleCI](https://circleci.com/gh/MIR-MU/ntcir-mias-search/tree/master.svg?style=shield)][ci]
 
-1. NTCIR MIaS Search loads [topics][www:ntcir-task-data] in the [NTCIR-10
-   Math][paper:aizawaetal13-ntcir10], [NTCIR-11
-   Math-2][paper:aizawaetal14-ntcir11], and [NTCIR-12
-   MathIR][paper:zanibbi16-ntcir12] format.
+ [ci]: https://circleci.com/gh/MIR-MU/ntcir-mias-search/tree/master (CircleCI)
 
-2. NTCIR MIaS Search expands the topics into subqueries using the Leave
-   Rightmost Out (LRO) query expansion strategy and submits the subqueries to
-   [WebMIaS][www:WebMIaS].
+NTCIR MIaS Search is a Python 3 command-line utility that operates on top of
+[WebMIaS][] and that implements the Math Information Retrival system that won
+the NTCIR-11 Math-2 main task (see the [task paper][aizawaetal14-ntcir11], and
+the [system description paper][ruzickaetal14-math]).
 
-3. NTCIR MiaS Search reranks the subquery results according using relevance
-   probability estimates from the [NTCIR Math Density
-   Estimator][www:ntcir-math-density] package, and produces a final result list
-   by interleaving the subquery result lists. The final result list is stored
-   in the TSV (Tab Separated Value) format, which is meant to be passed to the
-   [MIREval][www:MIREval] tool.
+Experimentally, NTCIR MIaS Search also reranks subquery results according to
+the relevance probability estimates from the [NTCIR Math Density
+Estimator][ntcir-math-density] package.
 
-[paper:aizawaetal13-ntcir10]: https://ntcir-math.nii.ac.jp/wp-content/blogs.dir/23/files/2013/10/01-NTCIR10-OV-MATH-AizawaA.pdf (NTCIR-10 Math Pilot Task Overview)
-[paper:aizawaetal14-ntcir11]: https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.686.444&rep=rep1&type=pdf (NTCIR-11 Math-2 Task Overview)
-[paper:zanibbi16-ntcir12]: https://research.nii.ac.jp/ntcir/workshop/OnlineProceedings12/pdf/ntcir/OVERVIEW/01-NTCIR12-OV-MathIR-ZanibbiR.pdf (NTCIR-12 MathIR Task Overview)
-[paper:ruzickaetal14-math]: http://research.nii.ac.jp/ntcir/workshop/OnlineProceedings11/pdf/NTCIR/Math-2/07-NTCIR11-MATH-RuzickaM.pdf (Math Indexer and Searcher under the Hood: History and Development of a Winning Strategy)
+[aizawaetal14-ntcir11]: https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.686.444&rep=rep1&type=pdf (NTCIR-11 Math-2 Task Overview)
+[ntcir-math-density]: https://github.com/MIR-MU/ntcir-math-density (NTCIR Math Density Estimator)
+[ruzickaetal14-math]: http://research.nii.ac.jp/ntcir/workshop/OnlineProceedings11/pdf/NTCIR/Math-2/07-NTCIR11-MATH-RuzickaM.pdf (Math Indexer and Searcher under the Hood: History and Development of a Winning Strategy)
+[WebMIaS]: https://github.com/MIR-MU/WebMIaS (WebMIaS)
 
-[www:MIaS]: https://github.com/MIR-MU/MIaS (MIaS)
-[www:MIREval]: https://github.com/MIR-MU/MIREval (MIREval)
-[www:ntcir-task-data]: https://www.nii.ac.jp/dsc/idr/en/ntcir/ntcir-taskdata.html (Downloading NTCIR Test Collections Task Data)
-[www:ntcir-math-density]: https://github.com/MIR-MU/ntcir-math-density (NTCIR Math Density Estimator)
-[www:WebMIaS]: https://github.com/MIR-MU/WebMIaS (WebMIaS)
-
-# Usage
-Installing:
+Usage
+=====
+Installing
+----------
+The package can be installed by executing the following command:
 
     $ pip install ntcir-mias-search
 
-Displaying the usage:
+Displaying the usage
+--------------------
+Usage information for the package can be displayed by executing the following
+command:
 
     $ ntcir-mias-search --help
     usage: ntcir-mias-search [-h] --dataset DATASET --topics TOPICS --positions
@@ -86,7 +79,10 @@ Displaying the usage:
                             The path to the directory, where the output files will
                             be stored.
 
-Querying a local WebMIaS instance using 64 worker processes:
+Querying WebMIaS
+----------------
+The following command queries a local WebMIaS instance using 64 worker
+processes:
 
     $ mkdir search_results
     
@@ -178,7 +174,8 @@ Querying a local WebMIaS instance using 64 worker processes:
     final_CMath.arith1.00.tsv   final_CMath.harm0.00.tsv   final_CMath.perfect.tsv
     final_CMath.geom0.00.tsv    final_CMath.harm0.01.tsv   ...
 
-Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes:
+The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
+64 worker processes:
 
     $ mkdir search_results
     
@@ -265,9 +262,10 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     final_CMath.arith1.00.tsv   final_CMath.harm0.00.tsv   final_CMath.perfect.tsv
     final_CMath.geom0.00.tsv    final_CMath.harm0.01.tsv   ...
 
-[www:WebMIaS-demo]: https://mir.fi.muni.cz/webmias-demo/ (Web Math Indexer and Searcher)
+[WebMIaS-demo]: https://mir.fi.muni.cz/webmias-demo/ (Web Math Indexer and Searcher)
 
-# Contributing
+Contributing
+============
 
 To get familiar with the codebase, please consult the UML class diagram in the
 [Umbrello][www:Umbrello] project document [project.xmi](project.xmi):
@@ -275,3 +273,32 @@ To get familiar with the codebase, please consult the UML class diagram in the
 ![Rendered UML class diagram](project.svg)
 
 [www:Umbrello]: https://umbrello.kde.org/ (Umbrello Project - Welcome to Umbrello - The UML Modeller)
+
+Citing NTCIR MIaS Search
+========================
+Text
+----
+RŮŽIČKA, Michal, Petr SOJKA and Martin LÍŠKA. Math Indexer and Searcher under
+the Hood: History and Development of a Winning Strategy. In Noriko Kando, Hideo
+Joho, Kazuaki Kishida. *Proceedings of the 11th NTCIR Conference on Evaluation
+of Information Access Technologies.* Tokyo: National Institute of Informatics,
+2-1-2 Hitotsubashi, Chiyoda-ku, Tokyo 101-8430 Japan, 2014. p. 127-134, 8 pp.
+ISBN 978-4-86049-065-2.
+
+BibTeX
+------
+``` bib
+@inproceedings{mir:MIaSNTCIR-11,
+     author = "Michal R\r{u}\v{z}icka and Petr Sojka and Michal L{\' i}ska",
+      title = "{Math Indexer and Searcher under the Hood:
+               History and Development of a Winning Strategy}",
+      month = Dec,
+       year = 2014,
+    address = "Tokyo",
+  booktitle = "{Proc. of the 11th NTCIR Conference on Evaluation
+               of Information Access Technologies}",
+     editor = "Hideo Joho and Kazuaki Kishida",
+  publisher = "{NII, Tokyo, Japan}",
+      pages = "127--134",
+}
+```

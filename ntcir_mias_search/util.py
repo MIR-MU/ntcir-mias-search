@@ -15,7 +15,7 @@ LOGGER = getLogger(__name__)
 MIN_RELEVANT_SCORE = 0.0
 XPATH_NAMESPACED = "descendant-or-self::*[namespace-uri() != '']"
 TOP_ITEMS_NUMBER = 5
-BOTTOM_ITEMS_NUMBER = 3
+BOTTOM_ITEMS_NUMBER = 5
 
 
 def remove_namespaces(tree):

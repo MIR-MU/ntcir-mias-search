@@ -106,30 +106,25 @@ Querying a local WebMIaS instance using 64 worker processes:
     8301578 total paragraph identifiers in positions.pkl.gz
     Reading density, and probability estimates from estimates.pkl.gz
     Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking and merging results
-    Using 305 strategies to aggregate MIaS scores with probability estimates:
+    Using 306 strategies to aggregate MIaS scores with probability estimates:
     - The weighted arithmetic mean (alpha = 0.00) (look for 'arith0.00' in filenames)
     - The weighted arithmetic mean (alpha = 0.01) (look for 'arith0.01' in filenames)
     - The weighted arithmetic mean (alpha = 0.02) (look for 'arith0.02' in filenames)
+    - The weighted arithmetic mean (alpha = 0.03) (look for 'arith0.03' in filenames)
+    - The weighted arithmetic mean (alpha = 0.04) (look for 'arith0.04' in filenames)
       ...
-    - The weighted arithmetic mean (alpha = 0.98) (look for 'arith0.98' in filenames)
-    - The weighted arithmetic mean (alpha = 0.99) (look for 'arith0.99' in filenames)
     - The weighted arithmetic mean (alpha = 1.00) (look for 'arith1.00' in filenames)
+    - The best possible score that uses relevance judgements (look for 'best' in filenames)
     - The weighted geometric mean (alpha = 0.00) (look for 'geom0.00' in filenames)
-    - The weighted geometric mean (alpha = 0.01) (look for 'geom0.01' in filenames)
-    - The weighted geometric mean (alpha = 0.02) (look for 'geom0.02' in filenames)
       ...
-    - The weighted geometric mean (alpha = 0.98) (look for 'geom0.98' in filenames)
-    - The weighted geometric mean (alpha = 0.99) (look for 'geom0.99' in filenames)
     - The weighted geometric mean (alpha = 1.00) (look for 'geom1.00' in filenames)
     - The weighted harmonic mean (alpha = 0.00) (look for 'harm0.00' in filenames)
-    - The weighted harmonic mean (alpha = 0.01) (look for 'harm0.01' in filenames)
-    - The weighted harmonic mean (alpha = 0.02) (look for 'harm0.02' in filenames)
       ...
     - The weighted harmonic mean (alpha = 0.98) (look for 'harm0.98' in filenames)
     - The weighted harmonic mean (alpha = 0.99) (look for 'harm0.99' in filenames)
     - The weighted harmonic mean (alpha = 1.00) (look for 'harm1.00' in filenames)
     - The original MIaS score with the probability estimate discarded (look for 'orig' in filenames)
-    - The perfect score that uses relevance judgements (look for 'perfect' in filenames)
+    - The worst possible score that uses relevance judgements (look for 'worst' in filenames)
     Storing reranked per-query result lists in search_results
     Using 4 formats to represent mathematical formulae in queries:
     - Content MathML XML language (look for 'CMath' in filenames)
@@ -144,7 +139,29 @@ Querying a local WebMIaS instance using 64 worker processes:
     get_results:  100%|███████████████████████████████████████████████| 50/50 [00:26<00:00,  1.88it/s]
     rerank_and_merge_results: 200it [01:02,  3.18it/s]
     Storing final result lists in mias_search_results
-    100%|█████████████████████████████████████████████████████████| 1220/1220 [00:13<00:00,  3.73it/s]
+    100%|█████████████████████████████████████████████████████████| 1224/1224 [00:13<00:00,  3.73it/s]
+    Evaluation results:
+    - best, TeX: 0.5071
+    - best, PCMath: 0.5013
+    - best, CMath: 0.4978
+    - arith0.74, TeX: 0.4784
+    - arith0.48, TeX: 0.4784
+    - ...
+    - orig, TeX: 0.4779
+    - ...
+    - orig, CMath: 0.4745
+    - ...
+    - orig, PCMath: 0.4741
+    - ...
+    - best, PMath: 0.4628
+    - ...
+    - orig, PMath: 0.4371
+    - ...
+    - harm0.08, PMath: 0.4036
+    - worst, CMath: 0.3080
+    - worst, PMath: 0.3007
+    - worst, PCMath: 0.2950
+    - worst, TeX: 0.2810
     
     $ ls search_results
     final_CMath.arith0.00.tsv   final_CMath.geom0.01.tsv   final_CMath.harm0.02.tsv
@@ -181,30 +198,25 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     8301578 total paragraph identifiers in positions.pkl.gz
     Reading density, and probability estimates from estimates.pkl.gz
     Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking and merging results
-    Using 305 strategies to aggregate MIaS scores with probability estimates:
+    Using 306 strategies to aggregate MIaS scores with probability estimates:
     - The weighted arithmetic mean (alpha = 0.00) (look for 'arith0.00' in filenames)
     - The weighted arithmetic mean (alpha = 0.01) (look for 'arith0.01' in filenames)
     - The weighted arithmetic mean (alpha = 0.02) (look for 'arith0.02' in filenames)
+    - The weighted arithmetic mean (alpha = 0.03) (look for 'arith0.03' in filenames)
+    - The weighted arithmetic mean (alpha = 0.04) (look for 'arith0.04' in filenames)
       ...
-    - The weighted arithmetic mean (alpha = 0.98) (look for 'arith0.98' in filenames)
-    - The weighted arithmetic mean (alpha = 0.99) (look for 'arith0.99' in filenames)
     - The weighted arithmetic mean (alpha = 1.00) (look for 'arith1.00' in filenames)
+    - The best possible score that uses relevance judgements (look for 'best' in filenames)
     - The weighted geometric mean (alpha = 0.00) (look for 'geom0.00' in filenames)
-    - The weighted geometric mean (alpha = 0.01) (look for 'geom0.01' in filenames)
-    - The weighted geometric mean (alpha = 0.02) (look for 'geom0.02' in filenames)
       ...
-    - The weighted geometric mean (alpha = 0.98) (look for 'geom0.98' in filenames)
-    - The weighted geometric mean (alpha = 0.99) (look for 'geom0.99' in filenames)
     - The weighted geometric mean (alpha = 1.00) (look for 'geom1.00' in filenames)
     - The weighted harmonic mean (alpha = 0.00) (look for 'harm0.00' in filenames)
-    - The weighted harmonic mean (alpha = 0.01) (look for 'harm0.01' in filenames)
-    - The weighted harmonic mean (alpha = 0.02) (look for 'harm0.02' in filenames)
       ...
     - The weighted harmonic mean (alpha = 0.98) (look for 'harm0.98' in filenames)
     - The weighted harmonic mean (alpha = 0.99) (look for 'harm0.99' in filenames)
     - The weighted harmonic mean (alpha = 1.00) (look for 'harm1.00' in filenames)
     - The original MIaS score with the probability estimate discarded (look for 'orig' in filenames)
-    - The perfect score that uses relevance judgements (look for 'perfect' in filenames)
+    - The worst possible score that uses relevance judgements (look for 'worst' in filenames)
     Storing reranked per-query result lists in search_results
     Using 4 formats to represent mathematical formulae in queries:
     - Content MathML XML language (look for 'CMath' in filenames)
@@ -214,7 +226,29 @@ Querying a [remote WebMIaS instance][www:WebMIaS-demo] using 64 worker processes
     get_results:  100%|███████████████████████████████████████████████| 50/50 [05:29<00:00,  6.58s/it]
     rerank_and_merge_results: 200it [06:57,  2.09s/it]
     Storing final result lists in mias_search_results
-    100%|█████████████████████████████████████████████████████████| 1220/1220 [00:13<00:00,  3.73it/s]
+    100%|█████████████████████████████████████████████████████████| 1224/1224 [00:13<00:00,  3.73it/s]
+    Evaluation results:
+    - best, TeX: 0.5071
+    - best, PCMath: 0.5013
+    - best, CMath: 0.4978
+    - arith0.74, TeX: 0.4784
+    - arith0.48, TeX: 0.4784
+    - ...
+    - orig, TeX: 0.4779
+    - ...
+    - orig, CMath: 0.4745
+    - ...
+    - orig, PCMath: 0.4741
+    - ...
+    - best, PMath: 0.4628
+    - ...
+    - orig, PMath: 0.4371
+    - ...
+    - harm0.08, PMath: 0.4036
+    - worst, CMath: 0.3080
+    - worst, PMath: 0.3007
+    - worst, PCMath: 0.2950
+    - worst, TeX: 0.2810
     
     $ ls search_results
     final_CMath.arith0.00.tsv   final_CMath.geom0.01.tsv   final_CMath.harm0.02.tsv

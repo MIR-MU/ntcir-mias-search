@@ -72,14 +72,16 @@ class ArithmeticMean(ScoreAggregationStrategy):
     Parameters
     ----------
     alpha : float
-        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
-        score is 1 - alpha.
+        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
+        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
+        result.
 
     Attributes
     ----------
     alpha : float, optional
-        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
-        score is 1 - alpha.
+        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
+        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
+        result.
     """
     def __init__(self, alpha=0.5):
         assert isinstance(alpha, float)
@@ -92,13 +94,18 @@ class ArithmeticMean(ScoreAggregationStrategy):
     def aggregate_score(self, result):
         assert isinstance(result, MIaSResult)
 
+        rank = float(result.rank())
+        assert rank > 0.0
         score = result.score
         assert isinstance(score, float)
+        assert score >= 0.0
         p_relevant = result.p_relevant
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        arithmetic_mean = score * (1 - self.alpha) + p_relevant * self.alpha
+        w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
+        w2 = (rank - 1) / rank * self.alpha
+        arithmetic_mean = score * w1 + p_relevant * w2
         return arithmetic_mean
 
 
@@ -110,14 +117,16 @@ class GeometricMean(ScoreAggregationStrategy):
     Parameters
     ----------
     alpha : float
-        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
-        score is 1 - alpha.
+        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
+        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
+        result.
 
     Attributes
     ----------
     alpha : float, optional
-        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
-        score is 1 - alpha.
+        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
+        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
+        result.
     """
     def __init__(self, alpha=0.5):
         assert isinstance(alpha, float)
@@ -130,13 +139,18 @@ class GeometricMean(ScoreAggregationStrategy):
     def aggregate_score(self, result):
         assert isinstance(result, MIaSResult)
 
+        rank = float(result.rank())
+        assert rank > 0.0
         score = result.score
         assert isinstance(score, float)
+        assert score >= 0.0
         p_relevant = result.p_relevant
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        geometric_mean = score**(1 - self.alpha) * p_relevant**self.alpha
+        w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
+        w2 = (rank - 1) / rank * self.alpha
+        geometric_mean = score**w1 * p_relevant**w2
         return geometric_mean
 
 
@@ -148,14 +162,16 @@ class HarmonicMean(ScoreAggregationStrategy):
     Parameters
     ----------
     alpha : float
-        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
-        score is 1 - alpha.
+        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
+        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
+        result.
 
     Attributes
     ----------
     alpha : float, optional
-        The weight of a probability estimate (the weight is in the range [0; 1]). The weight of a
-        score is 1 - alpha.
+        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
+        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
+        result.
     """
     def __init__(self, alpha=0.5):
         assert isinstance(alpha, float)
@@ -168,13 +184,18 @@ class HarmonicMean(ScoreAggregationStrategy):
     def aggregate_score(self, result):
         assert isinstance(result, MIaSResult)
 
+        rank = float(result.rank())
+        assert rank > 0.0
         score = result.score
         assert isinstance(score, float)
+        assert score >= 0.0
         p_relevant = result.p_relevant
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        harmonic_mean = ((1 - self.alpha) / score + self.alpha / p_relevant)**-1
+        w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
+        w2 = (rank - 1) / rank * self.alpha
+        harmonic_mean = (w1 / score + w2 / p_relevant)**-1
         return harmonic_mean
 
 
@@ -344,10 +365,6 @@ class ExecutedQuery(object):
 
     Attributes
     ----------
-    aggregation : ScoreAggregationStrategy
-        The score aggregation strategy that will be used to compute the aggregate score of the query
-        results. By default, this corresponds to MIaSScore, i.e. no score aggregation will be
-        performed. Change this attribute by using the use_aggregation context manager method.
     query : Query
         The query that has been executed.
     response_text : str
@@ -358,7 +375,6 @@ class ExecutedQuery(object):
         assert isinstance(response_text, str)
         assert response_text
 
-        self.aggregation = MIaSScore()
         self.query = query
         self.response_text = response_text
 
@@ -413,12 +429,19 @@ class ExecutedProcessedQuery(object):
     Parameters
     ----------
     executed_query : ExecutedQuery
-        The executed query whose results have been processed.
-    results : iterable of MIaSResult
-        The query results.
+        The executed query with the WebMIaS response.
+    positions : dict of (string, double)
+        A map from paragraph identifiers to estimated positions of paragraphs in their parent
+        documents. The positions are in the range [0; 1].
+    estimates : sequence of double
+        Estimates of P(relevant | position) in the form of a histogram.
 
     Attributes
     ----------
+    aggregation : ScoreAggregationStrategy
+        The score aggregation strategy that will be used to compute the aggregate score of the query
+        results. By default, this corresponds to MIaSScore, i.e. no score aggregation will be
+        performed. Change this attribute by using the use_aggregation context manager method.
     executed_query : ExecutedQuery
         The executed query whose results have been processed.
     results : sequence of MIaSResult
@@ -427,38 +450,15 @@ class ExecutedProcessedQuery(object):
     def __init__(self, executed_query, results):
         assert isinstance(executed_query, ExecutedQuery)
 
-        self.executed_query = executed_query
-        self.results = list(results)
-
-    @staticmethod
-    def from_elements(executed_query, positions, estimates):
-        """
-        Constructs results from XML elements in a WebMIaS response.
-
-        Parameters
-        ----------
-        executed_query : ExecutedQuery
-            The executed query with the WebMIaS response.
-        positions : dict of (string, double)
-            A map from paragraph identifiers to estimated positions of paragraphs in their parent
-            documents. The positions are in the range [0; 1].
-        estimates : sequence of double
-            Estimates of P(relevant | position) in the form of a histogram.
-
-        Returns
-        -------
-        ExecutedProcessedQuery
-            An executed query with processed results.
-        """
-        assert isinstance(executed_query, ExecutedQuery)
-
         parser = XMLParser(encoding="utf-8", recover=True)
         response = etree.fromstring(executed_query.response_text, parser=parser)
-        results = (
-            MIaSResult.from_element(executed_query, result, positions, estimates)
-            for result in response.xpath(XPATH_RESULT))
+        results = [
+            MIaSResult.from_element(self, result, positions, estimates)
+            for result in response.xpath(XPATH_RESULT)]
 
-        return ExecutedProcessedQuery(executed_query, results)
+        self.aggregation = MIaSScore()
+        self.executed_query = executed_query
+        self.results = list(results)
 
     @contextmanager
     def use_aggregation(self, aggregation):
@@ -474,13 +474,13 @@ class ExecutedProcessedQuery(object):
         """
         assert isinstance(aggregation, ScoreAggregationStrategy)
 
-        original_aggregation = self.executed_query.aggregation
+        original_aggregation = self.aggregation
         original_results = self.results
-        self.executed_query.aggregation = aggregation
+        self.aggregation = aggregation
         if aggregation != MIaSScore():
             self.results = sorted(self.results)
         yield
-        self.executed_query.aggregation = original_aggregation
+        self.aggregation = original_aggregation
         self.results = original_results
 
     def save(self, output_directory):
@@ -508,7 +508,7 @@ class MIaSResult(Result):
 
     Parameters
     ----------
-    executed_query : ExecutedQuery
+    query : ExecutedProcessedQuery
         The query that produced the result.
     identifier : str
         The identifier of the paragraph in the result.
@@ -521,7 +521,7 @@ class MIaSResult(Result):
 
     Attributes
     ----------
-    executed_query : ExecutedQuery
+    query : ExecutedProcessedQuery
         The query that produced the result.
     identifier : str
         The identifier of the paragraph in the result.
@@ -534,8 +534,8 @@ class MIaSResult(Result):
     relevant : bool or None
         Whether the result is considered relevant according to relevance judgements.
     """
-    def __init__(self, executed_query, identifier, score, position, p_relevant, relevant):
-        assert isinstance(executed_query, ExecutedQuery)
+    def __init__(self, query, identifier, score, position, p_relevant, relevant):
+        assert isinstance(query, ExecutedProcessedQuery)
         assert isinstance(identifier, str)
         assert isinstance(score, float)
         assert score >= 0.0
@@ -545,7 +545,7 @@ class MIaSResult(Result):
         assert p_relevant >= 0.0 and p_relevant <= 1.0
         assert isinstance(relevant, bool) or relevant is None
 
-        self.executed_query = executed_query
+        self.query = query
         self.identifier = identifier
         self.score = score
         self.position = position
@@ -554,13 +554,13 @@ class MIaSResult(Result):
         self._aggregate_scores = dict()
 
     @staticmethod
-    def from_element(executed_query, result_tree, positions, estimates):
+    def from_element(query, result_tree, positions, estimates):
         """
         Constructs a result from a XML element in a WebMIaS response.
 
         Parameters
         ----------
-        executed_query : ExecutedQuery
+        query : ExecutedProcessedQuery
             The query that produced the result.
         result_tree : _Element
             A result XML element.
@@ -575,7 +575,7 @@ class MIaSResult(Result):
         MIaSResult
             The extracted result.
         """
-        assert isinstance(executed_query, ExecutedQuery)
+        assert isinstance(query, ExecutedProcessedQuery)
         assert isinstance(result_tree, _Element)
 
         identifier_path_trees = result_tree.xpath(".//path")
@@ -601,25 +601,48 @@ class MIaSResult(Result):
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        if identifier in executed_query.query.topic.judgements:
-            relevant = executed_query.query.topic.judgements[identifier]
+        judgements = query.executed_query.executed_processed_query.topic.judgements
+        if identifier in judgements:
+            relevant = judgements[identifier]
             assert isinstance(relevant, bool)
         else:
             relevant = None  # No relevance judgement as opposed to positive / negative judgement
 
         return MIaSResult(
-            executed_query, identifier, score, position, p_relevant, relevant)
+            query, identifier, score, position, p_relevant, relevant)
+
+    def rank(self):
+        """
+        Returns the relative rank of this result among all results to a query.
+
+        Returns
+        -------
+        int
+            The rank of this result.
+        """
+        results = self.query.results
+        assert self in results
+        relative_rank = results.index(self)
+
+        return relative_rank
+
 
     def aggregate_score(self):
         """
         Aggregates the MIaS score of the result, and the estimated probability of relevance of the
         paragraph in the result using the aggregation strategy of the query that produced this
         result.
+
+        Returns
+        -------
+        double
+            The aggregate score.
         """
-        if self.executed_query.aggregation not in self._aggregate_scores:
-            aggregate_score = self.executed_query.aggregation.aggregate_score(self)
-            self._aggregate_scores[self.executed_query.aggregation] = aggregate_score
-        aggregate_score = self._aggregate_scores[self.executed_query.aggregation]
+        aggregation = self.query.aggregation
+        if aggregation not in self._aggregate_scores:
+            aggregate_score = aggregation.aggregate_score(self)
+            self._aggregate_scores[aggregation] = aggregate_score
+        aggregate_score = self._aggregate_scores[aggregation]
         assert isinstance(aggregate_score, float)
         return aggregate_score
 
@@ -634,11 +657,11 @@ class MIaSResult(Result):
 
     def __getstate__(self):  # Do not serialize the aggregate score cache
         return (
-            self.executed_query, self.identifier, self.score, self.position, self.p_relevant,
+            self.query, self.identifier, self.score, self.position, self.p_relevant,
             self.relevant)
 
     def __setstate__(self, state):
-        self.executed_query, self.identifier, self.score, self.position, self.p_relevant, \
+        self.query, self.identifier, self.score, self.position, self.p_relevant, \
             self.relevant = state
         self._aggregate_scores = dict()
 

@@ -35,6 +35,7 @@ setup(
     install_requires=[
         "tqdm ~= 4.23.3",
         "lxml ~= 4.2.1",
+        "matplotlib ~= 2.2.2",
         "numpy ~= 1.14.3",
         "requests ~= 2.18.4",
     ],
@@ -49,5 +50,5 @@ setup(
         "Source": SOURCE_URL,
     },
     url=SOURCE_URL,
-    version="0.2.0",
+    version="0.21",
 )

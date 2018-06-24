@@ -12,7 +12,7 @@ from numpy import linspace
 from lxml.etree import _Element, XMLParser
 
 from .abstract import QueryExpansionStrategy, ScoreAggregationStrategy, MathFormat, Result
-from .abstract import Singleton
+from .abstract import Singleton, WeightedScoreAggregationStrategy
 from .util import write_tsv
 from .webmias import WebMIaSIndex
 
@@ -64,7 +64,7 @@ class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
         return score
 
 
-class ArithmeticMean(ScoreAggregationStrategy):
+class ArithmeticMean(WeightedScoreAggregationStrategy):
     """
     This class represents a strategy for aggregating a score, and a probability estimate into their
     weighted arithmetic mean.
@@ -72,13 +72,6 @@ class ArithmeticMean(ScoreAggregationStrategy):
     Parameters
     ----------
     alpha : float
-        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
-        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
-        result.
-
-    Attributes
-    ----------
-    alpha : float, optional
         A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
         and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
         result.
@@ -113,7 +106,7 @@ class ArithmeticMean(ScoreAggregationStrategy):
         return arithmetic_mean
 
 
-class GeometricMean(ScoreAggregationStrategy):
+class GeometricMean(WeightedScoreAggregationStrategy):
     """
     This class represents a strategy for aggregating a score, and a probability estimate into their
     weighted geometric mean.
@@ -121,13 +114,6 @@ class GeometricMean(ScoreAggregationStrategy):
     Parameters
     ----------
     alpha : float
-        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
-        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
-        result.
-
-    Attributes
-    ----------
-    alpha : float, optional
         A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
         and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
         result.
@@ -162,7 +148,7 @@ class GeometricMean(ScoreAggregationStrategy):
         return geometric_mean
 
 
-class HarmonicMean(ScoreAggregationStrategy):
+class HarmonicMean(WeightedScoreAggregationStrategy):
     """
     This class represents a strategy for aggregating a score, and a probability estimate into
     their weighted harmonic mean.
@@ -170,13 +156,6 @@ class HarmonicMean(ScoreAggregationStrategy):
     Parameters
     ----------
     alpha : float
-        A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
-        and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
-        result.
-
-    Attributes
-    ----------
-    alpha : float, optional
         A value in the range [0; 1]. The weight of a score is 1 / r + (r - 1) / r * (1 - alpha),
         and the weight of a probability estimate is (r - 1) / r * alpha, where r is the rank of the
         result.

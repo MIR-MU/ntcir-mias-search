@@ -107,8 +107,8 @@ class TestFormula(unittest.TestCase):
                   <mrow xml:id="m1.1.8.pmml" xref="m1.1.8">
                     <mrow xml:id="m1.1.8.1.pmml" xref="m1.1.8.1">
                       <mi>&#119904;</mi><mo xml:id="m1.1.8.1.1.pmml" xref="m1.1.8.1.1">&#8290;</mo>
-                      <mrow xml:id="m1.1.3.pmml" xref="m1.1.3">             
-                        <mo xml:id="m1.1.3a.pmml" xref="m1.1.3">(</mo>                                                              
+                      <mrow xml:id="m1.1.3.pmml" xref="m1.1.3">
+                        <mo xml:id="m1.1.3a.pmml" xref="m1.1.3">(</mo>
                         <mi>&#119901;</mi><mo xml:id="m1.1.3c.pmml" xref="m1.1.3">)</mo>
                       </mrow>
                     </mrow>
@@ -140,8 +140,8 @@ class TestFormula(unittest.TestCase):
             self.formulae[0].cmath_text, r"""
                 <math>
                   <apply xml:id="m1.1.8" xref="m1.1.8.pmml">
-                    <eq xml:id="m1.1.5" xref="m1.1.5.pmml"/>              
-                    <apply xml:id="m1.1.8.1" xref="m1.1.8.1.pmml">                                                                
+                    <eq xml:id="m1.1.5" xref="m1.1.5.pmml"/>
+                    <apply xml:id="m1.1.8.1" xref="m1.1.8.1.pmml">
                       <times xml:id="m1.1.8.1.1" xref="m1.1.8.1.1.pmml"/>
                       <ci>s</ci><ci>p</ci>
                     </apply>

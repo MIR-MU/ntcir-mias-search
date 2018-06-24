@@ -78,6 +78,9 @@ command:
       --output-directory OUTPUT_DIRECTORY
                             The path to the directory, where the output files will
                             be stored.
+      --plots PLOTS [PLOTS ...]
+                            The path to the files, where the evaluation results
+                            will plotted.
 
 Querying WebMIaS
 ----------------
@@ -92,6 +95,7 @@ processes:
     >     --judgements NTCIR11_Math-qrels.dat \
     >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
     >     --webmias-url http://localhost:58080/WebMIaS --webmias-index-number 1 \
+    >     --plots plot.pdf plot.svg \
     >     --output-directory search_results
     Reading relevance judgements from NTCIR11_Math-qrels.dat
     50 judged topics and 2500 total judgements in NTCIR11_Math-qrels.dat
@@ -158,6 +162,8 @@ processes:
     - worst, PMath: 0.3007
     - worst, PCMath: 0.2950
     - worst, TeX: 0.2810
+    Plotting plot.svg
+    Plotting plot.pdf
     
     $ ls search_results
     final_CMath.arith0.00.tsv   final_CMath.geom0.01.tsv   final_CMath.harm0.02.tsv
@@ -185,6 +191,7 @@ The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
     >     --judgements NTCIR11_Math-qrels.dat \
     >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
     >     --webmias-url https://mir.fi.muni.cz/webmias-demo --webmias-index-number 0 \
+    >     --plots plot.pdf plot.svg \
     >     --output-directory search_results
     Reading relevance judgements from NTCIR11_Math-qrels.dat
     50 judged topics and 2500 total judgements in NTCIR11_Math-qrels.dat
@@ -246,6 +253,8 @@ The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
     - worst, PMath: 0.3007
     - worst, PCMath: 0.2950
     - worst, TeX: 0.2810
+    Plotting plot.svg
+    Plotting plot.pdf
     
     $ ls search_results
     final_CMath.arith0.00.tsv   final_CMath.geom0.01.tsv   final_CMath.harm0.02.tsv
@@ -263,16 +272,6 @@ The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
     final_CMath.geom0.00.tsv    final_CMath.harm0.01.tsv   ...
 
 [WebMIaS-demo]: https://mir.fi.muni.cz/webmias-demo/ (Web Math Indexer and Searcher)
-
-Contributing
-============
-
-To get familiar with the codebase, please consult the UML class diagram in the
-[Umbrello][www:Umbrello] project document [project.xmi](project.xmi):
-
-![Rendered UML class diagram](project.svg)
-
-[www:Umbrello]: https://umbrello.kde.org/ (Umbrello Project - Welcome to Umbrello - The UML Modeller)
 
 Citing NTCIR MIaS Search
 ========================

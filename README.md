@@ -78,6 +78,9 @@ command:
       --output-directory OUTPUT_DIRECTORY
                             The path to the directory, where the output files will
                             be stored.
+      --plots PLOTS [PLOTS ...]
+                            The path to the files, where the evaluation results
+                            will plotted.
 
 Querying WebMIaS
 ----------------
@@ -92,6 +95,7 @@ processes:
     >     --judgements NTCIR11_Math-qrels.dat \
     >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
     >     --webmias-url http://localhost:58080/WebMIaS --webmias-index-number 1 \
+    >     --plots plot.pdf plot.svg \
     >     --output-directory search_results
     Reading relevance judgements from NTCIR11_Math-qrels.dat
     50 judged topics and 2500 total judgements in NTCIR11_Math-qrels.dat
@@ -133,6 +137,8 @@ processes:
     - worst, TeX: 0.2810
     - worst, PMath: 0.1156
     - worst, PCMath: 0.1141
+    Plotting plot.svg
+    Plotting plot.pdf
     
     $ ls search_results
     final_CMath.best.tsv
@@ -167,6 +173,7 @@ The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
     >     --judgements NTCIR11_Math-qrels.dat \
     >     --estimates estimates.pkl.gz --positions positions.pkl.gz \
     >     --webmias-url https://mir.fi.muni.cz/webmias-demo --webmias-index-number 0 \
+    >     --plots plot.pdf plot.svg \
     >     --output-directory search_results
     Reading relevance judgements from NTCIR11_Math-qrels.dat
     50 judged topics and 2500 total judgements in NTCIR11_Math-qrels.dat
@@ -203,6 +210,8 @@ The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
     - worst, TeX: 0.2810
     - worst, PMath: 0.1156
     - worst, PCMath: 0.1141
+    Plotting plot.svg
+    Plotting plot.pdf
     
     $ ls search_results
     final_CMath.best.tsv

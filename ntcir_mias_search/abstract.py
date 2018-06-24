@@ -120,6 +120,20 @@ class ScoreAggregationStrategy(NamedEntity):
         pass
 
 
+class WeightedScoreAggregationStrategy(ScoreAggregationStrategy):
+    """
+    This class represents a strategy for aggregating a real score, and a probability of relevance
+    into a single aggregate score using a weighted average, where the weight of the real score is
+    1 - alpha, the weight of the probability estimate is alpha, and alpha is in the range [0; 1].
+
+    Attributes
+    ----------
+    alpha : float
+        The weight of a probability estimate. The weight of a score is 1 - alpha.
+    """
+    pass
+
+
 class Result(object):
     """
     This class represents the result of a query.

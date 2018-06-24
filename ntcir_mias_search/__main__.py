@@ -11,8 +11,10 @@ from urllib.parse import urlparse
 
 from numpy import mean
 
+from .abstract import WeightedScoreAggregationStrategy
 from .facade import get_topics, get_webmias, query_webmias, rerank_and_merge_results
 from .util import get_judgements, get_positions, get_estimates, log_sequence
+from .view import plot_evaluation_results
 
 
 LOG_PATH = Path("__main__.log")
@@ -93,6 +95,10 @@ def main():
             The path to the directory, where the output files will be stored. Defaults to
             %(default)s.
         """)
+    parser.add_argument(
+        "--plots", type=Path, nargs='+', help="""
+            The path to the files, where the evaluation results will plotted.
+        """)
     args = parser.parse_args()
 
     LOGGER.debug("Performing sanity checks on the command-line arguments")
@@ -111,6 +117,12 @@ def main():
     assert args.webmias_index_number >= 0
     assert args.num_workers_querying > 0
     assert args.num_workers_merging > 0
+    for plot in args.plots:
+        assert plot.parents[0].exists() and plot.parents[0].is_dir(), \
+            "Directory %s, where a plot is to be stored, does not exist" % \
+            plot.parents[0]
+        if plot.exists():
+            LOGGER.warning("%s exists", plot)
 
     LOGGER.info("Reading relevance judgements from %s", args.judgements.name)
     with args.judgements.open("rt") as f:
@@ -152,15 +164,19 @@ def main():
     LOGGER.info("Querying %s, reranking and merging results", webmias)
     results = query_webmias(
         topics, webmias, positions, estimates, args.output_directory, args.num_workers_querying)
-    final_results = rerank_and_merge_results(
-        results, identifiers, args.output_directory, args.num_workers_merging)
+    final_results = list(rerank_and_merge_results(
+        results, identifiers, args.output_directory, args.num_workers_merging))
 
+    math_formats = dict()
     evaluation_results = []
     for aggregation, math_format, result_lists in final_results:
         assert len(result_lists) == len(topics)
-        evaluation_results.append((
-            aggregation, math_format,
-            mean([results.evaluate() for results in result_lists])))
+        mean_score = mean([results.evaluate() for results in result_lists])
+        evaluation_results.append((aggregation, math_format, mean_score))
+        if math_format not in math_formats:
+            math_formats[math_format] = []
+        if isinstance(aggregation, WeightedScoreAggregationStrategy):
+            math_formats[math_format].append((aggregation, mean_score))
     LOGGER.info("Evaluation results:")
     lines = []
     for aggregation, math_format, score in sorted(
@@ -168,6 +184,12 @@ def main():
         line = "%s, %s: %0.4f" % (aggregation.identifier, math_format.identifier, score)
         lines.append(line)
     log_sequence(lines)
+
+    if args.plots:
+        figure = plot_evaluation_results(sorted(math_formats.items()))
+        for plot_path in args.plots:
+            LOGGER.info("Plotting %s", plot_path.name)
+            figure.savefig(str(plot_path))
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI xmi.version="1.2" timestamp="2018-06-24T20:12:02" xmlns:UML="http://schema.omg.org/spec/UML/1.3" verified="false">
+<XMI xmi.version="1.2" timestamp="2018-06-24T23:37:09" xmlns:UML="http://schema.omg.org/spec/UML/1.3" verified="false">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -345,6 +345,14 @@
           </UML:Operation>
          </UML:Classifier.feature>
         </UML:Class>
+        <UML:Class isSpecification="false" isRoot="false" isAbstract="true" namespace="FYOvVmw2cjTb" visibility="public" isLeaf="false" xmi.id="oqIExlKEMpso" name="WeightedScoreAggregationStrategy">
+         <UML:GeneralizableElement.generalization>
+          <UML:Generalization xmi.idref="WIcoGSh8ErXW"/>
+         </UML:GeneralizableElement.generalization>
+         <UML:Classifier.feature>
+          <UML:Attribute isSpecification="false" visibility="public" comment="The weight of a probability estimate. The weight of a score is 1 - alpha." xmi.id="NNP2XKTgH83o" type="6hdYN41IHr4Y" name="alpha"/>
+         </UML:Classifier.feature>
+        </UML:Class>
        </UML:Namespace.ownedElement>
       </UML:Package>
       <UML:Package isSpecification="false" isRoot="false" isAbstract="false" namespace="Logical View" visibility="public" isLeaf="false" xmi.id="OPog7dVhzDEx" name="webmias">
@@ -389,6 +397,7 @@
         <UML:Class isSpecification="false" isRoot="false" isAbstract="false" namespace="OLi8f5jOJwYT" visibility="public" comment="This class represents a strategy for aggregating a score, and a probability estimate into the common logarithm of their weighted harmonic mean." isLeaf="false" xmi.id="BBVygmAAJDYA" name="HarmonicMean">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="CcFPJrVSVqH9"/>
+          <UML:Generalization xmi.idref="q7w6cLndALCb"/>
          </UML:GeneralizableElement.generalization>
          <UML:Classifier.feature>
           <UML:Attribute isSpecification="false" visibility="public" comment="A unique identifier." xmi.id="XiOhU0VGgVos" type="BZ26rvH8Ee1x" name="identifier"/>
@@ -410,6 +419,7 @@
         <UML:Class isSpecification="false" isRoot="false" isAbstract="false" namespace="OLi8f5jOJwYT" visibility="public" comment="This class represents a strategy for aggregating a score, and a probability estimate into the common logarithm of their geometric mean." isLeaf="false" xmi.id="milrlksfeuXz" name="GeometricMean">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="DMUy1IScxYYU"/>
+          <UML:Generalization xmi.idref="DNK2zoWyWrOx"/>
          </UML:GeneralizableElement.generalization>
          <UML:Classifier.feature>
           <UML:Attribute isSpecification="false" visibility="public" comment="A unique identifier" xmi.id="S8e5SevMbKeM" type="BZ26rvH8Ee1x" name="identifier"/>
@@ -531,6 +541,7 @@
         <UML:Class isSpecification="false" isRoot="false" isAbstract="false" namespace="OLi8f5jOJwYT" visibility="public" isLeaf="false" xmi.id="QBj9hlWSQGHK" name="ArithmeticMean">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="AGm50YO4Y0Yb"/>
+          <UML:Generalization xmi.idref="EOSSH5UmLsoj"/>
          </UML:GeneralizableElement.generalization>
          <UML:Classifier.feature>
           <UML:Attribute isSpecification="false" visibility="public" comment="A unique identifier." xmi.id="Y6f2RhcftVIF" type="BZ26rvH8Ee1x" name="identifier"/>
@@ -812,10 +823,14 @@
        </UML:Association.connection>
       </UML:Association>
       <UML:Generalization child="cXSGw7qUu24V" isSpecification="false" namespace="Logical View" visibility="public" discriminator="" parent="4b2dQ0x2dmpU" xmi.id="WzdDDc3jagqP" name=""/>
+      <UML:Generalization child="oqIExlKEMpso" isSpecification="false" namespace="Logical View" visibility="public" discriminator="" parent="4b2dQ0x2dmpU" xmi.id="WIcoGSh8ErXW" name=""/>
+      <UML:Generalization child="milrlksfeuXz" isSpecification="false" namespace="Logical View" visibility="public" discriminator="" parent="oqIExlKEMpso" xmi.id="DNK2zoWyWrOx" name=""/>
+      <UML:Generalization child="BBVygmAAJDYA" isSpecification="false" namespace="Logical View" visibility="public" discriminator="" parent="oqIExlKEMpso" xmi.id="q7w6cLndALCb" name=""/>
+      <UML:Generalization child="QBj9hlWSQGHK" isSpecification="false" namespace="Logical View" visibility="public" discriminator="" parent="oqIExlKEMpso" xmi.id="EOSSH5UmLsoj" name=""/>
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams>
-       <diagram showattsig="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" griddotcolor="#d3d3d3" canvasheight="1315.22" isopen="1" textcolor="#000000" snapgrid="0" showatts="1" fillcolor="#ffffff" snapcsgrid="0" documentation="" showattribassocs="1" backgroundcolor="#ffffff" usefillcolor="1" zoom="53,5025010547371" canvaswidth="3549.63" xmi.id="vbflgzJiL7R9" showstereotype="1" snapy="25" name="Diagram třídy" snapx="25" linecolor="#000000" localid="-1" type="1" showopsig="1" showgrid="0" showpubliconly="0" showops="1">
+       <diagram showattsig="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" griddotcolor="#d3d3d3" canvasheight="1315.22" isopen="1" textcolor="#000000" snapgrid="0" showatts="1" fillcolor="#ffffff" snapcsgrid="0" documentation="" showattribassocs="1" backgroundcolor="#ffffff" usefillcolor="1" zoom="163,4508869230837" canvaswidth="3549.63" xmi.id="vbflgzJiL7R9" showstereotype="1" snapy="25" name="Diagram třídy" snapx="25" linecolor="#000000" localid="-1" type="1" showopsig="1" showgrid="0" showpubliconly="0" showops="1">
         <widgets>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" drawascircle="0" showpackage="1" linewidth="0" textcolor="#000000" height="45" x="-1220.76" fillcolor="#ffffe1" usesdiagramusefillcolor="0" usefillcolor="1" width="180" showopsigs="601" showstereotype="1" xmi.id="546tooNL0Q7Y" linecolor="#000000" showattsigs="601" localid="LVk1z18vJi1T" showoperations="1" y="-768.92" showpubliconly="0" showattributes="1" isinstance="0"/>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" drawascircle="0" showpackage="1" linewidth="0" textcolor="#000000" height="57" x="-1426.2" fillcolor="#ffffe1" usesdiagramusefillcolor="0" usefillcolor="1" width="303" showopsigs="601" showstereotype="1" xmi.id="o6627heT5qM4" linecolor="#000000" showattsigs="601" localid="3kd8XNiP7kXI" showoperations="1" y="-680.549" showpubliconly="0" showattributes="1" isinstance="0"/>
@@ -826,9 +841,9 @@
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" drawascircle="0" showpackage="1" linewidth="0" textcolor="#000000" height="57" x="-1298.07" fillcolor="#ffffe1" usesdiagramusefillcolor="0" usefillcolor="1" width="279" showopsigs="601" showstereotype="1" xmi.id="L5wnqwnbipsk" linecolor="#000000" showattsigs="601" localid="f9vKhYmomyye" showoperations="1" y="-858.407" showpubliconly="0" showattributes="1" isinstance="0"/>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="115" x="-1382.46" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="540" showopsigs="601" showstereotype="1" xmi.id="S4yiqbVFd6NK" linecolor="#000000" showattsigs="601" localid="JecFxTfIkA0I" showoperations="1" y="-1009.76" showpubliconly="0" showattributes="1" isinstance="0"/>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" drawascircle="0" showpackage="1" linewidth="0" textcolor="#000000" height="57" x="-1104.71" fillcolor="#ffffe1" usesdiagramusefillcolor="0" usefillcolor="1" width="355" showopsigs="601" showstereotype="1" xmi.id="4b2dQ0x2dmpU" linecolor="#000000" showattsigs="601" localid="h5FXrOs91X0W" showoperations="1" y="-680.698" showpubliconly="0" showattributes="1" isinstance="0"/>
-         <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="115" x="-1246.43" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="672" showopsigs="601" showstereotype="1" xmi.id="KGURbznxPmsi" linecolor="#000000" showattsigs="601" localid="ZxWV9y53YfZn" showoperations="1" y="-374.331" showpubliconly="0" showattributes="1" isinstance="0"/>
-         <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="138" x="-1310.89" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="348" showopsigs="601" showstereotype="1" xmi.id="milrlksfeuXz" linecolor="#000000" showattsigs="601" localid="GPltqYE11XVM" showoperations="1" y="-557.532" showpubliconly="0" showattributes="1" isinstance="0"/>
-         <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="138" x="-901.151" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="348" showopsigs="601" showstereotype="1" xmi.id="BBVygmAAJDYA" linecolor="#000000" showattsigs="601" localid="GJBr0XWmKJnl" showoperations="1" y="-557.76" showpubliconly="0" showattributes="1" isinstance="0"/>
+         <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="115" x="-1245.73" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="621" showopsigs="601" showstereotype="1" xmi.id="KGURbznxPmsi" linecolor="#000000" showattsigs="601" localid="ZxWV9y53YfZn" showoperations="1" y="-367.295" showpubliconly="0" showattributes="1" isinstance="0"/>
+         <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="138" x="-1294.34" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="348" showopsigs="601" showstereotype="1" xmi.id="milrlksfeuXz" linecolor="#000000" showattsigs="601" localid="GPltqYE11XVM" showoperations="1" y="-522.293" showpubliconly="0" showattributes="1" isinstance="0"/>
+         <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="138" x="-901.151" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="348" showopsigs="601" showstereotype="1" xmi.id="BBVygmAAJDYA" linecolor="#000000" showattsigs="601" localid="GJBr0XWmKJnl" showoperations="1" y="-546.005" showpubliconly="0" showattributes="1" isinstance="0"/>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="161" x="-2201.98" fillcolor="#ffe1e1" usesdiagramusefillcolor="0" usefillcolor="1" width="427" showopsigs="601" showstereotype="1" xmi.id="Jmaoc1ymHyD3" linecolor="#000000" showattsigs="601" localid="UBrzxBIrUtvZ" showoperations="1" y="-959.47" showpubliconly="0" showattributes="1" isinstance="0"/>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="207" x="-2643.56" fillcolor="#ffe1e1" usesdiagramusefillcolor="0" usefillcolor="1" width="793" showopsigs="601" showstereotype="1" xmi.id="1gMUZGxpPnQh" linecolor="#000000" showattsigs="601" localid="26RYoVf4Js24" showoperations="1" y="-657.687" showpubliconly="0" showattributes="1" isinstance="0"/>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="207" x="-711.969" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="876" showopsigs="601" showstereotype="1" xmi.id="6EW05LbGMOY8" linecolor="#000000" showattsigs="601" localid="S85rm0HEtnkK" showoperations="1" y="-1171.7" showpubliconly="0" showattributes="1" isinstance="0"/>
@@ -849,6 +864,7 @@
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" drawascircle="0" showpackage="1" linewidth="0" textcolor="#000000" height="57" x="-1012.42" fillcolor="#ffffe1" usesdiagramusefillcolor="0" usefillcolor="1" width="323" showopsigs="601" showstereotype="1" xmi.id="sbsXdzb87I0p" linecolor="#000000" showattsigs="601" localid="oZm5TswbbaRg" showoperations="1" y="-858.403" showpubliconly="0" showattributes="1" isinstance="0"/>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="115" x="-491.471" fillcolor="#e1e1ff" usesdiagramusefillcolor="0" usefillcolor="1" width="285" showopsigs="601" showstereotype="1" xmi.id="d3q0CutMIdHZ" linecolor="#000000" showattsigs="601" localid="zMtHfEVTRi0S" showoperations="1" y="-789.328" showpubliconly="0" showattributes="1" isinstance="0"/>
          <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" showpackage="1" linewidth="0" textcolor="#000000" height="115" x="-604.988" fillcolor="#e1ffff" usesdiagramusefillcolor="0" usefillcolor="1" width="579" showopsigs="601" showstereotype="1" xmi.id="cXSGw7qUu24V" linecolor="#000000" showattsigs="601" localid="DMal1Y4dQaeR" showoperations="1" y="-86.767" showpubliconly="0" showattributes="1" isinstance="0"/>
+         <classwidget usesdiagramfillcolor="0" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" showscope="1" drawascircle="0" showpackage="1" linewidth="0" textcolor="#000000" height="57" x="-1310.16" fillcolor="#ffffe1" usesdiagramusefillcolor="0" usefillcolor="1" width="372" showopsigs="601" showstereotype="1" xmi.id="oqIExlKEMpso" linecolor="#000000" showattsigs="601" localid="EeFofIh8iOl2" showoperations="1" y="-602.717" showpubliconly="0" showattributes="1" isinstance="0"/>
         </widgets>
         <messages/>
         <associations>
@@ -902,20 +918,8 @@
          </assocwidget>
          <assocwidget widgetbid="4b2dQ0x2dmpU" indexb="1" totalcounta="2" widgetaid="KGURbznxPmsi" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="1" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="ClfqPf1S2yu6" type="500" indexa="1" totalcountb="2">
           <linepath layout="Polyline">
-           <startpoint startx="-939.882" starty="-374.331"/>
-           <endpoint endx="-939.882" endy="-623.698"/>
-          </linepath>
-         </assocwidget>
-         <assocwidget widgetbid="4b2dQ0x2dmpU" indexb="1" totalcounta="2" widgetaid="milrlksfeuXz" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="1" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="DMUy1IScxYYU" type="500" indexa="1" totalcountb="2">
-          <linepath layout="Polyline">
-           <startpoint startx="-968.823" starty="-557.532"/>
-           <endpoint endx="-968.823" endy="-623.698"/>
-          </linepath>
-         </assocwidget>
-         <assocwidget widgetbid="4b2dQ0x2dmpU" indexb="1" totalcounta="2" widgetaid="BBVygmAAJDYA" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="0" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="CcFPJrVSVqH9" type="500" indexa="1" totalcountb="2">
-          <linepath layout="Polyline">
-           <startpoint startx="-894.721" starty="-557.76"/>
-           <endpoint endx="-894.721" endy="-623.698"/>
+           <startpoint startx="-931.287" starty="-367.295"/>
+           <endpoint endx="-931.287" endy="-623.698"/>
           </linepath>
          </assocwidget>
          <assocwidget widgetbid="Jmaoc1ymHyD3" indexb="1" totalcounta="2" widgetaid="o6627heT5qM4" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="1" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="8ZNspn9Y9c9I" type="502" indexa="1" totalcountb="2">
@@ -1099,9 +1103,9 @@
          </assocwidget>
          <assocwidget totalcounta="2" usesdiagramfillcolor="0" changeabilityA="900" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" roleBdoc="" linewidth="0" textcolor="none" indexa="1" fillcolor="#ffff00" usesdiagramusefillcolor="0" documentation="" changeabilityB="900" totalcountb="2" usefillcolor="1" visibilityA="0" widgetaid="FYOvVmw2cjTb" linecolor="#000000" widgetbid="o6627heT5qM4" roleAdoc="" type="509" visibilityB="0" indexb="1" seqnum="">
           <linepath layout="Polyline">
-           <startpoint startx="-983.149" starty="-715.356"/>
+           <startpoint startx="-977.407" starty="-715.356"/>
            <endpoint endx="-1143.46" endy="-680.549"/>
-           <point x="-983.149" y="-690.699"/>
+           <point x="-977.407" y="-689.363"/>
            <point x="-1143.46" y="-689.775"/>
           </linepath>
          </assocwidget>
@@ -1114,14 +1118,14 @@
          <assocwidget totalcounta="2" usesdiagramfillcolor="0" changeabilityA="900" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" roleBdoc="" linewidth="0" textcolor="none" indexa="1" fillcolor="#ffff00" usesdiagramusefillcolor="0" documentation="" changeabilityB="900" totalcountb="2" usefillcolor="1" visibilityA="0" widgetaid="OLi8f5jOJwYT" linecolor="#000000" widgetbid="KGURbznxPmsi" roleAdoc="" type="509" visibilityB="0" indexb="1" seqnum="">
           <linepath layout="Polyline">
            <startpoint startx="-420.995" starty="-178.308"/>
-           <endpoint endx="-730.213" endy="-259.331"/>
+           <endpoint endx="-730.213" endy="-252.295"/>
            <point x="-730.213" y="-178.308"/>
           </linepath>
          </assocwidget>
          <assocwidget totalcounta="2" usesdiagramfillcolor="0" changeabilityA="900" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" roleBdoc="" linewidth="0" textcolor="none" indexa="1" fillcolor="#ffff00" usesdiagramusefillcolor="0" documentation="" changeabilityB="900" totalcountb="2" usefillcolor="1" visibilityA="0" widgetaid="OLi8f5jOJwYT" linecolor="#000000" widgetbid="BBVygmAAJDYA" roleAdoc="" type="509" visibilityB="0" indexb="1" seqnum="">
           <linepath layout="Polyline">
            <startpoint startx="-420.995" starty="-195.289"/>
-           <endpoint endx="-587.284" endy="-419.76"/>
+           <endpoint endx="-587.284" endy="-408.005"/>
            <point x="-587.284" y="-195.289"/>
           </linepath>
          </assocwidget>
@@ -1131,8 +1135,8 @@
            <endpoint endx="-1282.38" endy="-464.629"/>
            <point x="-412.498" y="-133.581"/>
            <point x="-1141.32" y="-134.65"/>
-           <point x="-1140.2" y="-220.234"/>
-           <point x="-1283.31" y="-219.305"/>
+           <point x="-1140.5" y="-233.587"/>
+           <point x="-1284.02" y="-234.291"/>
            <point x="-1282.38" y="-464.629"/>
           </linepath>
          </assocwidget>
@@ -1181,15 +1185,6 @@
            <endpoint endx="-777.539" endy="-160.812"/>
           </linepath>
          </assocwidget>
-         <assocwidget widgetbid="4b2dQ0x2dmpU" indexb="1" totalcounta="2" widgetaid="QBj9hlWSQGHK" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="1" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="AGm50YO4Y0Yb" type="500" indexa="1" totalcountb="2">
-          <linepath layout="Polyline">
-           <startpoint startx="-1125.54" starty="-238.902"/>
-           <endpoint endx="-954.758" endy="-623.698"/>
-           <point x="-1265.48" y="-238.902"/>
-           <point x="-1264.32" y="-398.224"/>
-           <point x="-954.758" y="-400.605"/>
-          </linepath>
-         </assocwidget>
          <assocwidget widgetbid="4ytVgzfqpNED" indexb="1" totalcounta="2" widgetaid="cojesY1fJAk8" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="1" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="W2R0NJH7WSnP" type="500" indexa="1" totalcountb="2">
           <linepath layout="Polyline">
            <startpoint startx="-306.055" starty="-590.897"/>
@@ -1232,9 +1227,9 @@
          <assocwidget widgetbid="4b2dQ0x2dmpU" indexb="1" totalcounta="2" widgetaid="6mEf1qKgxTDS" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="1" fillcolor="none" seqnum="" usesdiagramusefillcolor="1" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="ftQomO0xePZe" type="500" indexa="1" totalcountb="2">
           <linepath layout="Polyline">
            <startpoint startx="-613.659" starty="-86.6636"/>
-           <endpoint endx="-925.005" endy="-623.698"/>
+           <endpoint endx="-920.769" endy="-623.698"/>
            <point x="-613.659" y="-385.729"/>
-           <point x="-925.005" y="-385.197"/>
+           <point x="-920.769" y="-384.328"/>
           </linepath>
          </assocwidget>
          <assocwidget totalcounta="2" usesdiagramfillcolor="0" changeabilityA="900" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" roleBdoc="" linewidth="0" textcolor="none" indexa="1" fillcolor="#ffff00" usesdiagramusefillcolor="0" documentation="" changeabilityB="900" totalcountb="2" usefillcolor="1" visibilityA="0" widgetaid="OLi8f5jOJwYT" linecolor="#000000" widgetbid="ZY8KlJrU3Lbp" roleAdoc="" type="509" visibilityB="0" indexb="1" seqnum="">
@@ -1263,7 +1258,7 @@
           </linepath>
           <floatingtext usesdiagramfillcolor="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" role="701" text="1" linewidth="0" textcolor="none" height="27" x="-167.392" pretext="" fillcolor="none" usesdiagramusefillcolor="1" usefillcolor="1" width="17" showstereotype="1" xmi.id="d4yKTgEWr7q6" posttext="" linecolor="#000000" localid="Rrx09y6HpIlv" y="-771.591" isinstance="0"/>
           <floatingtext usesdiagramfillcolor="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" role="702" text="1..m" linewidth="0" textcolor="none" height="27" x="-175.397" pretext="" fillcolor="none" usesdiagramusefillcolor="1" usefillcolor="1" width="40" showstereotype="1" xmi.id="DEgY0eZvwjnZ" posttext="" linecolor="#000000" localid="TweOxuYRg5sy" y="-621.183" isinstance="0"/>
-          <floatingtext usesdiagramfillcolor="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" role="710" text="results" linewidth="0" textcolor="none" height="27" x="-237.302" pretext="+" fillcolor="none" usesdiagramusefillcolor="1" usefillcolor="1" width="64" showstereotype="1" xmi.id="ulPFk2yZVy0B" posttext="" linecolor="#000000" localid="ZVC6UoEMZNbL" y="-621.682" isinstance="0"/>
+          <floatingtext usesdiagramfillcolor="1" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" role="710" text="results" linewidth="0" textcolor="none" height="27" x="-239.137" pretext="+" fillcolor="none" usesdiagramusefillcolor="1" usefillcolor="1" width="64" showstereotype="1" xmi.id="ulPFk2yZVy0B" posttext="" linecolor="#000000" localid="ZVC6UoEMZNbL" y="-620.458" isinstance="0"/>
          </assocwidget>
          <assocwidget widgetbid="6EW05LbGMOY8" indexb="1" totalcounta="2" widgetaid="ydWWY77Z7IjU" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="0" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="8jbrvj42rmGi" type="502" indexa="1" totalcountb="2">
           <linepath layout="Polyline">
@@ -1404,6 +1399,47 @@
            <point x="-909.597" y="-397.417"/>
           </linepath>
          </assocwidget>
+         <assocwidget totalcounta="2" usesdiagramfillcolor="0" changeabilityA="900" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" textcolor="none" indexa="1" fillcolor="#ffff00" usesdiagramusefillcolor="255" changeabilityB="900" totalcountb="2" usefillcolor="1" xmi.id="IIYSppUZFR2l" visibilityA="0" widgetaid="cojesY1fJAk8" linecolor="#000000" widgetbid="PkYuFEMbgbow" type="510" visibilityB="0" indexb="1" seqnum="">
+          <linepath layout="Polyline">
+           <startpoint startx="253.577" starty="-590.897"/>
+           <endpoint endx="253.577" endy="-601.793"/>
+          </linepath>
+          <floatingtext usesdiagramfillcolor="1" font="Noto Sans,12,-1,5,50,0,0,0,0,0" role="710" text="executed_query" linewidth="0" textcolor="none" height="26" x="255.577" pretext="+" fillcolor="none" usesdiagramusefillcolor="1" usefillcolor="1" width="137" showstereotype="1" xmi.id="7pQaTE62K56x" posttext="" linecolor="#000000" localid="epXc4RqMEjig" y="-599.793" isinstance="0"/>
+         </assocwidget>
+         <assocwidget totalcounta="2" usesdiagramfillcolor="0" changeabilityA="900" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" roleBdoc="" linewidth="0" textcolor="none" indexa="1" fillcolor="#ffff00" usesdiagramusefillcolor="0" documentation="" changeabilityB="900" totalcountb="2" usefillcolor="1" visibilityA="0" widgetaid="FYOvVmw2cjTb" linecolor="#000000" widgetbid="oqIExlKEMpso" roleAdoc="" type="509" visibilityB="0" indexb="1" seqnum="">
+          <linepath layout="Polyline">
+           <startpoint startx="-998.444" starty="-715.356"/>
+           <endpoint endx="-1113.34" endy="-602.717"/>
+           <point x="-998.444" y="-707.163"/>
+           <point x="-1113.34" y="-707.163"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetbid="4b2dQ0x2dmpU" indexb="1" totalcounta="2" widgetaid="oqIExlKEMpso" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="180" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="WIcoGSh8ErXW" type="500" indexa="1" totalcountb="2">
+          <linepath layout="Polyline">
+           <startpoint startx="-941.806" starty="-602.717"/>
+           <endpoint endx="-941.806" endy="-623.698"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetbid="oqIExlKEMpso" indexb="1" totalcounta="2" widgetaid="milrlksfeuXz" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="127" fillcolor="none" seqnum="" usesdiagramusefillcolor="255" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="DNK2zoWyWrOx" type="500" indexa="1" totalcountb="2">
+          <linepath layout="Polyline">
+           <startpoint startx="-1100.78" starty="-522.293"/>
+           <endpoint endx="-1100.78" endy="-545.717"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetbid="oqIExlKEMpso" indexb="1" totalcounta="2" widgetaid="BBVygmAAJDYA" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="209" fillcolor="none" seqnum="" usesdiagramusefillcolor="255" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="q7w6cLndALCb" type="500" indexa="1" totalcountb="2">
+          <linepath layout="Polyline">
+           <startpoint startx="-901.151" starty="-501.63"/>
+           <endpoint endx="-941.16" endy="-545.717"/>
+           <point x="-941.16" y="-501.63"/>
+          </linepath>
+         </assocwidget>
+         <assocwidget widgetbid="oqIExlKEMpso" indexb="1" totalcounta="2" widgetaid="QBj9hlWSQGHK" font="TeX Gyre Heros,12,-1,5,50,0,0,0,0,0" linewidth="0" usesdiagramfillcolor="0" fillcolor="#ffff00" seqnum="" usesdiagramusefillcolor="16" textcolor="none" linecolor="#000000" usefillcolor="1" xmi.id="EOSSH5UmLsoj" type="500" indexa="1" totalcountb="2">
+          <linepath layout="Polyline">
+           <startpoint startx="-1125.54" starty="-220.923"/>
+           <endpoint endx="-1303.72" endy="-545.717"/>
+           <point x="-1303.72" y="-220.923"/>
+          </linepath>
+         </assocwidget>
         </associations>
        </diagram>
       </diagrams>
@@ -1425,7 +1461,7 @@
   </UML:Model>
  </XMI.content>
  <XMI.extensions xmi.extender="umbrello">
-  <docsettings uniqueid="aFLYrtQJEYVW" documentation="" viewid="vbflgzJiL7R9"/>
+  <docsettings uniqueid="Z4hTqb5UcNFA" documentation="" viewid="vbflgzJiL7R9"/>
   <listview>
    <listitem id="Views" type="800" open="1">
     <listitem id="Entity Relationship Model" type="836" open="1"/>
@@ -1448,6 +1484,9 @@
       </listitem>
       <listitem id="4b2dQ0x2dmpU" type="813" open="0">
        <listitem id="pofA1N3vufGD" type="815" open="0"/>
+      </listitem>
+      <listitem id="oqIExlKEMpso" type="813" open="0">
+       <listitem id="NNP2XKTgH83o" type="814" open="0"/>
       </listitem>
      </listitem>
      <listitem id="Jvh6lbIHHKOV" type="813" open="1"/>

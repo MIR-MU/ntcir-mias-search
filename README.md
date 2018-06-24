@@ -102,23 +102,8 @@ processes:
     8301578 total paragraph identifiers in positions.pkl.gz
     Reading density, and probability estimates from estimates.pkl.gz
     Querying WebMIaSIndex(http://localhost:58080/WebMIaS, 1), reranking and merging results
-    Using 306 strategies to aggregate MIaS scores with probability estimates:
-    - The weighted arithmetic mean (alpha = 0.00) (look for 'arith0.00' in filenames)
-    - The weighted arithmetic mean (alpha = 0.01) (look for 'arith0.01' in filenames)
-    - The weighted arithmetic mean (alpha = 0.02) (look for 'arith0.02' in filenames)
-    - The weighted arithmetic mean (alpha = 0.03) (look for 'arith0.03' in filenames)
-    - The weighted arithmetic mean (alpha = 0.04) (look for 'arith0.04' in filenames)
-      ...
-    - The weighted arithmetic mean (alpha = 1.00) (look for 'arith1.00' in filenames)
+    Using 3 strategies to aggregate MIaS scores with probability estimates:
     - The best possible score that uses relevance judgements (look for 'best' in filenames)
-    - The weighted geometric mean (alpha = 0.00) (look for 'geom0.00' in filenames)
-      ...
-    - The weighted geometric mean (alpha = 1.00) (look for 'geom1.00' in filenames)
-    - The weighted harmonic mean (alpha = 0.00) (look for 'harm0.00' in filenames)
-      ...
-    - The weighted harmonic mean (alpha = 0.98) (look for 'harm0.98' in filenames)
-    - The weighted harmonic mean (alpha = 0.99) (look for 'harm0.99' in filenames)
-    - The weighted harmonic mean (alpha = 1.00) (look for 'harm1.00' in filenames)
     - The original MIaS score with the probability estimate discarded (look for 'orig' in filenames)
     - The worst possible score that uses relevance judgements (look for 'worst' in filenames)
     Storing reranked per-query result lists in search_results
@@ -135,44 +120,41 @@ processes:
     get_results:  100%|███████████████████████████████████████████████| 50/50 [00:26<00:00,  1.88it/s]
     rerank_and_merge_results: 200it [01:02,  3.18it/s]
     Storing final result lists in mias_search_results
-    100%|█████████████████████████████████████████████████████████| 1224/1224 [00:13<00:00,  3.73it/s]
+    100%|█████████████████████████████████████████████████████████████| 12/12 [00:13<00:00,  3.73it/s]
     Evaluation results:
-    - best, TeX: 0.5071
-    - best, PCMath: 0.5013
-    - best, CMath: 0.4978
-    - arith0.74, TeX: 0.4784
-    - arith0.48, TeX: 0.4784
+    - best, PCMath: 0.5569
+    - best, PMath: 0.5283
+    - best, TeX: 0.5076
+    - best, CMath: 0.4983
+    - orig, PCMath: 0.4917
     - ...
-    - orig, TeX: 0.4779
-    - ...
-    - orig, CMath: 0.4745
-    - ...
-    - orig, PCMath: 0.4741
-    - ...
-    - best, PMath: 0.4628
-    - ...
-    - orig, PMath: 0.4371
-    - ...
-    - harm0.08, PMath: 0.4036
+    - orig, PMath: 0.4616
     - worst, CMath: 0.3080
-    - worst, PMath: 0.3007
-    - worst, PCMath: 0.2950
     - worst, TeX: 0.2810
+    - worst, PMath: 0.1156
+    - worst, PCMath: 0.1141
     
     $ ls search_results
-    final_CMath.arith0.00.tsv   final_CMath.geom0.01.tsv   final_CMath.harm0.02.tsv
-    final_CMath.arith0.01.tsv   final_CMath.geom0.02.tsv   final_CMath.harm0.03.tsv
-    final_CMath.arith0.02.tsv   final_CMath.geom0.03.tsv   final_CMath.harm0.04.tsv
-    final_CMath.arith0.03.tsv   final_CMath.geom0.04.tsv   final_CMath.harm0.05.tsv
-    final_CMath.arith0.04.tsv   final_CMath.geom0.05.tsv   final_CMath.harm0.06.tsv
-    final_CMath.arith0.05.tsv   final_CMath.geom0.06.tsv   final_CMath.harm0.07.tsv
-    final_CMath.arith0.06.tsv   final_CMath.geom0.07.tsv   final_CMath.harm0.08.tsv
-    final_CMath.arith0.07.tsv   final_CMath.geom0.08.tsv   final_CMath.harm0.09.tsv
-    final_CMath.arith0.08.tsv   final_CMath.geom0.09.tsv   ...
-    final_CMath.arith0.09.tsv   ...                        final_CMath.harm1.00.tsv
-    ...                         final_CMath.geom1.00.tsv   final_CMath.orig.tsv
-    final_CMath.arith1.00.tsv   final_CMath.harm0.00.tsv   final_CMath.perfect.tsv
-    final_CMath.geom0.00.tsv    final_CMath.harm0.01.tsv   ...
+    final_CMath.best.tsv
+    final_CMath.orig.tsv
+    final_CMath.worst.tsv
+    final_PCMath.best.tsv
+    final_PCMath.orig.tsv
+    final_PCMath.worst.tsv
+    final_PMath.best.tsv
+    final_PMath.orig.tsv
+    final_PMath.worst.tsv
+    final_TeX.best.tsv
+    final_TeX.orig.tsv
+    final_TeX.worst.tsv
+    NTCIR11-Math-10_CMath.1.query.txt
+    NTCIR11-Math-10_CMath.1.response.xml
+    NTCIR11-Math-10_CMath.1.results.best.tsv
+    NTCIR11-Math-10_CMath.1.results.orig.tsv
+    NTCIR11-Math-10_CMath.1.results.worst.tsv
+    NTCIR11-Math-10_CMath.2.query.txt
+    NTCIR11-Math-10_CMath.2.response.xml
+    ...
 
 The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
 64 worker processes:
@@ -195,23 +177,8 @@ The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
     8301578 total paragraph identifiers in positions.pkl.gz
     Reading density, and probability estimates from estimates.pkl.gz
     Querying WebMIaSIndex(https://mir.fi.muni.cz/webmias-demo, 0), reranking and merging results
-    Using 306 strategies to aggregate MIaS scores with probability estimates:
-    - The weighted arithmetic mean (alpha = 0.00) (look for 'arith0.00' in filenames)
-    - The weighted arithmetic mean (alpha = 0.01) (look for 'arith0.01' in filenames)
-    - The weighted arithmetic mean (alpha = 0.02) (look for 'arith0.02' in filenames)
-    - The weighted arithmetic mean (alpha = 0.03) (look for 'arith0.03' in filenames)
-    - The weighted arithmetic mean (alpha = 0.04) (look for 'arith0.04' in filenames)
-      ...
-    - The weighted arithmetic mean (alpha = 1.00) (look for 'arith1.00' in filenames)
+    Using 3 strategies to aggregate MIaS scores with probability estimates:
     - The best possible score that uses relevance judgements (look for 'best' in filenames)
-    - The weighted geometric mean (alpha = 0.00) (look for 'geom0.00' in filenames)
-      ...
-    - The weighted geometric mean (alpha = 1.00) (look for 'geom1.00' in filenames)
-    - The weighted harmonic mean (alpha = 0.00) (look for 'harm0.00' in filenames)
-      ...
-    - The weighted harmonic mean (alpha = 0.98) (look for 'harm0.98' in filenames)
-    - The weighted harmonic mean (alpha = 0.99) (look for 'harm0.99' in filenames)
-    - The weighted harmonic mean (alpha = 1.00) (look for 'harm1.00' in filenames)
     - The original MIaS score with the probability estimate discarded (look for 'orig' in filenames)
     - The worst possible score that uses relevance judgements (look for 'worst' in filenames)
     Storing reranked per-query result lists in search_results
@@ -223,44 +190,41 @@ The following command queries a [remote WebMIaS instance][WebMIaS-demo] using
     get_results:  100%|███████████████████████████████████████████████| 50/50 [05:29<00:00,  6.58s/it]
     rerank_and_merge_results: 200it [06:57,  2.09s/it]
     Storing final result lists in mias_search_results
-    100%|█████████████████████████████████████████████████████████| 1224/1224 [00:13<00:00,  3.73it/s]
+    100%|█████████████████████████████████████████████████████████████| 12/12 [00:13<00:00,  3.73it/s]
     Evaluation results:
-    - best, TeX: 0.5071
-    - best, PCMath: 0.5013
-    - best, CMath: 0.4978
-    - arith0.74, TeX: 0.4784
-    - arith0.48, TeX: 0.4784
+    - best, PCMath: 0.5569
+    - best, PMath: 0.5283
+    - best, TeX: 0.5076
+    - best, CMath: 0.4983
+    - orig, PCMath: 0.4917
     - ...
-    - orig, TeX: 0.4779
-    - ...
-    - orig, CMath: 0.4745
-    - ...
-    - orig, PCMath: 0.4741
-    - ...
-    - best, PMath: 0.4628
-    - ...
-    - orig, PMath: 0.4371
-    - ...
-    - harm0.08, PMath: 0.4036
+    - orig, PMath: 0.4616
     - worst, CMath: 0.3080
-    - worst, PMath: 0.3007
-    - worst, PCMath: 0.2950
     - worst, TeX: 0.2810
+    - worst, PMath: 0.1156
+    - worst, PCMath: 0.1141
     
     $ ls search_results
-    final_CMath.arith0.00.tsv   final_CMath.geom0.01.tsv   final_CMath.harm0.02.tsv
-    final_CMath.arith0.01.tsv   final_CMath.geom0.02.tsv   final_CMath.harm0.03.tsv
-    final_CMath.arith0.02.tsv   final_CMath.geom0.03.tsv   final_CMath.harm0.04.tsv
-    final_CMath.arith0.03.tsv   final_CMath.geom0.04.tsv   final_CMath.harm0.05.tsv
-    final_CMath.arith0.04.tsv   final_CMath.geom0.05.tsv   final_CMath.harm0.06.tsv
-    final_CMath.arith0.05.tsv   final_CMath.geom0.06.tsv   final_CMath.harm0.07.tsv
-    final_CMath.arith0.06.tsv   final_CMath.geom0.07.tsv   final_CMath.harm0.08.tsv
-    final_CMath.arith0.07.tsv   final_CMath.geom0.08.tsv   final_CMath.harm0.09.tsv
-    final_CMath.arith0.08.tsv   final_CMath.geom0.09.tsv   ...
-    final_CMath.arith0.09.tsv   ...                        final_CMath.harm1.00.tsv
-    ...                         final_CMath.geom1.00.tsv   final_CMath.orig.tsv
-    final_CMath.arith1.00.tsv   final_CMath.harm0.00.tsv   final_CMath.perfect.tsv
-    final_CMath.geom0.00.tsv    final_CMath.harm0.01.tsv   ...
+    final_CMath.best.tsv
+    final_CMath.orig.tsv
+    final_CMath.worst.tsv
+    final_PCMath.best.tsv
+    final_PCMath.orig.tsv
+    final_PCMath.worst.tsv
+    final_PMath.best.tsv
+    final_PMath.orig.tsv
+    final_PMath.worst.tsv
+    final_TeX.best.tsv
+    final_TeX.orig.tsv
+    final_TeX.worst.tsv
+    NTCIR11-Math-10_CMath.1.query.txt
+    NTCIR11-Math-10_CMath.1.response.xml
+    NTCIR11-Math-10_CMath.1.results.best.tsv
+    NTCIR11-Math-10_CMath.1.results.orig.tsv
+    NTCIR11-Math-10_CMath.1.results.worst.tsv
+    NTCIR11-Math-10_CMath.2.query.txt
+    NTCIR11-Math-10_CMath.2.response.xml
+    ...
 
 [WebMIaS-demo]: https://mir.fi.muni.cz/webmias-demo/ (Web Math Indexer and Searcher)
 

@@ -626,11 +626,7 @@ class MIaSResult(Result):
     def __lt__(self, other):
         return isinstance(other, MIaSResult) and self.aggregate_score() > other.aggregate_score()
 
-    aggregations = set(
-        [MIaSScore(), BestScore(), WorstScore()] +
-        [ArithmeticMean(alpha) for alpha in AGGREGATION_ALPHAS] +
-        [GeometricMean(alpha) for alpha in AGGREGATION_ALPHAS] +
-        [HarmonicMean(alpha) for alpha in AGGREGATION_ALPHAS])
+    aggregations = set((MIaSScore(), BestScore(), WorstScore()))
 
     def __getstate__(self):  # Do not serialize the aggregate score cache
         return (

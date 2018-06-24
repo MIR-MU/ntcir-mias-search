@@ -94,8 +94,10 @@ class ArithmeticMean(ScoreAggregationStrategy):
     def aggregate_score(self, result):
         assert isinstance(result, MIaSResult)
 
-        rank = float(result.rank())
-        assert rank > 0.0
+        # rank = float(result.rank())
+        # assert rank >= 1.0
+        relative_rank = result.relative_rank()
+        assert relative_rank >= 0.0 and relative_rank < 1.0
         score = result.score
         assert isinstance(score, float)
         assert score >= 0.0
@@ -103,8 +105,10 @@ class ArithmeticMean(ScoreAggregationStrategy):
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
-        w2 = (rank - 1) / rank * self.alpha
+        # w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
+        # w2 = (rank - 1) / rank * self.alpha
+        w1 = (1 - relative_rank) + relative_rank * (1 - self.alpha)
+        w2 = relative_rank * self.alpha
         arithmetic_mean = score * w1 + p_relevant * w2
         return arithmetic_mean
 
@@ -139,8 +143,10 @@ class GeometricMean(ScoreAggregationStrategy):
     def aggregate_score(self, result):
         assert isinstance(result, MIaSResult)
 
-        rank = float(result.rank())
-        assert rank > 0.0
+        # rank = float(result.rank())
+        # assert rank >= 1.0
+        relative_rank = result.relative_rank()
+        assert relative_rank >= 0.0 and relative_rank < 1.0
         score = result.score
         assert isinstance(score, float)
         assert score >= 0.0
@@ -148,8 +154,10 @@ class GeometricMean(ScoreAggregationStrategy):
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
-        w2 = (rank - 1) / rank * self.alpha
+        # w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
+        # w2 = (rank - 1) / rank * self.alpha
+        w1 = (1 - relative_rank) + relative_rank * (1 - self.alpha)
+        w2 = relative_rank * self.alpha
         geometric_mean = score**w1 * p_relevant**w2
         return geometric_mean
 
@@ -184,8 +192,10 @@ class HarmonicMean(ScoreAggregationStrategy):
     def aggregate_score(self, result):
         assert isinstance(result, MIaSResult)
 
-        rank = float(result.rank())
-        assert rank > 0.0
+        # rank = float(result.rank())
+        # assert rank >= 1.0
+        relative_rank = result.relative_rank()
+        assert relative_rank >= 0.0 and relative_rank < 1.0
         score = result.score
         assert isinstance(score, float)
         assert score >= 0.0
@@ -193,8 +203,10 @@ class HarmonicMean(ScoreAggregationStrategy):
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
-        w2 = (rank - 1) / rank * self.alpha
+        # w1 = 1 / rank + (rank - 1) / rank * (1 - self.alpha)
+        # w2 = (rank - 1) / rank * self.alpha
+        w1 = (1 - relative_rank) + relative_rank * (1 - self.alpha)
+        w2 = relative_rank * self.alpha
         harmonic_mean = (w1 / score + w2 / p_relevant)**-1
         return harmonic_mean
 
@@ -446,9 +458,14 @@ class ExecutedProcessedQuery(object):
         The executed query whose results have been processed.
     results : sequence of MIaSResult
         The query results.
+    ranks : dict of (MIaSResult, int)
+        The ranks of the individual query results.
     """
-    def __init__(self, executed_query, results):
+    def __init__(self, executed_query, positions, estimates):
         assert isinstance(executed_query, ExecutedQuery)
+
+        self.aggregation = MIaSScore()
+        self.executed_query = executed_query
 
         parser = XMLParser(encoding="utf-8", recover=True)
         response = etree.fromstring(executed_query.response_text, parser=parser)
@@ -456,9 +473,8 @@ class ExecutedProcessedQuery(object):
             MIaSResult.from_element(self, result, positions, estimates)
             for result in response.xpath(XPATH_RESULT)]
 
-        self.aggregation = MIaSScore()
-        self.executed_query = executed_query
         self.results = list(results)
+        self.ranks = {result: rank for rank, result in enumerate(self.results)}
 
     @contextmanager
     def use_aggregation(self, aggregation):
@@ -476,12 +492,15 @@ class ExecutedProcessedQuery(object):
 
         original_aggregation = self.aggregation
         original_results = self.results
+        original_ranks = self.ranks
         self.aggregation = aggregation
         if aggregation != MIaSScore():
             self.results = sorted(self.results)
+            self.ranks = {result: rank for rank, result in enumerate(self.results)}
         yield
         self.aggregation = original_aggregation
         self.results = original_results
+        self.ranks = original_ranks
 
     def save(self, output_directory):
         """
@@ -498,7 +517,7 @@ class ExecutedProcessedQuery(object):
                 self.executed_query.query.topic.name,
                 self.executed_query.query.math_format.identifier,
                 self.executed_query.query.query_number,
-                self.executed_query.aggregation.identifier))).open("wt") as f:
+                self.aggregation.identifier))).open("wt") as f:
             write_tsv(f, [(self.executed_query.query.topic, self.results)])
 
 
@@ -601,7 +620,7 @@ class MIaSResult(Result):
         assert isinstance(p_relevant, float)
         assert p_relevant >= 0.0 and p_relevant <= 1.0
 
-        judgements = query.executed_query.executed_processed_query.topic.judgements
+        judgements = query.executed_query.query.topic.judgements
         if identifier in judgements:
             relevant = judgements[identifier]
             assert isinstance(relevant, bool)
@@ -611,18 +630,27 @@ class MIaSResult(Result):
         return MIaSResult(
             query, identifier, score, position, p_relevant, relevant)
 
-    def rank(self):
+    def relative_rank(self):
         """
         Returns the relative rank of this result among all results to a query.
 
         Returns
         -------
-        int
-            The rank of this result.
+        float
+            The relative rank of this result in the range [0; 1), where 0 is the relative rank of
+            the first result.
         """
-        results = self.query.results
-        assert self in results
-        relative_rank = results.index(self)
+        ranks = self.query.ranks
+        assert self in ranks
+
+        rank = ranks[self]
+        assert rank >= 0
+
+        if rank == 0:
+            relative_rank = 0.0
+        else:
+            relative_rank = 1.0 * rank / len(ranks)
+        assert relative_rank >= 0.0 and relative_rank < 1.0
 
         return relative_rank
 

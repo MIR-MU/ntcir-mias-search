@@ -82,7 +82,7 @@ def query_webmias(topics, webmias, positions, estimates, output_directory=None, 
                 if output_directory:
                     executed_query.save(output_directory)
                 executed_processed_queries.append(
-                        ExecutedProcessedQuery.from_elements(executed_query, positions, estimates))
+                    ExecutedProcessedQuery(executed_query, positions, estimates))
             yield(math_format, topic, executed_processed_queries)
 
 

@@ -3,10 +3,10 @@ This module contains facade functions for the main command-line interface.
 """
 
 from collections import deque, KeysView
-from itertools import cycle
 from logging import getLogger
 from multiprocessing import Pool
 from pathlib import Path
+import random
 
 from tqdm import tqdm
 
@@ -97,26 +97,19 @@ def _rerank_and_merge_results_helper(args):
                     executed_processed_query.save(output_directory)
                 result_deques.append(deque(executed_processed_query.results))
         result_list = []
-        result_list_identifiers = set()
-        for executed_processed_query, result_dequeue in cycle(zip(
-                executed_processed_queries, result_deques)):
-            if not sum(len(result_dequeue) for result_dequeue in result_deques):
+        seen_results = set()
+        while True:
+            if not sum(len(result_deque) for result_deque in result_deques):
                 break  # All result deques are already empty, stop altogether
             if len(result_list) == num_results:
                 break  # The result list is already full, stop altogether
-            if not result_dequeue:
-                continue  # The result deque for this query is already empty, try the next one
-            try:
-                for _ in range(executed_processed_query.executed_query.query.stripe_width):
-                    result = result_dequeue.popleft()
-                    while result.identifier in result_list_identifiers:
-                        result = result_dequeue.popleft()
-                    result_list.append(result)
-                    result_list_identifiers.add(result.identifier)
-                    if len(result_list) == num_results:
-                        break
-            except IndexError:
-                continue
+            result_deque = random.sample([
+                result_deque for result_deque in result_deques
+                if result_deque], 1)[0]
+            result = result_deque.popleft()
+            if result not in seen_results:
+                result_list.append(result)
+                seen_results.add(result)
         results.append((aggregation, math_format, topic, result_list))
     return results
 

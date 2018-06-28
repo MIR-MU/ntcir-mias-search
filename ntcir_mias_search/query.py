@@ -12,7 +12,7 @@ from numpy import linspace
 from lxml.etree import _Element, XMLParser
 
 from .abstract import QueryExpansionStrategy, ScoreAggregationStrategy, MathFormat, Result
-from .abstract import Singleton, WeightedScoreAggregationStrategy
+from .abstract import Singleton
 from .util import write_tsv
 from .webmias import WebMIaSIndex
 
@@ -62,99 +62,6 @@ class MIaSScore(ScoreAggregationStrategy, metaclass=Singleton):
         assert isinstance(score, float)
 
         return score
-
-
-class ArithmeticMean(WeightedScoreAggregationStrategy):
-    """
-    This class represents a strategy for aggregating a score, and a probability estimate into their
-    weighted arithmetic mean.
-
-    Parameters
-    ----------
-    alpha : float
-        The weight of a probability estimate. The weight of a score is 1 - alpha.
-    """
-    def __init__(self, alpha=0.5):
-        assert isinstance(alpha, float)
-        assert alpha >= 0.0 and alpha <= 1.0
-
-        self.identifier = "arith%0.2f" % alpha
-        self.description = "The weighted arithmetic mean (alpha = %0.2f)" % alpha
-        self.alpha = alpha
-
-    def aggregate_score(self, result):
-        assert isinstance(result, MIaSResult)
-
-        score = result.score
-        assert isinstance(score, float)
-        p_relevant = result.p_relevant
-        assert isinstance(p_relevant, float)
-        assert p_relevant >= 0.0 and p_relevant <= 1.0
-
-        arithmetic_mean = score * (1 - self.alpha) + p_relevant * self.alpha
-        return arithmetic_mean
-
-
-class GeometricMean(WeightedScoreAggregationStrategy):
-    """
-    This class represents a strategy for aggregating a score, and a probability estimate into their
-    weighted geometric mean.
-
-    Parameters
-    ----------
-    alpha : float
-        The weight of a probability estimate. The weight of a score is 1 - alpha.
-    """
-    def __init__(self, alpha=0.5):
-        assert isinstance(alpha, float)
-        assert alpha >= 0.0 and alpha <= 1.0
-
-        self.identifier = "geom%0.2f" % alpha
-        self.description = "The weighted geometric mean (alpha = %0.2f)" % alpha
-        self.alpha = alpha
-
-    def aggregate_score(self, result):
-        assert isinstance(result, MIaSResult)
-
-        score = result.score
-        assert isinstance(score, float)
-        p_relevant = result.p_relevant
-        assert isinstance(p_relevant, float)
-        assert p_relevant >= 0.0 and p_relevant <= 1.0
-
-        geometric_mean = score**(1 - self.alpha) * p_relevant**self.alpha
-        return geometric_mean
-
-
-class HarmonicMean(WeightedScoreAggregationStrategy):
-    """
-    This class represents a strategy for aggregating a score, and a probability estimate into
-    their weighted harmonic mean.
-
-    Parameters
-    ----------
-    alpha : float
-        The weight of a probability estimate. The weight of a score is 1 - alpha.
-    """
-    def __init__(self, alpha=0.5):
-        assert isinstance(alpha, float)
-        assert alpha >= 0.0 and alpha <= 1.0
-
-        self.identifier = "harm%0.2f" % alpha
-        self.description = "The weighted harmonic mean (alpha = %0.2f)" % alpha
-        self.alpha = alpha
-
-    def aggregate_score(self, result):
-        assert isinstance(result, MIaSResult)
-
-        score = result.score
-        assert isinstance(score, float)
-        p_relevant = result.p_relevant
-        assert isinstance(p_relevant, float)
-        assert p_relevant >= 0.0 and p_relevant <= 1.0
-
-        harmonic_mean = ((1 - self.alpha) / score + self.alpha / p_relevant)**-1
-        return harmonic_mean
 
 
 class BestScore(ScoreAggregationStrategy, metaclass=Singleton):

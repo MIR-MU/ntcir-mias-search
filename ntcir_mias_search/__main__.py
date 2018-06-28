@@ -11,10 +11,8 @@ from urllib.parse import urlparse
 
 from numpy import mean
 
-from .abstract import WeightedScoreAggregationStrategy
 from .facade import get_topics, get_webmias, query_webmias, rerank_and_merge_results
 from .util import get_judgements, get_positions, get_estimates, log_sequence
-from .view import plot_evaluation_results
 
 
 LOG_PATH = Path("__main__.log")
@@ -167,29 +165,16 @@ def main():
     final_results = list(rerank_and_merge_results(
         results, identifiers, args.output_directory, args.num_workers_merging))
 
-    math_formats = dict()
-    evaluation_results = []
-    for aggregation, math_format, result_lists in final_results:
-        assert len(result_lists) == len(topics)
-        mean_score = mean([results.evaluate() for results in result_lists])
-        evaluation_results.append((aggregation, math_format, mean_score))
-        if math_format not in math_formats:
-            math_formats[math_format] = []
-        if isinstance(aggregation, WeightedScoreAggregationStrategy):
-            math_formats[math_format].append((aggregation, mean_score))
     LOGGER.info("Evaluation results:")
+    evaluation_results = (
+        (aggregation, math_format, mean([results.evaluate() for results in result_lists]))
+        for aggregation, math_format, result_lists in final_results)
     lines = []
     for aggregation, math_format, score in sorted(
             evaluation_results, key=lambda x: x[2], reverse=True):
         line = "%s, %s: %0.4f" % (aggregation.identifier, math_format.identifier, score)
         lines.append(line)
     log_sequence(lines)
-
-    if args.plots:
-        figure = plot_evaluation_results(sorted(math_formats.items()))
-        for plot_path in args.plots:
-            LOGGER.info("Plotting %s", plot_path.name)
-            figure.savefig(str(plot_path))
 
 
 if __name__ == "__main__":

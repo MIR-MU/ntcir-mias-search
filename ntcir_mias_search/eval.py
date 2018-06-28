@@ -30,13 +30,18 @@ class Bpref(EvaluationStrategy, metaclass=Singleton):
 
         n = 0
         bpref = 0.0
+        seen_results = set()
         for result in results:
+            if result in seen_results:
+                continue
+            seen_results.add(result)
             if result.identifier in results.topic.judgements:
                 if results.topic.judgements[result.identifier] is True:
                     bpref += 1.0 - (1.0 * n) / min(R, N)
                 else:
                     n = min(n + 1, R)
                     assert n >= 0 and n <= min(R, N)
+        assert bpref <= R
         bpref /= R
 
         return bpref

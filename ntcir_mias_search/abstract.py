@@ -143,6 +143,12 @@ class Result(object):
         """
         pass
 
+    def __hash__(self):
+        return hash(self.identifier)
+
+    def __eq__(self, other):
+        return isinstance(other, Result) and self.identifier == other.identifier
+
 
 class EvaluationStrategy(NamedEntity):
     """

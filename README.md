@@ -33,12 +33,13 @@ command:
 
     $ ntcir-mias-search --help
     usage: ntcir-mias-search [-h] --dataset DATASET --topics TOPICS --positions
-                             POSITIONS --estimates ESTIMATES --webmias-url
-                             WEBMIAS_URL
+                             POSITIONS --estimates ESTIMATES --judgements
+                             JUDGEMENTS --webmias-url WEBMIAS_URL
                              [--webmias-index-number WEBMIAS_INDEX_NUMBER]
                              [--num-workers-querying NUM_WORKERS_QUERYING]
                              [--num-workers-merging NUM_WORKERS_MERGING]
-                             --output-directory OUTPUT_DIRECTORY
+                             [--output-directory OUTPUT_DIRECTORY]
+                             [--plots PLOTS [PLOTS ...]]
 
     Use topics in the NTCIR-10 Math, NTCIR-11 Math-2, and NTCIR-12 MathIR format
     to query the WebMIaS interface of the MIaS Math Information Retrieval system
@@ -61,6 +62,9 @@ command:
                             The path to the file, where the density, and
                             probability estimates for our dataset were stored by
                             the NTCIR Math Density Estimator package.
+      --judgements JUDGEMENTS
+                            The path to the file containing relevance judgements
+                            for our dataset.
       --webmias-url WEBMIAS_URL
                             The URL at which a WebMIaS Java Servlet has been
                             deployed.
@@ -73,11 +77,11 @@ command:
                             and merging takes place simmultaneously.
       --num-workers-merging NUM_WORKERS_MERGING
                             The number of processes that will rerank results.
-                            Defaults to 3. Note that querying, reranking, and
+                            Defaults to 9. Note that querying, reranking, and
                             merging takes place simmultaneously.
       --output-directory OUTPUT_DIRECTORY
                             The path to the directory, where the output files will
-                            be stored.
+                            be stored. Defaults to None.
       --plots PLOTS [PLOTS ...]
                             The path to the files, where the evaluation results
                             will plotted.

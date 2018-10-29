@@ -37,7 +37,7 @@ setup(
         "lxml ~= 4.2.1",
         "matplotlib ~= 2.2.2",
         "numpy ~= 1.14.3",
-        "requests ~= 2.18.4",
+        "requests ~= 2.20.0",
     ],
     license="MIT",
     long_description_content_type="text/markdown",

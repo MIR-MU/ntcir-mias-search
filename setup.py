@@ -18,7 +18,7 @@ setup(
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
         "Topic :: Scientific/Engineering :: Mathematics",
         "Topic :: Text Processing :: Markup :: XML",
     ],
@@ -45,7 +45,7 @@ setup(
     maintainer=AUTHOR,
     name="ntcir_mias_search",
     packages=find_packages(),
-    python_requires="~= 3.4",
+    python_requires="~= 3.5",
     project_urls={
         "Source": SOURCE_URL,
     },

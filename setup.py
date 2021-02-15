@@ -34,7 +34,7 @@ setup(
     keywords="ntcir mias math_information_retrieval",
     install_requires=[
         "tqdm ~= 4.23.3",
-        "lxml ~= 4.2.1",
+        "lxml ~= 4.6.2",
         "matplotlib ~= 2.2.2",
         "numpy ~= 1.14.3",
         "requests ~= 2.20.0",

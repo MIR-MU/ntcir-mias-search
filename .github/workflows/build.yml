@@ -1,0 +1,17 @@
+name: Test
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.5'
+    - uses: actions/checkout@v2
+    - run: pip install -U pip
+    - run: pip install .
+    - run: python setup.py test

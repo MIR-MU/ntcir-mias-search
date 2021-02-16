@@ -1,8 +1,8 @@
 NTCIR MIaS Search – Our search engine for the NTCIR Math tasks
 ==============================================================
-[![CircleCI](https://circleci.com/gh/MIR-MU/ntcir-mias-search/tree/master.svg?style=shield)][ci]
+[![ci](https://github.com/MIR-MU/ntcir-mias-search/workflows/Test/badge.svg)][ci]
 
- [ci]: https://circleci.com/gh/MIR-MU/ntcir-mias-search/tree/master (CircleCI)
+ [ci]: https://github.com/MIR-MU/ntcir-mias-search/actions (GitHub Actions)
 
 NTCIR MIaS Search is a Python 3 command-line utility that operates on top of
 [WebMIaS][] and that implements the Math Information Retrival system that won

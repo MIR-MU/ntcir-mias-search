@@ -266,7 +266,7 @@ BibTeX
 ------
 ``` bib
 @inproceedings{mir:MIaSNTCIR-11,
-     author = "Michal R\r{u}\v{z}i\v{c}ka and Petr Sojka and Martin L{\' i}\v{s}ka",
+     author = "Michal R\r{u}\v{z}i\v{c}ka and Petr Sojka and Martin L\'{i}\v{s}ka",
       title = "{Math Indexer and Searcher under the Hood:
                History and Development of a Winning Strategy}",
       month = Dec,
